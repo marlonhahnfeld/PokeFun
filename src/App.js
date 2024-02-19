@@ -39,11 +39,10 @@ const App = () => {
   return (
     <div className="app">
       <div className="container">
-        <PokemonCard pokemon={pokemon1} />
+        <PokemonCard pokemon={pokemon1} cardid="1" opponentPokemon={pokemon2} />
       </div>
       <div className="container">
-        {" "}
-        <PokemonCard pokemon={pokemon2} />
+        <PokemonCard pokemon={pokemon2} cardid="2" opponentPokemon={pokemon1} />
       </div>
     </div>
   );
