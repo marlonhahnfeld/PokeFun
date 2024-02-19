@@ -31,10 +31,24 @@ const PokemonCard = ({
     opponentTotalStatsElement.textContent = `Gesamtsumme gegnerische Stats: ${opponentTotalStats}`;
   };
 
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   return (
     <div className="pokemon" onClick={handleClick}>
       <div>
-        <h2>{name}</h2>
+        <h2>{capitalizeFirstLetter(name)}</h2>
+      </div>
+
+      <div className="sprite">
+        {sprites && (
+          <img
+            src={sprites["other"]["official-artwork"]["front_default"]}
+            alt="sprite"
+            draggable="false"
+          ></img>
+        )}
       </div>
 
       <div>{sprites && <img src={sprites.front_default} alt="sprite" />}</div>
