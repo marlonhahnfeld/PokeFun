@@ -39,6 +39,19 @@ const App = () => {
 
   if (!pokemon1 || !pokemon2) return <div>Loading...</div>;
 
+  const fetchNewPokemon = async () => {
+    const [newPokemon1, newPokemon2] = await Promise.all([
+      fetch(`https://pokeapi.co/api/v2/pokemon/${randomPokemonId()}/`).then(
+        (res) => res.json()
+      ),
+      fetch(`https://pokeapi.co/api/v2/pokemon/${randomPokemonId()}/`).then(
+        (res) => res.json()
+      ),
+    ]);
+
+    setPokemon1(newPokemon1);
+    setPokemon2(newPokemon2);
+  };
   //!PokemonCard loading---------------------------------------------
 
   const sumBaseStats = (pokemon) => {
@@ -51,29 +64,71 @@ const App = () => {
     }, 0);
   };
 
-  const handleClickCard1 = () => {
+  const handleClickCard1 = async () => {
     const totalStatsForPokemon1 = sumBaseStats(pokemon1);
     const totalStatsForPokemon2 = sumBaseStats(pokemon2);
+
+    // Zeige die Total-Stats an
     setPokemon1TotalStats(totalStatsForPokemon1);
     setPokemon2TotalStats(totalStatsForPokemon2);
 
+    // Timeout-Variable für verzögerten Fetch
+    let timeoutId;
+
+    // Vergleiche die Stats und erhöhe den Score
     if (totalStatsForPokemon1 >= totalStatsForPokemon2) {
       setScore(score + 1);
     } else {
       setScore(0);
     }
+
+    // Setze Timeout für Fetch nach 2 Sekunden
+    timeoutId = setTimeout(() => {
+      // Neue Pokémon abrufen
+      fetchNewPokemon();
+
+      // Setze "?" nach dem Fetch
+      setPokemon1TotalStats("?");
+      setPokemon2TotalStats("?");
+    }, 2000);
+
+    // Lösche Timeout, wenn neue Pokémon abgerufen werden
+    if (score === 2) {
+      clearTimeout(timeoutId);
+    }
   };
 
-  const handleClickCard2 = () => {
+  const handleClickCard2 = async () => {
     const totalStatsForPokemon1 = sumBaseStats(pokemon1);
     const totalStatsForPokemon2 = sumBaseStats(pokemon2);
+
+    // Zeige die Total-Stats an
     setPokemon1TotalStats(totalStatsForPokemon1);
     setPokemon2TotalStats(totalStatsForPokemon2);
 
+    // Timeout-Variable für verzögerten Fetch
+    let timeoutId;
+
+    // Vergleiche die Stats und erhöhe den Score
     if (totalStatsForPokemon1 <= totalStatsForPokemon2) {
       setScore(score + 1);
     } else {
       setScore(0);
+    }
+
+    // Setze Timeout für Fetch nach 2 Sekunden
+    timeoutId = setTimeout(() => {
+      // Neue Pokémon abrufen
+      fetchNewPokemon();
+
+      // Setze "?" nach dem Fetch
+      setPokemon1TotalStats("?");
+      setPokemon2TotalStats("?");
+    }, 2000);
+
+    // Lösche Timeout, wenn neue Pokémon abgerufen werden
+    if (score === 2) {
+      clearTimeout(timeoutId);
     }
   };
 
