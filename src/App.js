@@ -93,9 +93,6 @@ const App = () => {
     }, 2000);
 
     // Lösche Timeout, wenn neue Pokémon abgerufen werden
-    if (score === 2) {
-      clearTimeout(timeoutId);
-    }
   };
 
   const handleClickCard2 = async () => {
@@ -127,9 +124,6 @@ const App = () => {
     }, 2000);
 
     // Lösche Timeout, wenn neue Pokémon abgerufen werden
-    if (score === 2) {
-      clearTimeout(timeoutId);
-    }
   };
 
   //-------------------------------------------------------------------------------------------------------------
