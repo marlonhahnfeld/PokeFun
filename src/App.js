@@ -36,19 +36,19 @@ const App = () => {
   if (!pokemon1 || !pokemon2) return <div>Loading...</div>;
   // Run useEffect only once on component mount
 
-
-  return (  
-  <div className="title">
-    <h4>Score: </h4>
-    <div className="app">
-      <div className="container">
-        <PokemonCard pokemon={pokemon1} cardid="1" opponentPokemon={pokemon2} />
-      </div>
-      <div className="container">
-        <PokemonCard pokemon={pokemon2} cardid="2" opponentPokemon={pokemon1} />
+  return (
+    <div className="title">
+      <h4>Score: </h4>
+      <div className="app">
+        <div className="container">
+          <PokemonCard pokemon={pokemon1} id="1" pokemon2={pokemon2} />
+        </div>
+        <div className="result"></div>
+        <div className="container">
+          <PokemonCard pokemon={pokemon2} id="2" pokemon2={pokemon1} />
+        </div>
       </div>
     </div>
-  </div>
   );
 };
 
