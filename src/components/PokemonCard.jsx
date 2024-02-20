@@ -22,7 +22,7 @@ const PokemonCard = ({ pokemon, pokemon2, totalStats, onClick }) => {
           )}
         </div>
         <div className="own-total-stats">
-          <h2>Gesamtstats: {totalStats}</h2>
+          <h2>Total stats: {totalStats}</h2>
         </div>
       </div>
     </div>

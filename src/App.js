@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import PokemonCard from "./PokemonCard";
+import PokemonCard from "./components/PokemonCard";
+import DropDownMenu from "./components/GameModeMenu";
+import GameModeMenu from "./components/GameModeMenu";
 
 const App = () => {
   const [pokemon1, setPokemon1] = useState("");
@@ -90,7 +92,7 @@ const App = () => {
       // Setze "?" nach dem Fetch
       setPokemon1TotalStats("?");
       setPokemon2TotalStats("?");
-    }, 2000);
+    }, 2750);
 
     // Lösche Timeout, wenn neue Pokémon abgerufen werden
   };
@@ -130,6 +132,7 @@ const App = () => {
 
   return (
     <div className="title">
+      <GameModeMenu></GameModeMenu>
       <h4 className="score">Score:{score} </h4>
       <div className="app">
         <div className="container">
