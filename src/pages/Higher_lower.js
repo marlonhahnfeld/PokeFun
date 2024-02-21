@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
-import PokemonCard from "./components/PokemonCard";
-import DropDownMenu from "./components/GameModeMenu";
-import GameModeMenu from "./components/GameModeMenu";
+import "../App.css";
+import PokemonCard from "../components/PokemonCard";
+import GameModeMenu from "../components/GameModeMenu";
 
-const App = () => {
+const HigherLower = () => {
   const [pokemon1, setPokemon1] = useState("");
   const [pokemon2, setPokemon2] = useState("");
   const [score, setScore] = useState(0);
@@ -163,4 +162,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default HigherLower;
