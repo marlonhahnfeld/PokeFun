@@ -1,0 +1,6 @@
+Hier kommen Elemente rein, welche keine children haben.
+Komponenten sind Zusammensetzungen von "ui".
+Bsp. für ui:
+- Button
+- p
+- etc
