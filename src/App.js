@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import "./App.css";
 import PokemonCard from "./components/PokemonCard";
-import DropDownMenu from "./components/GameModeMenu";
-import GameModeMenu from "./components/GameModeMenu";
+import {
+  randomPokemonId,
+  sumBaseStats,
+  fetchNewPokemon,
+} from "./utils/HigherLowerUtil";
 
 const App = () => {
   const [pokemon1, setPokemon1] = useState("");
@@ -10,61 +13,31 @@ const App = () => {
   const [score, setScore] = useState(0);
   const [pokemon1TotalStats, setPokemon1TotalStats] = useState("?");
   const [pokemon2TotalStats, setPokemon2TotalStats] = useState("?");
+  const [roundDone, setRoundDone] = useState(false);
 
-  //!PokemonCard loading---------------------------------------------
+  //TODO pokemon werden gefetched, nach erster runde auch, aber runde 2 fetched ncht mehr, da setRoundDone sich nicht mehr ändert und useEffect nicht triggert.
+
+  //! INIT FETCHING von 2 Pokemon
   useEffect(() => {
-    const randomNumber = randomPokemonId();
-    const url = `https://pokeapi.co/api/v2/pokemon/${randomNumber}/`;
-    fetch(url)
+    const randomNumber1 = randomPokemonId();
+    const randomNumber2 = randomPokemonId();
+
+    const url1 = `https://pokeapi.co/api/v2/pokemon/${randomNumber1}/`;
+    const url2 = `https://pokeapi.co/api/v2/pokemon/${randomNumber2}/`;
+    fetch(url1)
       .then((response) => response.json())
       .then((data) => {
         console.log(data); // <-- Hier wird data geprinted
         setPokemon1(data);
+
+        fetch(url2)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data); // <-- Hier wird data geprinted
+            setPokemon2(data);
+          });
       });
-  }, []);
-
-  useEffect(() => {
-    const randomNumber = randomPokemonId();
-    const url = `https://pokeapi.co/api/v2/pokemon/${randomNumber}/`;
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data); // <-- Hier wird data geprinted
-        setPokemon2(data);
-      });
-  }, []);
-
-  const randomPokemonId = () => {
-    const randomNumber = Math.floor(Math.random() * 1025);
-    return randomNumber + 1;
-  };
-
-  if (!pokemon1 || !pokemon2) return <div>Loading...</div>;
-
-  const fetchNewPokemon = async () => {
-    const [newPokemon1, newPokemon2] = await Promise.all([
-      fetch(`https://pokeapi.co/api/v2/pokemon/${randomPokemonId()}/`).then(
-        (res) => res.json()
-      ),
-      fetch(`https://pokeapi.co/api/v2/pokemon/${randomPokemonId()}/`).then(
-        (res) => res.json()
-      ),
-    ]);
-
-    setPokemon1(newPokemon1);
-    setPokemon2(newPokemon2);
-  };
-  //!PokemonCard loading---------------------------------------------
-
-  const sumBaseStats = (pokemon) => {
-    return pokemon.stats.reduce((total, stat, index) => {
-      // Berücksichtige nur die ersten 6 Statistiken (Index 0 bis 5)
-      if (index <= 5) {
-        return total + stat.base_stat;
-      }
-      return total;
-    }, 0);
-  };
+  }, [roundDone]);
 
   const handleClickCard1 = async () => {
     const totalStatsForPokemon1 = sumBaseStats(pokemon1);
@@ -87,12 +60,12 @@ const App = () => {
     // Setze Timeout für Fetch nach 2 Sekunden
     timeoutId = setTimeout(() => {
       // Neue Pokémon abrufen
-      fetchNewPokemon();
+      setRoundDone(true);
 
       // Setze "?" nach dem Fetch
       setPokemon1TotalStats("?");
       setPokemon2TotalStats("?");
-    }, 2750);
+    }, 1000);
 
     // Lösche Timeout, wenn neue Pokémon abgerufen werden
   };
@@ -118,12 +91,12 @@ const App = () => {
     // Setze Timeout für Fetch nach 2 Sekunden
     timeoutId = setTimeout(() => {
       // Neue Pokémon abrufen
-      fetchNewPokemon();
+      setRoundDone(true);
 
       // Setze "?" nach dem Fetch
       setPokemon1TotalStats("?");
       setPokemon2TotalStats("?");
-    }, 2000);
+    }, 1000);
 
     // Lösche Timeout, wenn neue Pokémon abgerufen werden
   };
@@ -132,7 +105,6 @@ const App = () => {
 
   return (
     <div className="title">
-      <GameModeMenu></GameModeMenu>
       <h4 className="score">Score:{score} </h4>
       <div className="app">
         <div className="container">
@@ -142,7 +114,7 @@ const App = () => {
             pokemon2={pokemon2}
             totalStats={pokemon1TotalStats}
             onClick={() => {
-              handleClickCard1();
+              handleClickCard1({ pokemon1 }, { pokemon2 });
             }}
           />
         </div>

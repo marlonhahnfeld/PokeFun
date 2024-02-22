@@ -1,15 +1,18 @@
 import React from "react";
 
 const PokemonCard = ({ pokemon, pokemon2, totalStats, onClick }) => {
-  const capitalizeFirstLetter = (string) => {
+  {
+    /*const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
+*/
+  }
 
   return (
     <div className="pokemon-container" onClick={onClick}>
       {/* Erste PokemonCard-Komponente */}
       <div className="pokemon">
-        <h2>{capitalizeFirstLetter(pokemon.name)}</h2>
+        <h2>{pokemon.name}</h2>
         <div className="sprite">
           {pokemon.sprites && (
             <img
