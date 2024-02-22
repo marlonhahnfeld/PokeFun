@@ -55,12 +55,13 @@ const App = () => {
       setScore(0);
     }
 
-    let timeoutId = setTimeout(() => {
-      // Neue Pokémon abrufen
+    const timeoutId = setTimeout(() => {
       setRoundDone((prev) => !prev);
-      // Setze "?" nach dem Fetch
+
       setPokemon1TotalStats("?");
       setPokemon2TotalStats("?");
+      // Clear timeout if component unmounts or new round starts
+      clearTimeout(timeoutId);
     }, 1000);
 
     // Lösche Timeout, wenn neue Pokémon abgerufen werden
@@ -81,13 +82,13 @@ const App = () => {
       setScore(0);
     }
 
-    let timeoutId = setTimeout(() => {
-      // Neue Pokémon abrufen
+    const timeoutId = setTimeout(() => {
       setRoundDone((prev) => !prev);
 
-      // Setze "?" nach dem Fetch
       setPokemon1TotalStats("?");
       setPokemon2TotalStats("?");
+      // Clear timeout if component unmounts or new round starts
+      clearTimeout(timeoutId);
     }, 1000);
 
     // Lösche Timeout, wenn neue Pokémon abgerufen werden
