@@ -1,11 +1,8 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React from "react";
 import "./App.css";
+import { useState, useEffect } from "react";
+import { randomPokemonId, sumBaseStats } from "./utils/HigherLowerUtil";
 import PokemonCard from "./components/PokemonCard";
-import {
-  randomPokemonId,
-  sumBaseStats,
-  fetchNewPokemon,
-} from "./utils/HigherLowerUtil";
 
 const App = () => {
   const [pokemon1, setPokemon1] = useState("");
@@ -15,28 +12,32 @@ const App = () => {
   const [pokemon2TotalStats, setPokemon2TotalStats] = useState("?");
   const [roundDone, setRoundDone] = useState(false);
 
-  //TODO pokemon werden gefetched, nach erster runde auch, aber runde 2 fetched ncht mehr, da setRoundDone sich nicht mehr ändert und useEffect nicht triggert.
-
-  //! INIT FETCHING von 2 Pokemon
+  // FETCHING von 2 Pokemon
   useEffect(() => {
-    const randomNumber1 = randomPokemonId();
-    const randomNumber2 = randomPokemonId();
+    const fetchPokemon = async () => {
+      const randomNumber1 = randomPokemonId();
+      const randomNumber2 = randomPokemonId();
 
-    const url1 = `https://pokeapi.co/api/v2/pokemon/${randomNumber1}/`;
-    const url2 = `https://pokeapi.co/api/v2/pokemon/${randomNumber2}/`;
-    fetch(url1)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data); // <-- Hier wird data geprinted
-        setPokemon1(data);
+      const url1 = `https://pokeapi.co/api/v2/pokemon/${randomNumber1}/`;
+      const url2 = `https://pokeapi.co/api/v2/pokemon/${randomNumber2}/`;
 
-        fetch(url2)
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(data); // <-- Hier wird data geprinted
-            setPokemon2(data);
-          });
-      });
+      try {
+        const response1 = await fetch(url1);
+        const data1 = await response1.json();
+        setPokemon1(data1);
+
+        const response2 = await fetch(url2);
+        const data2 = await response2.json();
+        setPokemon2(data2);
+
+        console.log(data1.name);
+        console.log(data2.name);
+      } catch (error) {
+        console.error("Error fetching Pokemon:", error);
+      }
+    };
+
+    fetchPokemon();
   }, [roundDone]);
 
   const handleClickCard1 = async () => {
@@ -47,9 +48,6 @@ const App = () => {
     setPokemon1TotalStats(totalStatsForPokemon1);
     setPokemon2TotalStats(totalStatsForPokemon2);
 
-    // Timeout-Variable für verzögerten Fetch
-    let timeoutId;
-
     // Vergleiche die Stats und erhöhe den Score
     if (totalStatsForPokemon1 >= totalStatsForPokemon2) {
       setScore(score + 1);
@@ -57,11 +55,9 @@ const App = () => {
       setScore(0);
     }
 
-    // Setze Timeout für Fetch nach 2 Sekunden
-    timeoutId = setTimeout(() => {
+    let timeoutId = setTimeout(() => {
       // Neue Pokémon abrufen
-      setRoundDone(true);
-
+      setRoundDone((prev) => !prev);
       // Setze "?" nach dem Fetch
       setPokemon1TotalStats("?");
       setPokemon2TotalStats("?");
@@ -78,9 +74,6 @@ const App = () => {
     setPokemon1TotalStats(totalStatsForPokemon1);
     setPokemon2TotalStats(totalStatsForPokemon2);
 
-    // Timeout-Variable für verzögerten Fetch
-    let timeoutId;
-
     // Vergleiche die Stats und erhöhe den Score
     if (totalStatsForPokemon1 <= totalStatsForPokemon2) {
       setScore(score + 1);
@@ -88,10 +81,9 @@ const App = () => {
       setScore(0);
     }
 
-    // Setze Timeout für Fetch nach 2 Sekunden
-    timeoutId = setTimeout(() => {
+    let timeoutId = setTimeout(() => {
       // Neue Pokémon abrufen
-      setRoundDone(true);
+      setRoundDone((prev) => !prev);
 
       // Setze "?" nach dem Fetch
       setPokemon1TotalStats("?");
@@ -101,8 +93,6 @@ const App = () => {
     // Lösche Timeout, wenn neue Pokémon abgerufen werden
   };
 
-  //-------------------------------------------------------------------------------------------------------------
-
   return (
     <div className="title">
       <h4 className="score">Score:{score} </h4>
@@ -111,10 +101,9 @@ const App = () => {
           <PokemonCard
             pokemon={pokemon1}
             id="1"
-            pokemon2={pokemon2}
             totalStats={pokemon1TotalStats}
             onClick={() => {
-              handleClickCard1({ pokemon1 }, { pokemon2 });
+              handleClickCard1();
             }}
           />
         </div>
@@ -123,7 +112,6 @@ const App = () => {
           <PokemonCard
             pokemon={pokemon2}
             id="2"
-            pokemon2={pokemon1}
             totalStats={pokemon2TotalStats}
             onClick={() => {
               handleClickCard2();
