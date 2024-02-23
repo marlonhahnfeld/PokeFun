@@ -4,13 +4,14 @@ import { useState, useEffect } from "react";
 import { randomPokemonId, sumBaseStats } from "./utils/HigherLowerUtil";
 import PokemonCard from "./components/PokemonCard";
 
-const App = () => {
+const HigherLowerGamePage = () => {
   const [pokemon1, setPokemon1] = useState("");
   const [pokemon2, setPokemon2] = useState("");
   const [score, setScore] = useState(0);
   const [pokemon1TotalStats, setPokemon1TotalStats] = useState("?");
   const [pokemon2TotalStats, setPokemon2TotalStats] = useState("?");
   const [roundDone, setRoundDone] = useState(false);
+  const [isClickable, setIsClickable] = useState(true);
 
   // FETCHING von 2 Pokemon
   useEffect(() => {
@@ -40,58 +41,82 @@ const App = () => {
     fetchPokemon();
   }, [roundDone]);
 
+
+
+
+  
   const handleClickCard1 = async () => {
+    // Check if the card is clickable
+    if (!isClickable) {
+      return;
+    }
+  
+    // Set the card to not be clickable
+    setIsClickable(false);
+  
     const totalStatsForPokemon1 = sumBaseStats(pokemon1);
     const totalStatsForPokemon2 = sumBaseStats(pokemon2);
-
-    // Zeige die Total-Stats an
+  
+    // Show the total stats
     setPokemon1TotalStats(totalStatsForPokemon1);
     setPokemon2TotalStats(totalStatsForPokemon2);
-
-    // Vergleiche die Stats und erhöhe den Score
+  
+    // Compare the stats and increase the score
     if (totalStatsForPokemon1 >= totalStatsForPokemon2) {
       setScore(score + 1);
     } else {
       setScore(0);
     }
-
+  
     const timeoutId = setTimeout(() => {
       setRoundDone((prev) => !prev);
-
+  
       setPokemon1TotalStats("?");
       setPokemon2TotalStats("?");
+  
       // Clear timeout if component unmounts or new round starts
       clearTimeout(timeoutId);
+  
+      // Set the card to be clickable again after 1 second
+      setIsClickable(true);
     }, 1000);
-
-    // Lösche Timeout, wenn neue Pokémon abgerufen werden
   };
 
   const handleClickCard2 = async () => {
+    // Check if the card is clickable
+    if (!isClickable) {
+      return;
+    }
+  
+    // Set the card to not be clickable
+    setIsClickable(false);
+  
     const totalStatsForPokemon1 = sumBaseStats(pokemon1);
     const totalStatsForPokemon2 = sumBaseStats(pokemon2);
-
-    // Zeige die Total-Stats an
+  
+    // Show the total stats
     setPokemon1TotalStats(totalStatsForPokemon1);
     setPokemon2TotalStats(totalStatsForPokemon2);
-
-    // Vergleiche die Stats und erhöhe den Score
+  
+    // Compare the stats and increase the score
     if (totalStatsForPokemon1 <= totalStatsForPokemon2) {
       setScore(score + 1);
     } else {
       setScore(0);
     }
-
+  
     const timeoutId = setTimeout(() => {
       setRoundDone((prev) => !prev);
-
+  
       setPokemon1TotalStats("?");
       setPokemon2TotalStats("?");
+  
       // Clear timeout if component unmounts or new round starts
       clearTimeout(timeoutId);
+  
+      // Set the card to be clickable again after 1 second
+      setIsClickable(true);
     }, 1000);
-
-    // Lösche Timeout, wenn neue Pokémon abgerufen werden
   };
 
   return (
@@ -124,4 +149,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default HigherLowerGamePage;
