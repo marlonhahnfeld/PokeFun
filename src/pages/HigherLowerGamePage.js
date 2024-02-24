@@ -4,6 +4,7 @@ import { useState } from "react";
 import usePokemonFetch from "../hooks/usePokemonFetch";
 import { sumBaseStats } from "../utils/HigherLowerUtil";
 import PokemonCard from "../components/PokemonCard";
+import Score from "../components/Score";
 
 const HigherLowerGamePage = () => {
   const [score, setScore] = useState(0);
@@ -28,7 +29,7 @@ const HigherLowerGamePage = () => {
       (cardNumber === 1 && totalStatsForPokemon1 >= totalStatsForPokemon2) ||
       (cardNumber === 2 && totalStatsForPokemon1 <= totalStatsForPokemon2)
     ) {
-      setScore(score + 1);
+      setScore((prev) => prev + 1);
     } else {
       setScore(0);
     }
@@ -45,7 +46,7 @@ const HigherLowerGamePage = () => {
 
   return (
     <div className="title">
-      <h4 className="score">Score: {score}</h4>
+      <Score score={score} />
       <div className="app">
         <div className="container">
           <PokemonCard
