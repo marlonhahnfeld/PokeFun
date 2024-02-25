@@ -1,6 +1,7 @@
 import React from "react";
+import { capitilzeFirstLetter } from "../utils/CapitilizeFirstLetter";
 
-const PokemonCard = ({ pokemon, totalStats, onClick }) => {
+const PokemonCard = ({ pokemon, onClick }) => {
   return (
     <div className="pokemon-container" onClick={onClick}>
       <div className="pokemon">
