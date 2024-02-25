@@ -16,9 +16,6 @@ const PokemonCard = ({ pokemon, totalStats, onClick }) => {
             />
           )}
         </div>
-        <div className="own-total-stats">
-          <h2>Total stats: {totalStats}</h2>
-        </div>
       </div>
     </div>
   );

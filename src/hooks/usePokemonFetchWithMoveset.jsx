@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { randomPokemonId } from "../utils/HigherLowerUtil";
 
-const usePokemonFetch = (roundDone, numPokemons) => {
+const usePokemonFetchWithMoves = (roundDone, numPokemons) => {
   const [pokemons, setPokemons] = useState(Array(numPokemons).fill(""));
-  const [totalStats, setTotalStats] = useState(Array(numPokemons).fill("?"));
+  const [moves, setMoves] = useState(Array(numPokemons).fill([]));
 
   const fetchPokemon = async () => {
     const urls = Array.from({ length: numPokemons }, () => {
@@ -20,8 +20,8 @@ const usePokemonFetch = (roundDone, numPokemons) => {
 
       console.log(data.map((pokemon) => pokemon.name));
 
-      // Set the total stats to "?" after the new Pokemon data is fetched
-      setTotalStats(Array(numPokemons).fill("?"));
+      // Set the moves to an empty array after the new Pokemon data is fetched
+      setMoves(data.map((pokemon) => pokemon.moves));
     } catch (error) {
       console.error("Error fetching Pokemon:", error);
     }
@@ -33,10 +33,10 @@ const usePokemonFetch = (roundDone, numPokemons) => {
 
   return {
     pokemons,
-    totalStats,
+    moves,
     fetchPokemon,
-    setTotalStats,
+    setMoves,
   };
 };
 
-export default usePokemonFetch;
+export default usePokemonFetchWithMoves;

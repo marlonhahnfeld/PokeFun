@@ -1,26 +1,20 @@
 import React from "react";
 import HigherLowerGamePage from "./pages/HigherLowerGamePage";
-import TestPage from "./pages/Test";
-import ReactDOM from "react-dom";
-import {
-    createBrowserRouter,
-    RouterProvider,
-  } from "react-router-dom";
+import MoveSetGamePage from "./pages/MoveSetGamePage";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-  const router = createBrowserRouter([
-    {
-      path: "higherlower",
-      element: <HigherLowerGamePage/>,
-    },
-    {
-        path: "test",
-        element: <TestPage/>,
-    }
-  ]);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HigherLowerGamePage />,
+  },
+  {
+    path: "/movesetgame",
+    element: <MoveSetGamePage />,
+  },
+]);
 
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
- const root = ReactDOM.createRoot(document.getElementById("root"));
-
- root.render(
-    <RouterProvider router={router}/>
- )
+root.render(<RouterProvider router={router} />);
