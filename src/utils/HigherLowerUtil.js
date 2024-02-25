@@ -14,3 +14,18 @@ export const sumBaseStats = (pokemon) => {
     return total;
   }, 0);
 };
+
+export const isHigherCardClicked = (pokemon1, pokemon2, cardNumber) => {
+  const totalStatsForPokemon1 = sumBaseStats(pokemon1);
+  const totalStatsForPokemon2 = sumBaseStats(pokemon2);
+
+  if (
+    (cardNumber === 1 && totalStatsForPokemon1 >= totalStatsForPokemon2) ||
+    (cardNumber === 2 && totalStatsForPokemon1 <= totalStatsForPokemon2)
+  ) {
+    return true;
+    } else {
+    return false;
+  }
+}
+

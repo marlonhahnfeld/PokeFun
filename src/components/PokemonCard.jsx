@@ -3,7 +3,6 @@ import React from "react";
 const PokemonCard = ({ pokemon, totalStats, onClick }) => {
   return (
     <div className="pokemon-container" onClick={onClick}>
-      {/* Erste PokemonCard-Komponente */}
       <div className="pokemon">
         <h2>{pokemon.name}</h2>
         <div className="sprite">

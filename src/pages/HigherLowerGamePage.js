@@ -5,44 +5,45 @@ import usePokemonFetch from "../hooks/usePokemonFetch";
 import { sumBaseStats } from "../utils/HigherLowerUtil";
 import PokemonCard from "../components/PokemonCard";
 import Score from "../components/Score";
+import { isHigherCardClicked } from "../utils/HigherLowerUtil";
 
 const HigherLowerGamePage = () => {
   const [score, setScore] = useState(0);
   const [roundDone, setRoundDone] = useState(false);
   const [isClickable, setIsClickable] = useState(true);
   const { pokemons, totalStats, setTotalStats } = usePokemonFetch(roundDone, 2);
+  const [lastFetchTime, setLastFetchTime] = useState(0);
 
   const handleClickCard = (cardNumber) => {
-    // Check if the card is clickable
-    if (!isClickable) {
+    const currentTime = new Date().getTime();
+
+    // Check if the card is clickable and if 1 second has passed since the last fetch
+    if (!isClickable || currentTime - lastFetchTime < 1000) {
       return;
     }
-    // Set the card to not be clickable
+
+    // Set the last fetch time to the current time
+    setLastFetchTime(currentTime);
     setIsClickable(false);
     const totalStatsForPokemon1 = sumBaseStats(pokemons[0]);
     const totalStatsForPokemon2 = sumBaseStats(pokemons[1]);
     // Show the total stats
     setTotalStats([totalStatsForPokemon1, totalStatsForPokemon2]);
+    
+      if (isHigherCardClicked(pokemons[0], pokemons[1], cardNumber)) {
+        setScore((prev) => prev + 1);
+      } else {
+        setScore(0);
+      }
 
-    // Compare the stats and increase the score
-    if (
-      (cardNumber === 1 && totalStatsForPokemon1 >= totalStatsForPokemon2) ||
-      (cardNumber === 2 && totalStatsForPokemon1 <= totalStatsForPokemon2)
-    ) {
-      setScore((prev) => prev + 1);
-    } else {
-      setScore(0);
-    }
-
-    const timeoutId = setTimeout(() => {
-      setRoundDone((prev) => !prev);
-      // Clear timeout if component unmounts or new round starts
-      clearTimeout(timeoutId);
-
-      // Set the card to be clickable again after 1 second
-      setIsClickable(true);
-    }, 500);
-  };
+      setTimeout(() => {
+        setRoundDone((prev) => !prev);
+        setIsClickable(true);
+      }, 1000);
+     
+ 
+    };
+  
 
   return (
     <div className="title">
