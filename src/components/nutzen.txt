@@ -1,0 +1,2 @@
+Hier kommen React Komponenten rein.
+Komponenten sind Zusammensetzungen von Elementen. 

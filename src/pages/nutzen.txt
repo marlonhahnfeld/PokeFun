@@ -1,0 +1,2 @@
+Hier kommen zusammengesetzte Seiten hinein.
+Diese setzen sich aus mehreren Komponenten zusammen.

@@ -1,0 +1,4 @@
+Alles was klein, useful, passt nirgendswo anders rein.
+
+Bsp: 
+formatierungsfunktionen Uhrzeit oder Einheiten
