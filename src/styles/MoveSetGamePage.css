@@ -18,7 +18,7 @@ body {
 }
 
 .app {
-  padding: 4rem;
+  padding: 2rem;
 
   display: flex;
   justify-content: space-evenly;
@@ -105,6 +105,32 @@ h1 {
   font-family: var(--font-raleway);
 }
 
+.answerContainer {
+    width: 25%;
+    height: 4rem;
+    margin: auto; /* Hinzufügen der margin: auto; Eigenschaft, um horizontal zu zentrieren */
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
+    font-size: 2rem;
+    color: #9e5959; /* Helle Hautfarbe */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Textschatten für zusätzliche Tiefe */
+  }
+  
+  .answerContainer:hover {
+    box-shadow: 0 8px 16px #9e5959;
+  }
+
+  .answerContainer:active {
+    box-shadow: 0 2px 4px #9e5959;
+  }
+
 .container {
   width: 30%;
   height: 44rem;
@@ -121,14 +147,15 @@ h1 {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Schattenänderung bei Hover */
 }
 
-.container:active {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Schattenänderung bei Klick */
-}
+.container.marked {
+    box-shadow: 0 4px 32px #f9d3b4; /* Schattenänderung im markierten Zustand */
+    /* Du kannst auch andere Stiländerungen hier hinzufügen */
+  }
 
 .title h4 {
   display: flex;
   justify-content: center;
-  margin-top: 2%;
+  margin-top: 1%;
   font-size: 2rem;
   color: #9e5959; /* Helle Hautfarbe */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Textschatten für zusätzliche Tiefe */
@@ -222,7 +249,7 @@ h1 {
 }
 
 .movie div:nth-of-type(3) h3 {
-  margin-top: 5px;
+  margin-top: 3px;
   font-family: "Roboto Slab", serif;
   color: #f9d3b4;
 }
@@ -269,9 +296,6 @@ h1 {
     font-size: 2rem;
   }
 
-  .container {
-    margin-top: 2rem;
-  }
 
   .movie {
     width: "100%";

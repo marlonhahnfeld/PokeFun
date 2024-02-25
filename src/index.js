@@ -1,8 +1,20 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
-import HigherLower from "./pages/Higher_lower";
-import MoveSet from "./pages/MoveSet";
+import HigherLowerGamePage from "./pages/HigherLowerGamePage";
+import MoveSetGamePage from "./pages/MoveSetGamePage";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-const root = createRoot(document.getElementById("root"));
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HigherLowerGamePage />,
+  },
+  {
+    path: "/movesetgame",
+    element: <MoveSetGamePage />,
+  },
+]);
 
-root.render(<MoveSet />);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<RouterProvider router={router} />);
