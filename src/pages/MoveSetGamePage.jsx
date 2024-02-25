@@ -33,55 +33,75 @@ const MoveSetGamePage = () => {
     movePP,
     movePriority,
     moveType);
-
-    const clickHandlerReadResults = () => {
-      const currentTime = new Date().getTime();
     
-      // Check if the card is clickable and if 1 second has passed since the last fetch
+    const checkClickEligibility = () => {
+      const currentTime = new Date().getTime();
       if (!isClickable || currentTime - lastFetchTime < 1000) {
-        return;
+        return false;
       }
       setLastFetchTime(currentTime);
       setIsClickable(false);
+      return true;
+    };
     
-      let markingColorClass = ''; // Variable für die CSS-Klasse
+    const applyColorToCards = () => {
       const pokemonCardContainers = document.querySelectorAll('.container');
       pokemonCardContainers.forEach((container, index) => {
-        const canPokeLearnMove = eval(`canPoke${index + 1}LearnMove`); // Dynamically access variable
-        container.classList.add(canPokeLearnMove ? 'green-mark' : 'red-mark'); // Apply color
+        const canPokeLearnMove = {
+          1: canPoke1LearnMove,
+          2: canPoke2LearnMove,
+          3: canPoke3LearnMove
+        }[index + 1];
+        container.classList.add(canPokeLearnMove ? 'green-mark' : 'red-mark');
       });
-      if ((!canPoke1LearnMove && !isMarked1) || (canPoke1LearnMove && isMarked1)) {
-        markingColorClass = canPoke1LearnMove ? 'green-mark' : 'red-mark';
-        if ((!canPoke2LearnMove && !isMarked2) || (canPoke2LearnMove && isMarked2)) {
-          if ((!canPoke3LearnMove && !isMarked3) || (canPoke3LearnMove && isMarked3)) {
-            setScore(score + 1);
-            setTimeout(() => {
-              setRoundDone((prev) => !prev);
-              setIsClickable(true);
-              setIsMarked1(false);
-              setIsMarked2(false);
-              setIsMarked3(false);
-              pokemonCardContainers.forEach((container) => {
-                container.classList.remove('green-mark', 'red-mark');}) 
-            }, 2000);
-            
-            return;
-          }
-        }
+    };
+    
+    const resetGame = () => {
+      setRoundDone((prev) => !prev);
+      setIsClickable(true);
+      setIsMarked1(false);
+      setIsMarked2(false);
+      setIsMarked3(false);
+      const pokemonCardContainers = document.querySelectorAll('.container');
+      pokemonCardContainers.forEach((container) => {
+        container.classList.remove('green-mark', 'red-mark');
+      });
+    };
+  
+    const handleCorrectAnswer = () => {
+      setScore((prev) => prev + 1);
+      setTimeout(resetGame, 2000);
+    };
+  
+    const handleIncorrectAnswer = () => {
+      setScore(0);
+      setTimeout(resetGame, 2000);
+    };
+
+    const clickHandlerReadResults = () => {
+      if (!checkClickEligibility()) return;
+    
+      applyColorToCards();
+    
+      if (
+        (canPoke1LearnMove && !isMarked1) ||
+        (canPoke2LearnMove && !isMarked2) ||
+        (canPoke3LearnMove && !isMarked3)
+      ) {
+        handleIncorrectAnswer();
+        return;
       }
     
-      setTimeout(() => {
-        // Hier die alte CSS-Klasse wieder zuweisen
-        markingColorClass = '';
-        setRoundDone((prev) => !prev);
-        setIsClickable(true);
-        setIsMarked1(false);
-        setIsMarked2(false);
-        setIsMarked3(false);
-        pokemonCardContainers.forEach((container) => {
-          container.classList.remove('green-mark', 'red-mark');}) 
-      }, 2000);
-      setScore(0);
+      if (
+        (!canPoke1LearnMove && isMarked1) ||
+        (!canPoke2LearnMove && isMarked2) ||
+        (!canPoke3LearnMove && isMarked3)
+      ) {
+        handleIncorrectAnswer();
+        return;
+      }
+    
+      handleCorrectAnswer();
     };
 
 

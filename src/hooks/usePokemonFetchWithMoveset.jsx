@@ -59,11 +59,10 @@ const getIndexIfMoveIsLevelUpOrEggMove = (pokemon, moveId) => {
 };
 
 
-{/* randomMoveFromSetOrLearningMethod.move || randomMoveFromSetOrLearningMethod.learningMethod */}
 const randomMoveFromSetOrLearningMethod = (pokemon) => {
     let moveId = getRandomMoveNumber(pokemon);
     let learningMethodIndex = getIndexIfMoveIsLevelUpOrEggMove(pokemon, moveId);
-    while (learningMethodIndex == -1) {
+    while (learningMethodIndex === -1) {
       moveId = getRandomMoveNumber(pokemon);
       learningMethodIndex = getIndexIfMoveIsLevelUpOrEggMove(pokemon, moveId);
     }
