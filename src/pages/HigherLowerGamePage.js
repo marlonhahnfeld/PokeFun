@@ -6,6 +6,7 @@ import { sumBaseStats } from "../utils/HigherLowerUtil";
 import PokemonCard from "../components/PokemonCard";
 import Score from "../components/Score";
 import { isHigherCardClicked } from "../utils/HigherLowerUtil";
+import SideMenu from "../components/SideMenu";
 
 const HigherLowerGamePage = () => {
   const [score, setScore] = useState(0);
@@ -48,6 +49,8 @@ const HigherLowerGamePage = () => {
   return (
     <div className="title">
       <Score score={score} />
+      <SideMenu />
+
       <div className="app">
         <div className="container">
           <PokemonCard
