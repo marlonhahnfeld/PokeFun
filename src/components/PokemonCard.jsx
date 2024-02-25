@@ -1,5 +1,4 @@
 import React from "react";
-import { capitilzeFirstLetter } from "../utils/CapitilizeFirstLetter";
 
 const PokemonCard = ({ pokemon, onClick }) => {
   return (
