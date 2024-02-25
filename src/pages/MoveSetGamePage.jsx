@@ -27,9 +27,6 @@ const MoveSetGamePage = () => {
     const [isMarked2, setIsMarked2] = useState(false);
     const [isMarked3, setIsMarked3] = useState(false);
  
-  console.log(canPoke1LearnMove);
-  console.log(canPoke2LearnMove);
-  console.log(canPoke3LearnMove);
   console.log(moveAccuracy, moveDamageClass,
     moveName,
     movePower,
@@ -37,41 +34,56 @@ const MoveSetGamePage = () => {
     movePriority,
     moveType);
 
-    const ReadResults = () => {
+    const clickHandlerReadResults = () => {
       const currentTime = new Date().getTime();
-
-    // Check if the card is clickable and if 1 second has passed since the last fetch
-    if (!isClickable || currentTime - lastFetchTime < 1000) {
-      return;
-    }
-    setLastFetchTime(currentTime);
-    setIsClickable(false);
-
-
-      if ((!canPoke1LearnMove && !isMarked1) || (canPoke1LearnMove && isMarked1)){
+    
+      // Check if the card is clickable and if 1 second has passed since the last fetch
+      if (!isClickable || currentTime - lastFetchTime < 1000) {
+        return;
+      }
+      setLastFetchTime(currentTime);
+      setIsClickable(false);
+    
+      let markingColorClass = ''; // Variable für die CSS-Klasse
+      const pokemonCardContainers = document.querySelectorAll('.container');
+      pokemonCardContainers.forEach((container, index) => {
+        const canPokeLearnMove = eval(`canPoke${index + 1}LearnMove`); // Dynamically access variable
+        container.classList.add(canPokeLearnMove ? 'green-mark' : 'red-mark'); // Apply color
+      });
+      if ((!canPoke1LearnMove && !isMarked1) || (canPoke1LearnMove && isMarked1)) {
+        markingColorClass = canPoke1LearnMove ? 'green-mark' : 'red-mark';
         if ((!canPoke2LearnMove && !isMarked2) || (canPoke2LearnMove && isMarked2)) {
           if ((!canPoke3LearnMove && !isMarked3) || (canPoke3LearnMove && isMarked3)) {
-            setScore(score+1);
+            setScore(score + 1);
             setTimeout(() => {
               setRoundDone((prev) => !prev);
               setIsClickable(true);
+              setIsMarked1(false);
+              setIsMarked2(false);
+              setIsMarked3(false);
+              pokemonCardContainers.forEach((container) => {
+                container.classList.remove('green-mark', 'red-mark');}) 
             }, 2000);
-            setIsMarked1(false);
-            setIsMarked2(false);
-            setIsMarked3(false);
+            
             return;
           }
         }
       }
+    
       setTimeout(() => {
+        // Hier die alte CSS-Klasse wieder zuweisen
+        markingColorClass = '';
         setRoundDone((prev) => !prev);
         setIsClickable(true);
+        setIsMarked1(false);
+        setIsMarked2(false);
+        setIsMarked3(false);
+        pokemonCardContainers.forEach((container) => {
+          container.classList.remove('green-mark', 'red-mark');}) 
       }, 2000);
-      setIsMarked1(false);
-      setIsMarked2(false);
-      setIsMarked3(false);
-            setScore(0);
-    }
+      setScore(0);
+    };
+
 
   return (
     <>
@@ -109,7 +121,7 @@ const MoveSetGamePage = () => {
             />
           </div>
       </div>
-      <div className ="answerContainer" onClick={ReadResults} draggable={false} isClickable={isClickable ? "true" : "false"} >
+      <div className="answerContainer" onClick={() => clickHandlerReadResults(document.querySelectorAll('.container'))} draggable={false} isClickable={isClickable ? "true" : "false"} >
         <MoveCard moveName={moveName} moveType={moveType}></MoveCard>
         </div>
     </>

@@ -131,6 +131,13 @@ h1 {
     box-shadow: 0 2px 4px #9e5959;
   }
 
+  .green-mark {
+    background-color: green; /* Or any other styling for green */
+  }
+  
+  .red-mark {
+    background-color: red; /* Or any other styling for red */
+  }
 .container {
   width: 30%;
   height: 44rem;
