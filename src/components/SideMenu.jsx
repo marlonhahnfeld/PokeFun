@@ -16,10 +16,6 @@ export default function SideMenu() {
     setAnchorEl(null);
   };
 
-  const handleClickProfile = () => {
-    console.log("Profile clicked");
-  };
-
   return (
     <div className="gamemodemenu">
       <Button
@@ -29,7 +25,7 @@ export default function SideMenu() {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        Check out all game modes
+        All games
       </Button>
       <Menu
         id="fade-menu"
@@ -41,8 +37,8 @@ export default function SideMenu() {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-        <MenuItem onClick={handleClickProfile}>
-          <Link to="../movesetgame">Who is using move X</Link>
+        <MenuItem onClick={handleClose}>
+          <Link to="../movesetgame">Moveset Game</Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>My account</MenuItem>
         <MenuItem onClick={handleClose}>Logout</MenuItem>

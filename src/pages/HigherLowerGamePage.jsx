@@ -8,6 +8,8 @@ import Score from "../components/Score";
 import { isHigherCardClicked } from "../utils/HigherLowerUtil";
 import SideMenu from "../components/SideMenu";
 import TotalStats from "../components/TotalStats";
+import Typography from "@mui/material/Typography";
+import Grow from "@mui/material/Grow";
 
 const HigherLowerGamePage = () => {
   const [score, setScore] = useState(0);
@@ -48,7 +50,11 @@ const HigherLowerGamePage = () => {
   return (
     <>
       <div className="top-container">
-        <Score score={score} />
+        <Grow in={true} timeout={1000} className="higherlowertitle">
+          <Typography variant="h4" title="">
+            Higher or Lower Game
+          </Typography>
+        </Grow>
         <SideMenu />
       </div>
 
@@ -63,7 +69,9 @@ const HigherLowerGamePage = () => {
           />
           <TotalStats totalStats={totalStats[0]} />
         </div>
-        <div className="placeholder"></div>
+        <div className="score">
+          <Score score={score} />
+        </div>
         <div className="container">
           <PokemonCard
             pokemon={pokemons[1]}
@@ -75,6 +83,7 @@ const HigherLowerGamePage = () => {
           <TotalStats totalStats={totalStats[1]} />
         </div>
       </div>
+
       <div className="bottom-container"></div>
     </>
   );

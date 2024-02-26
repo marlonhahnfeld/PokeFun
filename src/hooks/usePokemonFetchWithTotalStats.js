@@ -17,9 +17,6 @@ const usePokemonFetchWithTotalStats = (roundDone, numPokemons) => {
       );
 
       setPokemons(data);
-
-      console.log(data.map((pokemon) => pokemon.name));
-
       // Set the total stats to "?" after the new Pokemon data is fetched
       setTotalStats(Array(numPokemons).fill("?"));
     } catch (error) {
