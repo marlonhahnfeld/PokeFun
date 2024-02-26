@@ -1,11 +1,14 @@
-/* SideMenu.css */
+.gamemodemenu {
+}
 
 #fade-button {
-  background-color: #212426;
-  border: 2px solid #767777; /* Change to your preferred color */
-  color: white; /* Change to your preferred color */
+  background-color: #222831; /* Lighter shade of gray */
+  border: 2px solid #393e46; /* Change to your preferred color */
+  color: #ffffff; /* White color for text */
   padding: 10px 20px; /* Adjust as needed */
-  border-radius: 2px; /* Adjust as needed */
+  border-radius: 1rem; /* Adjust as needed */
   margin-top: 1vh;
-  display: inline-block;
+}
+
+.fade-menu {
 }

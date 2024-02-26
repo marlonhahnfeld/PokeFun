@@ -23,49 +23,64 @@ body {
   background-color: #212426;
 }
 
-.app {
-  padding: 4rem;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-direction: row;
-  height: 50vh;
-  margin-top: 10vh;
-}
-
-h1 {
-  font-size: 3rem;
-  letter-spacing: 0.9px;
-  background: linear-gradient(
-    90deg,
-    rgba(249, 211, 180, 1) 0%,
-    rgba(249, 211, 180, 0) 100%
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  width: fit-content;
-}
-
 .container {
-  width: 25vw;
-  height: 80vh;
-  border: none; /* Entferne die bestehende Border */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Hinzufügen der Schattenwirkung */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around; /* Distributes space between items */
+  align-items: center; /* Centers items horizontally */
+  width: 25vw;
+  height: 80vh;
+  padding: 1rem; /* Adds some space around the items */
+  box-sizing: border-box; /* Includes padding and border in element's total width and height */
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   user-select: none;
 }
 
+.top-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 10vh;
+}
+
+.mid-container {
+  padding: 4rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  height: 80vh;
+  width: 100vw;
+}
+
+.mid-container h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottom-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 10vh;
+}
 .container:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Schattenänderung bei Hover */
 }
 
 .container:active {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Schattenänderung bei Klick */
+}
+
+.container h2,
+.container img {
+  width: 100%;
 }
 
 h4 {
@@ -79,32 +94,10 @@ h4 {
   display: inline-block; /* Textschatten für zusätzliche Tiefe */
 }
 
-.app h2 {
-  display: flex;
-  justify-content: center;
-  font-size: xx-large;
-  color: #f9d3b4;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  margin-bottom: 0;
-  margin-top: -10vh;
-  justify-content: center;
-  /* Textschatten für zusätzliche Tiefe */
-}
-
-.app h3 {
-  display: flex;
-  justify-content: center;
-  font-size: 2rem; /* Größe in 'rem' für responsive Textgröße */
-  color: orange;
-  font-style: italic; /* Kursiver Text */
-  font-weight: bold; /* Fetter Text */
-  text-transform: uppercase; /* Text in Großbuchstaben umwandeln */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Textschatten für zusätzliche Tiefe */
-}
 .sprite img {
   height: fit-content;
   width: fit-content;
-  scale: 60%;
+  transform: scale(0.4);
   margin-top: 0%;
 }
 
@@ -115,11 +108,6 @@ h4 {
   justify-content: center;
 }
 
-.top-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
+.score h4 {
+  color: white;
 }

@@ -7,7 +7,8 @@ import PokemonCard from "../components/PokemonCard";
 import "../styles/HigherLowerPageCSS.css";
 
 const MoveSetGamePage = () => {
-  const [score, setScore] = useState(0);
+  // eslint-disable-next-line
+  const [score, setScore] = useState(0); // eslint-disable-next-line
   const [roundDone, setRoundDone] = useState(true);
   const { pokemons } = usePokemonFetchWithMoveset(roundDone, 3);
 
@@ -17,7 +18,6 @@ const MoveSetGamePage = () => {
         <Score score={score} />
         <SideMenu />
       </div>
-
       <div className="app">
         <div className="container">
           <PokemonCard pokemon={pokemons[0]} id="1" />

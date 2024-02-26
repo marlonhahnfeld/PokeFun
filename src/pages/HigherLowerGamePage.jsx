@@ -13,28 +13,23 @@ const HigherLowerGamePage = () => {
   const [score, setScore] = useState(0);
   const [roundDone, setRoundDone] = useState(false);
   const [isClickable, setIsClickable] = useState(true);
+  const [lastFetchTime, setLastFetchTime] = useState(0);
   const { pokemons, totalStats, setTotalStats } = usePokemonFetchWithTotalStats(
     roundDone,
     2
   );
-  const [lastFetchTime, setLastFetchTime] = useState(0);
 
   const handleClickCard = (cardNumber) => {
     const currentTime = new Date().getTime();
-
     // Check if the card is clickable and if 1 second has passed since the last fetch
     if (!isClickable || currentTime - lastFetchTime < 1000) {
       return;
     }
-
     // Set the last fetch time to the current time
     setLastFetchTime(currentTime);
     setIsClickable(false);
     const totalStatsForPokemon1 = sumBaseStats(pokemons[0]);
     const totalStatsForPokemon2 = sumBaseStats(pokemons[1]);
-
-    console.log("Total stats for Pokemon 1: ", totalStatsForPokemon1);
-    console.log("Total stats for Pokemon 2: ", totalStatsForPokemon2);
     // Show the total stats
     setTotalStats([totalStatsForPokemon1, totalStatsForPokemon2]);
 
@@ -57,7 +52,7 @@ const HigherLowerGamePage = () => {
         <SideMenu />
       </div>
 
-      <div className="app">
+      <div className="mid-container">
         <div className="container">
           <PokemonCard
             pokemon={pokemons[0]}
@@ -80,6 +75,7 @@ const HigherLowerGamePage = () => {
           <TotalStats totalStats={totalStats[1]} />
         </div>
       </div>
+      <div className="bottom-container"></div>
     </>
   );
 };
