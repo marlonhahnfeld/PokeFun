@@ -26,13 +26,7 @@ const usePokemonFetchWithMoves = (roundDone, numPokemons) => {
       );
 
       setPokemons(data);
-      const bla = getMoveInfo(data[0],data[1],data[2]);
-      console.log(data);
-      console.log(data.map((pokemon) => pokemon.name));
-      console.log(bla);
-
-      
-
+      console.log(getMoveInfo(data[0],data[1],data[2]));
       // Set the moves to an empty array after the new Pokemon data is fetched
     } catch (error) {
       console.error("Error fetching Pokemon:", error);
@@ -59,7 +53,7 @@ const getIndexIfMoveIsLevelUpOrEggMove = (pokemon, moveId) => {
 };
 
 
-const randomMoveFromSetOrLearningMethod = (pokemon) => {
+const randomMoveFromSetAndLearningMethod = (pokemon) => {
     let moveId = getRandomMoveNumber(pokemon);
     let learningMethodIndex = getIndexIfMoveIsLevelUpOrEggMove(pokemon, moveId);
     while (learningMethodIndex === -1) {
@@ -110,7 +104,7 @@ const getRandomPokemon = (pokemon1, pokemon2, pokemon3) => {
 
 const getMoveInfo = (pokemon1, pokemon2, pokemon3) => {
   const randomPoke = getRandomPokemon(pokemon1, pokemon2, pokemon3);
-  const moveInfo = randomMoveFromSetOrLearningMethod(randomPoke);
+  const moveInfo = randomMoveFromSetAndLearningMethod(randomPoke);
   
 
   // Check if the move is in each pokemon separately

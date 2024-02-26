@@ -11,8 +11,13 @@ const MoveCard = ({
   return (
     <div className="moveCard-container">
       <div className="moveCard">
-        <h2>{moveName}</h2>
-        <h3>{moveType}</h3>
+        <h3 className="moveName">{moveName}</h3>
+        <h4 className="moveType">{moveType}</h4>
+        <h5 className="movePower">{"Power: " + movePower}</h5>
+        <h5 className="movePP">{"PP: " + movePP}</h5>
+        <h5 className="movePriority">{"Prio: " + movePriority}</h5>
+        <h5 className="moveDamageClass">{moveDamageClass}</h5>
+        <h5 className="moveAccuracy">{"Accuracy: " + moveAccuracy}</h5>
       </div>
     </div>
   );

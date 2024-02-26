@@ -27,13 +27,6 @@ const MoveSetGamePage = () => {
     const [isMarked2, setIsMarked2] = useState(false);
     const [isMarked3, setIsMarked3] = useState(false);
  
-  console.log(moveAccuracy, moveDamageClass,
-    moveName,
-    movePower,
-    movePP,
-    movePriority,
-    moveType);
-    
     const checkClickEligibility = () => {
       const currentTime = new Date().getTime();
       if (!isClickable || currentTime - lastFetchTime < 1000) {
@@ -104,7 +97,16 @@ const MoveSetGamePage = () => {
       handleCorrectAnswer();
     };
 
-
+console.log(canPoke1LearnMove,
+  canPoke2LearnMove,
+  canPoke3LearnMove,
+  moveAccuracy,
+  moveDamageClass,
+  moveName,
+  movePower,
+  movePP,
+  movePriority,
+  moveType)
   return (
     <>
       <div className="top-container">
@@ -142,7 +144,15 @@ const MoveSetGamePage = () => {
           </div>
       </div>
       <div className="answerContainer" onClick={() => clickHandlerReadResults(document.querySelectorAll('.container'))} draggable={false} isClickable={isClickable ? "true" : "false"} >
-        <MoveCard moveName={moveName} moveType={moveType}></MoveCard>
+        <MoveCard
+  moveName={moveName}
+  moveType={moveType}
+  moveAccuracy={moveAccuracy}
+  moveDamageClass={moveDamageClass}
+  movePower={movePower}
+  movePP={movePP}
+  movePriority={movePriority}
+  ></MoveCard>
         </div>
     </>
   );
