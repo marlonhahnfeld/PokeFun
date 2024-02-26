@@ -114,7 +114,7 @@ console.log(canPoke1LearnMove,
         <SideMenu />
       </div>
 
-      <div className="app">
+      <div className="mid-container">
       <div className={`container ${isMarked1 ? 'marked' : ''}`}>
           <PokemonCard
               pokemon={pokemons[0]}
@@ -143,16 +143,19 @@ console.log(canPoke1LearnMove,
             />
           </div>
       </div>
+
+      <div className="bottomContainer">
       <div className="answerContainer" onClick={() => clickHandlerReadResults(document.querySelectorAll('.container'))} draggable={false} isClickable={isClickable ? "true" : "false"} >
         <MoveCard
-  moveName={moveName}
-  moveType={moveType}
-  moveAccuracy={moveAccuracy}
-  moveDamageClass={moveDamageClass}
-  movePower={movePower}
-  movePP={movePP}
-  movePriority={movePriority}
-  ></MoveCard>
+          moveName={moveName}
+          moveType={moveType}
+          moveAccuracy={moveAccuracy}
+          moveDamageClass={moveDamageClass}
+          movePower={movePower}
+          movePP={movePP}
+          movePriority={movePriority}
+        ></MoveCard>
+        </div>
         </div>
     </>
   );

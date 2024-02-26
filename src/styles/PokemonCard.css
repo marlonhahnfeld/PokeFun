@@ -1,0 +1,11 @@
+.pokemon-container {
+}
+
+.pokemon-name {
+  color: #fcd557;
+  font-size: 2rem;
+}
+
+.pokemon-image {
+  transform: scale(0.75);
+}
