@@ -81,6 +81,14 @@ h1 {
   width: 100%;
 }
 
+.green-mark {
+  background-color: green; /* Or any other styling for green */
+}
+
+.red-mark {
+  background-color: red; /* Or any other styling for red */
+}
+
   h4 {
     width: fit-content;
     display: flex;
@@ -106,7 +114,7 @@ h1 {
 }
 
 
-.bottom-container {
+.bottom-Container {
   width: 100vw;
   height: 30vh;
   display: flex;
@@ -114,104 +122,3 @@ h1 {
   align-items: center;
   flex-direction: column;
 }
-
-.answerContainer {
-    border: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 1rem;
-    user-select: none;
-    background-color: #212426;
-    color: #f9d3b4;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-  }
-  
-  .answerContainer:hover {
-    box-shadow: 0 8px 16px #9e5959;
-  }
-
-  .answerContainer:active {
-    box-shadow: 0 2px 4px #9e5959;
-  }
-
-  .green-mark {
-    background-color: green; /* Or any other styling for green */
-  }
-  
-  .red-mark {
-    background-color: red; /* Or any other styling for red */
-  }
-
-  .answerContainer h3 {
-    font-size: 1.8rem;
-    
-  }
-  
-  .answerContainer h4 {
-    font-size: 1.4rem;
-    margin-bottom: 0.25rem;
-  }
-  
-  .answerContainer p {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .moveName {
-    position: relative;
-    bottom: 0.5rem;
-  }
- 
-  .moveType {
-    position: relative;
-    right: 13rem;
-    bottom: 0.5rem;
-    font-size: 1rem;
-  }
-  
-  .movePP {
-    position: relative;
-    bottom: -1.5rem;
-    right: 2rem;
-    font-size: 1rem;
-  }
-  
-  .movePriority {
-    position: relative;
-    bottom: -0.2rem;
-    left: 9rem;
-    font-size: 1rem;
-  }
-  
-  .moveAccuracy {
-    position: relative;
-    bottom: 3rem;
-    right: 13rem;
-    font-size: 1rem;
-  }
-  
-  .movePower {
-    position: relative;
-    bottom: 0rem;
-    right: 13rem;
-    font-size: 1rem;
-  }
-  
-  .moveDamageClass {
-    position: relative;
-    bottom: 4rem;
-    left: 15rem;
-    font-size: 1rem;
-  }
-
-  .title h4 {
-    display: flex;
-    justify-content: center;
-    font-size: 2rem;
-    color: #9e5959;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  }

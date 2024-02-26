@@ -144,7 +144,7 @@ console.log(canPoke1LearnMove,
           </div>
       </div>
 
-      <div className="bottomContainer">
+      <div className="bottom-Container">
       <div className="answerContainer" onClick={() => clickHandlerReadResults(document.querySelectorAll('.container'))} draggable={false} isClickable={isClickable ? "true" : "false"} >
         <MoveCard
           moveName={moveName}
