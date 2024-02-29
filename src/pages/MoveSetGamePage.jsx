@@ -6,6 +6,7 @@ import { Score } from "../components/Score";
 import PokemonCard from "../components/PokemonCard";
 import "../styles/MoveSetGamePage.css";
 import MoveCard from "../components/MoveCard";
+import Sniper from '../resources/Sniper_transparent.png';
 
 const MoveSetGamePage = () => {
   const [score, setScore] = useState(0);
@@ -155,6 +156,9 @@ console.log(canPoke1LearnMove,
           movePP={movePP}
           movePriority={movePriority}
         ></MoveCard>
+        </div>
+        <div>
+          <img className="sniper" src={Sniper}/>
         </div>
         </div>
     </>

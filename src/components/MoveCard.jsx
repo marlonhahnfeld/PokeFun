@@ -97,6 +97,9 @@ const MoveCard = ({
       typeIcon = null;
   }
 
+  // TODO Extrahiere Typ-Icons(JSX & CSS) in eine neue typeCard, da das auch für pokemonCard, 
+  // TODO als auch moveCard nützlich ist.
+
   return (
     <div className="moveCard-container">
       <div className="moveCard">

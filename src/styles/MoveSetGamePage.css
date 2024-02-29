@@ -120,5 +120,11 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
+}
+
+.sniper{
+  width: 400px;
+  height: auto;
+  margin-top: 90%;
 }
