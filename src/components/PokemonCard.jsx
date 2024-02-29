@@ -5,7 +5,6 @@ import { capitalizeFirstLetter } from "../utils/HigherLowerUtil";
 const PokemonCard = ({ pokemon, onClick }) => {
   return (
     <div className="pokemon-container" onClick={onClick}>
-      
       <div className="pokemon-name">
         <h2>{capitalizeFirstLetter(pokemon.name)}</h2>
       </div>

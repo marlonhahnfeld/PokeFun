@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700");
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-roboto);
+  background-color: #212426;
+}
+
+.top-container {
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.mid-container {
+  height: 60vh;
+  width: 100vw;
+  padding: 4rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
+
+.mid-container h2 {
+  display: flex;
+  justify-content: center;
+  font-size: xx-large;
+  color: #f9d3b4;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  font-size: 3rem;
+  letter-spacing: 0.9px;
+  background: linear-gradient(
+    90deg,
+    rgba(249, 211, 180, 1) 0%,
+    rgba(249, 211, 180, 0) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: fit-content;
+}
+
+.container {
+  width: 25vw;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; /* Distributes space between items */
+  align-items: center; /* Centers items horizontally */
+  padding: 1rem; /* Adds some space around the items */
+  box-sizing: border-box; /* Includes padding and border in element's total width and height */
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  user-select: none;
+}
+
+.container:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Schattenänderung bei Hover */
+}
+
+.container.marked {
+    box-shadow: 0 4px 32px #f9d3b4; /* Schattenänderung im markierten Zustand */
+    /* Du kannst auch andere Stiländerungen hier hinzufügen */
+  }
+
+  .container h2,
+.container img {
+  width: 100%;
+}
+
+.green-mark {
+  background-color: green; /* Or any other styling for green */
+}
+
+.red-mark {
+  background-color: red; /* Or any other styling for red */
+}
+
+  h4 {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    color: #9e5959;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    display: inline-block; 
+  }
+
+.sprite img{
+  scale: 66%;
+}
+
+.score h4 {
+  color: white;
+}
+
+.sprite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.bottom-Container {
+  width: 100vw;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.sniper{
+  width: 400px;
+  height: auto;
+  margin-top: 90%;
+}
