@@ -9,7 +9,8 @@ import MoveCard from "../components/MoveCard";
 import Sniper from '../resources/Sniper_transparent.png';
 
 const MoveSetGamePage = () => {
-  const [score, setScore] = useState(0);
+  // eslint-disable-next-line
+  const [score, setScore] = useState(0); // eslint-disable-next-line
   const [roundDone, setRoundDone] = useState(true);
   const [isClickable, setIsClickable] = useState(true);
   const [lastFetchTime, setLastFetchTime] = useState(0);
@@ -114,7 +115,6 @@ console.log(canPoke1LearnMove,
         <Score score={score} />
         <SideMenu />
       </div>
-
       <div className="mid-container">
       <div className={`container ${isMarked1 ? 'marked' : ''}`}>
           <PokemonCard

@@ -1,111 +1,125 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700");
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
-
-* {
-  margin: 0;
-  border: 0;
-  box-sizing: border-box;
-}
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Honk&family=Jacquarda+Bastarda+9&display=swap");
 
 :root {
   --font-roboto: "Roboto Slab", serif;
   --font-raleway: "Raleway", sans-serif;
+  --font-honk: "Honk", sans-serif;
 }
 
 html,
 body {
-  height: 100%;
-  overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   font-family: var(--font-roboto);
-  background-color: #212426;
-}
-
-.app {
-  padding: 4rem;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-direction: row;
-  height: 50vh;
-  margin-top: 10vh;
-}
-
-h1 {
-  font-size: 3rem;
-  letter-spacing: 0.9px;
   background: linear-gradient(
-    90deg,
-    rgba(249, 211, 180, 1) 0%,
-    rgba(249, 211, 180, 0) 100%
+    112.1deg,
+    rgb(32, 38, 57) 11.4%,
+    rgb(63, 76, 119) 70.2%
   );
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  width: fit-content;
 }
 
-.container {
-  width: 25vw;
-  height: 80vh;
-  border: none; /* Entferne die bestehende Border */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Hinzufügen der Schattenwirkung */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-  user-select: none;
-}
-
-.container:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Schattenänderung bei Hover */
-}
-
-.container:active {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Schattenänderung bei Klick */
-}
-
-h4 {
+h3 {
   width: fit-content;
   display: flex;
   justify-content: center;
-  margin-top: 0vh;
-  font-size: 2rem;
+  font-size: 4rem;
   color: #9e5959; /* Helle Hautfarbe */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   display: inline-block; /* Textschatten für zusätzliche Tiefe */
 }
 
-.app h2 {
+.page {
   display: flex;
-  justify-content: center;
-  font-size: xx-large;
-  color: #f9d3b4;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  margin-bottom: 0;
-  margin-top: -10vh;
-  justify-content: center;
-  /* Textschatten für zusätzliche Tiefe */
+  height: 100vh;
 }
 
-.app h3 {
+.side-navigation {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 5%;
+}
+.right-container {
+  display: flex;
+  flex-direction: column;
+  width: 95vw;
+}
+
+.top-container {
+  width: 100%;
+  height: 10%;
   display: flex;
   justify-content: center;
-  font-size: 2rem; /* Größe in 'rem' für responsive Textgröße */
-  color: orange;
-  font-style: italic; /* Kursiver Text */
-  font-weight: bold; /* Fetter Text */
-  text-transform: uppercase; /* Text in Großbuchstaben umwandeln */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Textschatten für zusätzliche Tiefe */
 }
+
+.top-container h2 {
+  padding-top: 2rem;
+}
+
+.mid-container {
+  /* padding: 4rem;*/
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  height: 80%;
+  width: 100%;
+}
+
+.mid-container h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; /* Distributes space between items */
+  align-items: center; /* Centers items horizontally */
+  width: 25vw;
+  height: 80vh;
+  padding: 1rem; /* Adds some space around the items */
+  box-sizing: border-box; /* Includes padding and border in element's total width and height */
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  user-select: none;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Schattenänderung bei Hover */
+}
+
+.card:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Schattenänderung bei Klick */
+}
+
+.card h2,
+.card img {
+  width: 100%;
+}
+
+.bottom-container {
+  width: 100%;
+  height: 10%;
+}
+
+.higherlowertitle {
+}
+
+.top-container h2 {
+  font-family: var(--font-honk);
+}
+
 .sprite img {
   height: fit-content;
   width: fit-content;
-  scale: 60%;
-  margin-top: 0%;
+  transform: scale(0.4);
 }
 
 .sprite {
@@ -115,11 +129,6 @@ h4 {
   justify-content: center;
 }
 
-.top-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
+.score h4 {
+  color: white;
 }
