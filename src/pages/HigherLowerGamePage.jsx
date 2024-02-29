@@ -77,9 +77,7 @@ const HigherLowerGamePage = () => {
               <HLHistory
                 history={[
                   pokemons[0],
-                  pokemons[1],
-                  totalStats[0],
-                  totalStats[1],
+                  pokemons[1]
                 ]}
               />
             </div>
