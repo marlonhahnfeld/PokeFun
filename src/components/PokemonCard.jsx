@@ -1,9 +1,6 @@
 import React from "react";
 import "../styles/PokemonCard.css";
-
-const capitalizeFirstLetter = (string) => {
-  return string ? string.charAt(0).toUpperCase() + string.slice(1) : "";
-};
+import { capitalizeFirstLetter } from "../utils/HigherLowerUtil";
 
 const PokemonCard = ({ pokemon, onClick }) => {
   return (

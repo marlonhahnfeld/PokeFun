@@ -1,6 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Honk&family=Jacquarda+Bastarda+9&display=swap");
+
+:root {
+  --font-honk: "Honk", sans-serif;
+}
+
 .score {
 }
 
-.score h4 {
-  color: goldenrod;
+.score h2 {
+  font-family: var(--font-honk);
 }

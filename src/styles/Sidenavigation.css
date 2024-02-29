@@ -1,0 +1,91 @@
+:root {
+  --white-color: #ffffff;
+  --dark-color: #292929;
+}
+
+h5,
+li {
+  padding: 0;
+  margin-left: 0;
+}
+
+h5 {
+  margin-left: 1rem;
+}
+
+li {
+  list-style-type: none;
+}
+
+.side-navigation {
+  width: 10vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: rgba(255, 255, 255, 0);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.header {
+  border-bottom: 2px solid var(--white-color);
+}
+
+.header h4 {
+  margin-top: 1rem;
+  font-family: "Honk", sans-serif;
+}
+
+.games,
+.other {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.games .MuiButton-root,
+.other .MuiButton-root {
+  width: 10vw; /* Set a specific width */
+  height: 50px; /* Set a specific height */
+  margin-top: 1rem;
+  justify-content: center; /* Aligns items horizontally in the center */
+  align-items: center; /* Aligns items vertically in the center */
+}
+
+.MuiButton-root {
+  width: 100%;
+}
+
+.other {
+  width: 100%;
+  margin-top: auto;
+}
+
+.other-title,
+.games-title {
+  color: var(--white-color);
+}
+
+.navigation-button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.navigation-icon {
+  padding-left: 0;
+}
+
+.navigation {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

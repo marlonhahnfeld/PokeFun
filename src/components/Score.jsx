@@ -6,7 +6,7 @@ import "../styles/Score.css";
 export const Score = ({ score }) => {
   return (
     <Grow in={true} timeout={1000} key={score}>
-      <Typography variant="h4" className="score" title="">
+      <Typography variant="h2" className="score" title="">
         Score: {score}
       </Typography>
     </Grow>
