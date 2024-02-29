@@ -1,0 +1,14 @@
+.total-stats {
+}
+
+.total-stats h2 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: xx-large;
+  color: #f9d3b4;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: -0;
+  margin-top: 0;
+}

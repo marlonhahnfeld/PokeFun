@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700");
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Honk&family=Jacquarda+Bastarda+9&display=swap");
+
+:root {
+  --font-roboto: "Roboto Slab", serif;
+  --font-raleway: "Raleway", sans-serif;
+  --font-honk: "Honk", sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-roboto);
+  background: linear-gradient(
+    112.1deg,
+    rgb(32, 38, 57) 11.4%,
+    rgb(63, 76, 119) 70.2%
+  );
+}
+
+h3 {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  font-size: 4rem;
+  color: #9e5959; /* Helle Hautfarbe */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  display: inline-block; /* Textschatten für zusätzliche Tiefe */
+}
+
+.page {
+  display: flex;
+  height: 100vh;
+}
+
+.side-navigation {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 5%;
+}
+.right-container {
+  display: flex;
+  flex-direction: column;
+  width: 95vw;
+}
+
+.top-container {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+}
+
+.top-container h2 {
+  padding-top: 2rem;
+}
+
+.mid-container {
+  /* padding: 4rem;*/
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  height: 80%;
+  width: 100%;
+}
+
+.mid-container h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; /* Distributes space between items */
+  align-items: center; /* Centers items horizontally */
+  width: 25vw;
+  height: 80vh;
+  padding: 1rem; /* Adds some space around the items */
+  box-sizing: border-box; /* Includes padding and border in element's total width and height */
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  user-select: none;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Schattenänderung bei Hover */
+}
+
+.card:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Schattenänderung bei Klick */
+}
+
+.card h2,
+.card img {
+  width: 100%;
+}
+
+.bottom-container {
+  width: 100%;
+  height: 10%;
+}
+
+.higherlowertitle {
+}
+
+.top-container h2 {
+  font-family: var(--font-honk);
+}
+
+.sprite img {
+  height: fit-content;
+  width: fit-content;
+  transform: scale(0.4);
+}
+
+.sprite {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+}
+
+.score h4 {
+  color: white;
+}

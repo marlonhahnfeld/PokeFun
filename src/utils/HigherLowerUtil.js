@@ -24,8 +24,11 @@ export const isHigherCardClicked = (pokemon1, pokemon2, cardNumber) => {
     (cardNumber === 2 && totalStatsForPokemon1 <= totalStatsForPokemon2)
   ) {
     return true;
-    } else {
+  } else {
     return false;
   }
-}
+};
 
+export const capitalizeFirstLetter = (string) => {
+  return string ? string.charAt(0).toUpperCase() + string.slice(1) : "";
+};

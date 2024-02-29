@@ -1,24 +1,22 @@
 import React from "react";
+import "../styles/PokemonCard.css";
+import { capitalizeFirstLetter } from "../utils/HigherLowerUtil";
 
-const PokemonCard = ({ pokemon, totalStats, onClick }) => {
+const PokemonCard = ({ pokemon, onClick }) => {
   return (
     <div className="pokemon-container" onClick={onClick}>
-      <div className="pokemon">
-        <h2>{pokemon.name}</h2>
-        <div className="sprite">
-          {pokemon.sprites && (
-            <img
-              src={
-                pokemon.sprites["other"]["official-artwork"]["front_default"]
-              }
-              alt="sprite"
-              draggable="false"
-            />
-          )}
-        </div>
-        <div className="own-total-stats">
-          <h2>Total stats: {totalStats}</h2>
-        </div>
+      
+      <div className="pokemon-name">
+        <h2>{capitalizeFirstLetter(pokemon.name)}</h2>
+      </div>
+      <div className="pokemon-image">
+        {pokemon.sprites && (
+          <img
+            src={pokemon.sprites["other"]["official-artwork"]["front_default"]}
+            alt="sprite"
+            draggable="false"
+          />
+        )}
       </div>
     </div>
   );

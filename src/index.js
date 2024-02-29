@@ -1,7 +1,15 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
 import HigherLowerGamePage from "./pages/HigherLowerGamePage";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-const root = createRoot(document.getElementById("root"));
+const router = createBrowserRouter([
+  {
+    path: "/HigherOrLower",
+    element: <HigherLowerGamePage />,
+  },
+]);
 
-root.render(<HigherLowerGamePage />);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<RouterProvider router={router} />);

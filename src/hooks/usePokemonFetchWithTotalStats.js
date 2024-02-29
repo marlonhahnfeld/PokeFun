@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { randomPokemonId } from "../utils/HigherLowerUtil";
 
-const usePokemonFetch = (roundDone, numPokemons) => {
+const usePokemonFetchWithTotalStats = (roundDone, numPokemons) => {
   const [pokemons, setPokemons] = useState(Array(numPokemons).fill(""));
   const [totalStats, setTotalStats] = useState(Array(numPokemons).fill("?"));
 
@@ -17,9 +17,6 @@ const usePokemonFetch = (roundDone, numPokemons) => {
       );
 
       setPokemons(data);
-
-      console.log(data.map((pokemon) => pokemon.name));
-
       // Set the total stats to "?" after the new Pokemon data is fetched
       setTotalStats(Array(numPokemons).fill("?"));
     } catch (error) {
@@ -39,4 +36,4 @@ const usePokemonFetch = (roundDone, numPokemons) => {
   };
 };
 
-export default usePokemonFetch;
+export default usePokemonFetchWithTotalStats;
