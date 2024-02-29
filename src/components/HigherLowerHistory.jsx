@@ -19,7 +19,7 @@ const HLHistory = ({ history }) => {
       );
       setPokemonHistory((prev) => [...prev, ...newPokemons]);
     }
-  }, [history, pokemonHistory]);
+  }, [history]);
 
   return (
     <div>

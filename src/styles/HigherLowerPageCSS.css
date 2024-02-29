@@ -30,7 +30,7 @@ h3 {
   font-size: 4rem;
   color: #9e5959; /* Helle Hautfarbe */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  display: inline-block; /* Textschatten für zusätzliche Tiefe */
+  display: inline-block; /* Textschatten f체r zus채tzliche Tiefe */
 }
 
 .page {
@@ -92,11 +92,11 @@ h3 {
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Schattenänderung bei Hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Schatten채nderung bei Hover */
 }
 
 .card:active {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Schattenänderung bei Klick */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Schatten채nderung bei Klick */
 }
 
 .card h2,
@@ -107,9 +107,6 @@ h3 {
 .bottom-container {
   width: 100%;
   height: 10%;
-}
-
-.higherlowertitle {
 }
 
 .top-container h2 {
