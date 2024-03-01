@@ -5,7 +5,7 @@ import { Score } from "../components/Score";
 import PokemonCard from "../components/PokemonCard";
 import "../styles/MoveSetGamePage.css";
 import MoveCard from "../components/MoveCard";
-import Sniper from "../resources/Sniper_transparent.png";
+import Sidenavigation from "../components/Sidenavigation";
 
 const MoveSetGamePage = () => {
   // eslint-disable-next-line
@@ -41,14 +41,14 @@ const MoveSetGamePage = () => {
   };
 
   const applyColorToCards = () => {
-    const pokemonCardContainers = document.querySelectorAll(".container");
-    pokemonCardContainers.forEach((container, index) => {
+    const pokemonCardContainers = document.querySelectorAll(".container_MSG");
+    pokemonCardContainers.forEach((container_MSG, index) => {
       const canPokeLearnMove = {
         1: canPoke1LearnMove,
         2: canPoke2LearnMove,
         3: canPoke3LearnMove,
       }[index + 1];
-      container.classList.add(canPokeLearnMove ? "green-mark" : "red-mark");
+      container_MSG.classList.add(canPokeLearnMove ? "green-mark" : "red-mark");
     });
   };
 
@@ -58,9 +58,9 @@ const MoveSetGamePage = () => {
     setIsMarked1(false);
     setIsMarked2(false);
     setIsMarked3(false);
-    const pokemonCardContainers = document.querySelectorAll(".container");
-    pokemonCardContainers.forEach((container) => {
-      container.classList.remove("green-mark", "red-mark");
+    const pokemonCardContainers = document.querySelectorAll(".container_MSG");
+    pokemonCardContainers.forEach((container_MSG) => {
+      container_MSG.classList.remove("green-mark", "red-mark");
     });
   };
 
@@ -112,13 +112,20 @@ const MoveSetGamePage = () => {
     movePriority,
     moveType
   );
+
+
+
   return (
-    <>
-      <div className="top-container">
+    <div className="page">
+        <div className="side-navigation">
+          <Sidenavigation className="side-navigation" />
+        </div>
+        <div className="right-container_HL"> 
+      <div className="top-container_MSG">
         <Score score={score} />
       </div>
-      <div className="mid-container">
-        <div className={`container ${isMarked1 ? "marked" : ""}`}>
+      <div className="mid-container_MSG">
+        <div className={`container_MSG ${isMarked1 ? "marked" : ""}`}>
           <PokemonCard
             pokemon={pokemons[0]}
             id="1"
@@ -127,7 +134,7 @@ const MoveSetGamePage = () => {
             }}
           />
         </div>
-        <div className={`container ${isMarked2 ? "marked" : ""}`}>
+        <div className={`container_MSG ${isMarked2 ? "marked" : ""}`}>
           <PokemonCard
             pokemon={pokemons[1]}
             id="2"
@@ -136,7 +143,7 @@ const MoveSetGamePage = () => {
             }}
           />
         </div>
-        <div className={`container ${isMarked3 ? "marked" : ""}`}>
+        <div className={`container_MSG ${isMarked3 ? "marked" : ""}`}>
           <PokemonCard
             pokemon={pokemons[2]}
             id="3"
@@ -147,9 +154,9 @@ const MoveSetGamePage = () => {
         </div>
       </div>
 
-      <div className="bottom-Container">
-        <div
-          className="answerContainer"
+      <div className="bottom-Container_MSG">
+      <div
+          className="answerContainer_MSG"
           onClick={() =>
             clickHandlerReadResults(document.querySelectorAll(".container"))
           }
@@ -166,11 +173,9 @@ const MoveSetGamePage = () => {
             movePriority={movePriority}
           ></MoveCard>
         </div>
-        <div>
-          <img className="sniper" src={Sniper} alt="kevin" />
-        </div>
       </div>
-    </>
+      </div>
+    </div>
   );
 };
 export default MoveSetGamePage;

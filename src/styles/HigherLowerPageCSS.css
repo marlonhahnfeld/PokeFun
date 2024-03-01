@@ -44,24 +44,24 @@ h3 {
   height: 100%;
   width: 5%;
 }
-.right-container {
+.right-container_HL {
   display: flex;
   flex-direction: column;
   width: 95vw;
 }
 
-.top-container {
+.top-container_HL {
   width: 100%;
   height: 10%;
   display: flex;
   justify-content: center;
 }
 
-.top-container h2 {
+.top-container_HL h2 {
   padding-top: 2rem;
 }
 
-.mid-container {
+.mid-container_HL {
   /* padding: 4rem;*/
   display: flex;
   justify-content: space-around;
@@ -71,7 +71,7 @@ h3 {
   width: 100%;
 }
 
-.mid-container h2 {
+.mid-container_HL h2 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -104,12 +104,12 @@ h3 {
   width: 100%;
 }
 
-.bottom-container {
+.bottom-container_HL {
   width: 100%;
   height: 10%;
 }
 
-.top-container h2 {
+.top-container_HL h2 {
   font-family: var(--font-honk);
 }
 

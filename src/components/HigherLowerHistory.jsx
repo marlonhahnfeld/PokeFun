@@ -18,7 +18,7 @@ const HLHistory = ({ history }) => {
         (pokemon) => !pokemonHistory.some((p) => p.name === pokemon.name)
       );
       setPokemonHistory((prev) => [...prev, ...newPokemons]);
-    }
+    }// eslint-disable-next-line
   }, [history]);
 
   return (
