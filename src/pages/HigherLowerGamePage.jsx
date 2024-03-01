@@ -51,8 +51,8 @@ const HigherLowerGamePage = () => {
   return (
     <>
       <div className="page">
-        <div className="side-navigation">
-          <Sidenavigation className="side-navigation" />
+        <div className="side-navigation_hl">
+          <Sidenavigation className="side-navigation_hl" />
         </div>
         <div className="right-container_HL">
           <div className="top-container_HL">
@@ -74,12 +74,7 @@ const HigherLowerGamePage = () => {
             </div>
             <div className="score">
               <Score score={score} />
-              <HLHistory
-                history={[
-                  pokemons[0],
-                  pokemons[1]
-                ]}
-              />
+              <HLHistory history={[pokemons[0], pokemons[1]]} />
             </div>
             <div
               className="card"

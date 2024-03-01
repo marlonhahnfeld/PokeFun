@@ -113,67 +113,65 @@ const MoveSetGamePage = () => {
     moveType
   );
 
-
-
   return (
     <div className="page">
-        <div className="side-navigation">
-          <Sidenavigation className="side-navigation" />
-        </div>
-        <div className="right-container_HL"> 
-      <div className="top-container_MSG">
-        <Score score={score} />
+      <div className="side-navigation_MSG">
+        <Sidenavigation className="side-navigation_MSG" />
       </div>
-      <div className="mid-container_MSG">
-        <div className={`container_MSG ${isMarked1 ? "marked" : ""}`}>
-          <PokemonCard
-            pokemon={pokemons[0]}
-            id="1"
-            onClick={() => {
-              setIsMarked1(!isMarked1);
-            }}
-          />
+      <div className="right-container_HL">
+        <div className="top-container_MSG">
+          <Score score={score} />
         </div>
-        <div className={`container_MSG ${isMarked2 ? "marked" : ""}`}>
-          <PokemonCard
-            pokemon={pokemons[1]}
-            id="2"
-            onClick={() => {
-              setIsMarked2(!isMarked2);
-            }}
-          />
+        <div className="mid-container_MSG">
+          <div className={`container_MSG ${isMarked1 ? "marked" : ""}`}>
+            <PokemonCard
+              pokemon={pokemons[0]}
+              id="1"
+              onClick={() => {
+                setIsMarked1(!isMarked1);
+              }}
+            />
+          </div>
+          <div className={`container_MSG ${isMarked2 ? "marked" : ""}`}>
+            <PokemonCard
+              pokemon={pokemons[1]}
+              id="2"
+              onClick={() => {
+                setIsMarked2(!isMarked2);
+              }}
+            />
+          </div>
+          <div className={`container_MSG ${isMarked3 ? "marked" : ""}`}>
+            <PokemonCard
+              pokemon={pokemons[2]}
+              id="3"
+              onClick={() => {
+                setIsMarked3(!isMarked3);
+              }}
+            />
+          </div>
         </div>
-        <div className={`container_MSG ${isMarked3 ? "marked" : ""}`}>
-          <PokemonCard
-            pokemon={pokemons[2]}
-            id="3"
-            onClick={() => {
-              setIsMarked3(!isMarked3);
-            }}
-          />
-        </div>
-      </div>
 
-      <div className="bottom-Container_MSG">
-      <div
-          className="answerContainer_MSG"
-          onClick={() =>
-            clickHandlerReadResults(document.querySelectorAll(".container"))
-          }
-          draggable={false}
-          isClickable={isClickable ? "true" : "false"}
-        >
-          <MoveCard
-            moveName={moveName}
-            moveType={moveType}
-            moveAccuracy={moveAccuracy}
-            moveDamageClass={moveDamageClass}
-            movePower={movePower}
-            movePP={movePP}
-            movePriority={movePriority}
-          ></MoveCard>
+        <div className="bottom-Container_MSG">
+          <div
+            className="answerContainer_MSG"
+            onClick={() =>
+              clickHandlerReadResults(document.querySelectorAll(".container"))
+            }
+            draggable={false}
+            isClickable={isClickable ? "true" : "false"}
+          >
+            <MoveCard
+              moveName={moveName}
+              moveType={moveType}
+              moveAccuracy={moveAccuracy}
+              moveDamageClass={moveDamageClass}
+              movePower={movePower}
+              movePP={movePP}
+              movePriority={movePriority}
+            ></MoveCard>
+          </div>
         </div>
-      </div>
       </div>
     </div>
   );

@@ -38,7 +38,7 @@ h3 {
   height: 100vh;
 }
 
-.side-navigation {
+.side-navigation_hl {
   display: flex;
   flex-direction: column;
   height: 100%;

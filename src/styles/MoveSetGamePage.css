@@ -28,7 +28,7 @@ body {
   height: 100vh;
 }
 
-.side-navigation {
+.side-navigation_MSG {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -96,17 +96,16 @@ h1 {
   user-select: none;
 }
 
-
 .container_MSG:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Schattenänderung bei Hover */
 }
 
 .container_MSG.marked {
-    box-shadow: 0 4px 32px #f9d3b4; /* Schattenänderung im markierten Zustand */
-    /* Du kannst auch andere Stiländerungen hier hinzufügen */
-  }
+  box-shadow: 0 4px 32px #f9d3b4; /* Schattenänderung im markierten Zustand */
+  /* Du kannst auch andere Stiländerungen hier hinzufügen */
+}
 
-  .container_MSG h2,
+.container_MSG h2,
 .container_MSG img {
   width: 100%;
 }
@@ -119,17 +118,17 @@ h1 {
   background-color: red; /* Or any other styling for red */
 }
 
-  h4 {
-    width: fit-content;
-    display: flex;
-    justify-content: center;
-    font-size: 2rem;
-    color: #9e5959;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    display: inline-block; 
-  }
+h4 {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  color: #9e5959;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+}
 
-.sprite img{
+.sprite img {
   height: fit-content;
   width: fit-content;
   transform: scale(0.6);
@@ -145,7 +144,6 @@ h1 {
   display: flex;
   justify-content: center;
 }
-
 
 .bottom-Container_MSG {
   width: 100%;
