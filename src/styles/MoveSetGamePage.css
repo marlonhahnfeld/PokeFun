@@ -32,7 +32,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 10%;
+  width: 100%;
 }
 
 .right-container_HL {
@@ -46,10 +46,6 @@ body {
   height: 10%;
   display: flex;
   justify-content: center;
-}
-
-.top-container_MSG h2 {
-  padding-top: 2rem;
 }
 
 .mid-container_MSG {
@@ -89,24 +85,23 @@ h1 {
   justify-content: space-around; /* Distributes space between items */
   align-items: center; /* Centers items horizontally */
   width: 25vw;
-  height: 60vh;
+  height: 65vh;
   box-sizing: border-box; /* Includes padding and border in element's total width and height */
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   user-select: none;
 }
 
-
 .container_MSG:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Schattenänderung bei Hover */
 }
 
 .container_MSG.marked {
-    box-shadow: 0 4px 32px #f9d3b4; /* Schattenänderung im markierten Zustand */
-    /* Du kannst auch andere Stiländerungen hier hinzufügen */
-  }
+  box-shadow: 0 4px 32px #f9d3b4; /* Schattenänderung im markierten Zustand */
+  /* Du kannst auch andere Stiländerungen hier hinzufügen */
+}
 
-  .container_MSG h2,
+.container_MSG h2,
 .container_MSG img {
   width: 100%;
 }
@@ -119,17 +114,17 @@ h1 {
   background-color: red; /* Or any other styling for red */
 }
 
-  h4 {
-    width: fit-content;
-    display: flex;
-    justify-content: center;
-    font-size: 2rem;
-    color: #9e5959;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    display: inline-block; 
-  }
+h4 {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  color: #9e5959;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+}
 
-.sprite img{
+.sprite img {
   height: fit-content;
   width: fit-content;
   transform: scale(0.6);
@@ -145,7 +140,6 @@ h1 {
   display: flex;
   justify-content: center;
 }
-
 
 .bottom-Container_MSG {
   width: 100%;

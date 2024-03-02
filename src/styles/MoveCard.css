@@ -1,9 +1,9 @@
 .answerContainer_MSG {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     display: flex;
-    height: 75%;
-    width: 60%;
-    overflow: auto;
+    height: 70%;
+    width: 66%;
+    overflow: hidden;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
@@ -13,7 +13,7 @@
     color: #f9d3b4;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    margin-top: 0.65rem;
+    margin-top: 2rem;
   }
   
   .answerContainer_MSG:hover {
@@ -29,49 +29,49 @@
   }
  
  .moveName {
-    font-size: 1.8rem;
+    font-size: 2rem;
     position: relative;
-    bottom: 0.5rem;
+    bottom: 2.5rem;
   }
  
   .moveType {
     position: relative;
-    right: 20rem;
-    bottom: 2.5rem;
-    scale: 80%;
+    right: 18rem;
+    bottom: 5.5rem;
+    scale: 100%;
   }
   
   .movePP {
     position: relative;
-    bottom: 3rem;
+    bottom: 7.4rem;
     right: 2rem;
     font-size: 1.2rem;
   }
   
   .movePriority {
     position: relative;
-    bottom: 4.6rem;
+    bottom: 11rem;
     left: 9rem;
     font-size: 1.2rem;
   }
   
   .moveAccuracy {
     position: relative;
-    bottom: 16rem;
+    bottom: 27.5rem;
     right: 14rem;
     font-size: 1.4rem;
   }
   
   .movePower {
     position: relative;
-    bottom: 3.5rem;
+    bottom: 6.5rem;
     right: 13rem;
     font-size: 1.4rem;
   }
   
   .moveDamageClass {
     position: relative;
-    bottom: 12.5rem;
+    bottom: 22.5rem;
     left: 16rem;
     font-size: 1rem;
     width: 150px; /* Or any other size */

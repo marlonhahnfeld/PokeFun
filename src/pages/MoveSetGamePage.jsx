@@ -6,6 +6,8 @@ import PokemonCard from "../components/PokemonCard";
 import "../styles/MoveSetGamePage.css";
 import MoveCard from "../components/MoveCard";
 import Sidenavigation from "../components/Sidenavigation";
+import Grow from "@mui/material/Grow";
+import Fade from "@mui/material/Fade";
 
 const MoveSetGamePage = () => {
   // eslint-disable-next-line
@@ -113,67 +115,81 @@ const MoveSetGamePage = () => {
     moveType
   );
 
-
-
   return (
     <div className="page">
-        <div className="side-navigation">
-          <Sidenavigation className="side-navigation" />
-        </div>
-        <div className="right-container_HL"> 
-      <div className="top-container_MSG">
-        <Score score={score} />
+      <div className="side-navigation1">
+        <Sidenavigation className="side-navigation" />
       </div>
-      <div className="mid-container_MSG">
-        <div className={`container_MSG ${isMarked1 ? "marked" : ""}`}>
-          <PokemonCard
-            pokemon={pokemons[0]}
-            id="1"
-            onClick={() => {
-              setIsMarked1(!isMarked1);
-            }}
-          />
+      <div className="right-container_HL">
+        <div className="top-container_MSG">
+          <div className="score">
+            <Score score={score} />
+          </div>
         </div>
-        <div className={`container_MSG ${isMarked2 ? "marked" : ""}`}>
-          <PokemonCard
-            pokemon={pokemons[1]}
-            id="2"
-            onClick={() => {
-              setIsMarked2(!isMarked2);
-            }}
-          />
-        </div>
-        <div className={`container_MSG ${isMarked3 ? "marked" : ""}`}>
-          <PokemonCard
-            pokemon={pokemons[2]}
-            id="3"
-            onClick={() => {
-              setIsMarked3(!isMarked3);
-            }}
-          />
-        </div>
-      </div>
 
-      <div className="bottom-Container_MSG">
-      <div
-          className="answerContainer_MSG"
-          onClick={() =>
-            clickHandlerReadResults(document.querySelectorAll(".container"))
-          }
-          draggable={false}
-          isClickable={isClickable ? "true" : "false"}
-        >
-          <MoveCard
-            moveName={moveName}
-            moveType={moveType}
-            moveAccuracy={moveAccuracy}
-            moveDamageClass={moveDamageClass}
-            movePower={movePower}
-            movePP={movePP}
-            movePriority={movePriority}
-          ></MoveCard>
+        <div className="mid-container_MSG">
+          {pokemons.length > 0 && (
+            <Fade in={true} timeout={2000} key={pokemons[0].name}>
+              <div className={`container_MSG ${isMarked1 ? "marked" : ""}`}>
+                <PokemonCard
+                  pokemon={pokemons[0]}
+                  id="1"
+                  onClick={() => {
+                    setIsMarked1(!isMarked1);
+                  }}
+                />
+              </div>
+            </Fade>
+          )}
+          {pokemons.length > 1 && (
+            <Fade in={true} timeout={2000} key={pokemons[1].name}>
+              <div className={`container_MSG ${isMarked2 ? "marked" : ""}`}>
+                <PokemonCard
+                  pokemon={pokemons[1]}
+                  id="2"
+                  onClick={() => {
+                    setIsMarked2(!isMarked2);
+                  }}
+                />
+              </div>
+            </Fade>
+          )}
+          {pokemons.length > 2 && (
+            <Fade in={true} timeout={2000} key={pokemons[2].name}>
+              <div className={`container_MSG ${isMarked3 ? "marked" : ""}`}>
+                <PokemonCard
+                  pokemon={pokemons[2]}
+                  id="3"
+                  onClick={() => {
+                    setIsMarked3(!isMarked3);
+                  }}
+                />
+              </div>
+            </Fade>
+          )}
         </div>
-      </div>
+        <div className="bottom-Container_MSG">
+          <Fade in={true} timeout={2000} key={moveName}>
+            <div
+              className="answerContainer_MSG"
+              onClick={() =>
+                clickHandlerReadResults(document.querySelectorAll(".container"))
+              }
+              draggable={false}
+              isClickable={isClickable ? "true" : "false"}
+            >
+              <MoveCard
+                moveName={moveName}
+                moveType={moveType}
+                moveAccuracy={moveAccuracy}
+                moveDamageClass={moveDamageClass}
+                movePower={movePower}
+                movePP={movePP}
+                movePriority={movePriority}
+              ></MoveCard>
+            </div>
+          </Fade>
+        </div>
       </div>
     </div>
   );
