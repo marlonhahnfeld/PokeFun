@@ -14,15 +14,6 @@ body {
   padding: 0;
 }
 
-body {
-  font-family: var(--font-roboto);
-  background: linear-gradient(
-    112.1deg,
-    rgb(32, 38, 57) 11.4%,
-    rgb(63, 76, 119) 70.2%
-  );
-}
-
 h3 {
   width: fit-content;
   display: flex;
@@ -33,16 +24,22 @@ h3 {
   display: inline-block; /* Textschatten f체r zus채tzliche Tiefe */
 }
 
-.page {
+.page_HL {
+  background: linear-gradient(
+    112.1deg,
+    rgb(32, 38, 57) 11.4%,
+    rgb(63, 76, 119) 70.2%
+  );
   display: flex;
   height: 100vh;
+  font-family: var(--font-roboto);
 }
 
 .side-navigation_hl {
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 5%;
+  width: 10%;
 }
 .right-container_HL {
   display: flex;
@@ -77,7 +74,7 @@ h3 {
   align-items: center;
 }
 
-.card {
+.card_HL {
   display: flex;
   flex-direction: column;
   justify-content: space-around; /* Distributes space between items */
@@ -91,16 +88,16 @@ h3 {
   user-select: none;
 }
 
-.card:hover {
+.card_HL:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Schatten채nderung bei Hover */
 }
 
-.card:active {
+.card_HL:active {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Schatten채nderung bei Klick */
 }
 
-.card h2,
-.card img {
+.card_HL h2,
+.card_HL img {
   width: 100%;
 }
 

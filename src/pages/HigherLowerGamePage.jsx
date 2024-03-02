@@ -50,7 +50,7 @@ const HigherLowerGamePage = () => {
 
   return (
     <>
-      <div className="page">
+      <div className="page_HL">
         <div className="side-navigation_hl">
           <Sidenavigation className="side-navigation_hl" />
         </div>
@@ -64,7 +64,7 @@ const HigherLowerGamePage = () => {
           </div>
           <div className="mid-container_HL">
             <div
-              className="card"
+              className="card_HL"
               onClick={() => {
                 handleClickCard(1);
               }}
@@ -77,7 +77,7 @@ const HigherLowerGamePage = () => {
               <HLHistory history={[pokemons[0], pokemons[1]]} />
             </div>
             <div
-              className="card"
+              className="card_HL"
               onClick={() => {
                 handleClickCard(2);
               }}
