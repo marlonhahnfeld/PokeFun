@@ -14,8 +14,10 @@ body {
   padding: 0;
 }
 
-body {
+.page_MSG {
   font-family: var(--font-roboto);
+  display: flex;
+  height: 100vh;
   background: linear-gradient(
     112.1deg,
     rgb(32, 38, 57) 11.4%,
@@ -23,12 +25,7 @@ body {
   );
 }
 
-.page {
-  display: flex;
-  height: 100vh;
-}
-
-.side-navigation {
+.side-navigation_MSG {
   display: flex;
   flex-direction: column;
   height: 100%;

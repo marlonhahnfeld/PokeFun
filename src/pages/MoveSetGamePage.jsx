@@ -116,9 +116,9 @@ const MoveSetGamePage = () => {
   );
 
   return (
-    <div className="page">
-      <div className="side-navigation1">
-        <Sidenavigation className="side-navigation" />
+    <div className="page_MSG">
+      <div className="side-navigationpage_MSG">
+        <Sidenavigation className="side-navigationpage_MSG" />
       </div>
       <div className="right-container_HL">
         <div className="top-container_MSG">
