@@ -1,37 +1,60 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700");
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Honk&family=Jacquarda+Bastarda+9&display=swap");
 
-* {
-  margin: 0;
-  border: 0;
-  box-sizing: border-box;
+:root {
+  --font-roboto: "Roboto Slab", serif;
+  --font-raleway: "Raleway", sans-serif;
+  --font-honk: "Honk", sans-serif;
 }
 
+html,
 body {
+  margin: 0;
+  padding: 0;
+}
+
+.page_MSG {
   font-family: var(--font-roboto);
-  background-color: #212426;
-}
-
-.top-container {
-  width: 100vw;
-  height: 10vh;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  height: 100vh;
+  background: linear-gradient(
+    112.1deg,
+    rgb(32, 38, 57) 11.4%,
+    rgb(63, 76, 119) 70.2%
+  );
 }
 
-.mid-container {
-  height: 60vh;
-  width: 100vw;
-  padding: 4rem;
+.side-navigation_MSG {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.right-container_HL {
+  display: flex;
+  flex-direction: column;
+  width: 95vw;
+}
+
+.top-container_MSG {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+}
+
+.mid-container_MSG {
+  height: 60%;
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-direction: row;
 }
 
-.mid-container h2 {
+.mid-container_MSG h2 {
   display: flex;
   justify-content: center;
   font-size: xx-large;
@@ -53,31 +76,30 @@ h1 {
   width: fit-content;
 }
 
-.container {
-  width: 25vw;
-  height: 60vh;
+.container_MSG {
   display: flex;
   flex-direction: column;
   justify-content: space-around; /* Distributes space between items */
   align-items: center; /* Centers items horizontally */
-  padding: 1rem; /* Adds some space around the items */
+  width: 25vw;
+  height: 65vh;
   box-sizing: border-box; /* Includes padding and border in element's total width and height */
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   user-select: none;
 }
 
-.container:hover {
+.container_MSG:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Schattenänderung bei Hover */
 }
 
-.container.marked {
-    box-shadow: 0 4px 32px #f9d3b4; /* Schattenänderung im markierten Zustand */
-    /* Du kannst auch andere Stiländerungen hier hinzufügen */
-  }
+.container_MSG.marked {
+  box-shadow: 0 4px 32px #f9d3b4; /* Schattenänderung im markierten Zustand */
+  /* Du kannst auch andere Stiländerungen hier hinzufügen */
+}
 
-  .container h2,
-.container img {
+.container_MSG h2,
+.container_MSG img {
   width: 100%;
 }
 
@@ -89,18 +111,20 @@ h1 {
   background-color: red; /* Or any other styling for red */
 }
 
-  h4 {
-    width: fit-content;
-    display: flex;
-    justify-content: center;
-    font-size: 2rem;
-    color: #9e5959;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    display: inline-block; 
-  }
+h4 {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  color: #9e5959;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+}
 
-.sprite img{
-  scale: 66%;
+.sprite img {
+  height: fit-content;
+  width: fit-content;
+  transform: scale(0.6);
 }
 
 .score h4 {
@@ -108,23 +132,17 @@ h1 {
 }
 
 .sprite {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
 }
 
-
-.bottom-Container {
-  width: 100vw;
-  height: 30vh;
+.bottom-Container_MSG {
+  width: 100%;
+  height: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
-}
-
-.sniper{
-  width: 400px;
-  height: auto;
-  margin-top: 90%;
 }

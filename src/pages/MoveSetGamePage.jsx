@@ -1,12 +1,13 @@
 import React from "react";
-import SideMenu from "../components/SideMenu";
 import usePokemonFetchWithMoveset from "../hooks/usePokemonFetchWithMoveset";
 import { useState } from "react";
 import { Score } from "../components/Score";
 import PokemonCard from "../components/PokemonCard";
 import "../styles/MoveSetGamePage.css";
 import MoveCard from "../components/MoveCard";
-import Sniper from '../resources/Sniper_transparent.png';
+import Sidenavigation from "../components/Sidenavigation";
+import Grow from "@mui/material/Grow";
+import Fade from "@mui/material/Fade";
 
 const MoveSetGamePage = () => {
   // eslint-disable-next-line
@@ -14,7 +15,8 @@ const MoveSetGamePage = () => {
   const [roundDone, setRoundDone] = useState(true);
   const [isClickable, setIsClickable] = useState(true);
   const [lastFetchTime, setLastFetchTime] = useState(0);
-  const { pokemons,
+  const {
+    pokemons,
     canPoke1LearnMove,
     canPoke2LearnMove,
     canPoke3LearnMove,
@@ -24,144 +26,172 @@ const MoveSetGamePage = () => {
     movePower,
     movePP,
     movePriority,
-    moveType } = usePokemonFetchWithMoveset(roundDone, 3);
-    const [isMarked1, setIsMarked1] = useState(false);
-    const [isMarked2, setIsMarked2] = useState(false);
-    const [isMarked3, setIsMarked3] = useState(false);
- 
-    const checkClickEligibility = () => {
-      const currentTime = new Date().getTime();
-      if (!isClickable || currentTime - lastFetchTime < 1000) {
-        return false;
-      }
-      setLastFetchTime(currentTime);
-      setIsClickable(false);
-      return true;
-    };
-    
-    const applyColorToCards = () => {
-      const pokemonCardContainers = document.querySelectorAll('.container');
-      pokemonCardContainers.forEach((container, index) => {
-        const canPokeLearnMove = {
-          1: canPoke1LearnMove,
-          2: canPoke2LearnMove,
-          3: canPoke3LearnMove
-        }[index + 1];
-        container.classList.add(canPokeLearnMove ? 'green-mark' : 'red-mark');
-      });
-    };
-    
-    const resetGame = () => {
-      setRoundDone((prev) => !prev);
-      setIsClickable(true);
-      setIsMarked1(false);
-      setIsMarked2(false);
-      setIsMarked3(false);
-      const pokemonCardContainers = document.querySelectorAll('.container');
-      pokemonCardContainers.forEach((container) => {
-        container.classList.remove('green-mark', 'red-mark');
-      });
-    };
-  
-    const handleCorrectAnswer = () => {
-      setScore((prev) => prev + 1);
-      setTimeout(resetGame, 2000);
-    };
-  
-    const handleIncorrectAnswer = () => {
-      setScore(0);
-      setTimeout(resetGame, 2000);
-    };
+    moveType,
+  } = usePokemonFetchWithMoveset(roundDone, 3);
+  const [isMarked1, setIsMarked1] = useState(false);
+  const [isMarked2, setIsMarked2] = useState(false);
+  const [isMarked3, setIsMarked3] = useState(false);
 
-    const clickHandlerReadResults = () => {
-      if (!checkClickEligibility()) return;
-    
-      applyColorToCards();
-    
-      if (
-        (canPoke1LearnMove && !isMarked1) ||
-        (canPoke2LearnMove && !isMarked2) ||
-        (canPoke3LearnMove && !isMarked3)
-      ) {
-        handleIncorrectAnswer();
-        return;
-      }
-    
-      if (
-        (!canPoke1LearnMove && isMarked1) ||
-        (!canPoke2LearnMove && isMarked2) ||
-        (!canPoke3LearnMove && isMarked3)
-      ) {
-        handleIncorrectAnswer();
-        return;
-      }
-    
-      handleCorrectAnswer();
-    };
+  const checkClickEligibility = () => {
+    const currentTime = new Date().getTime();
+    if (!isClickable || currentTime - lastFetchTime < 1000) {
+      return false;
+    }
+    setLastFetchTime(currentTime);
+    setIsClickable(false);
+    return true;
+  };
 
-console.log(canPoke1LearnMove,
-  canPoke2LearnMove,
-  canPoke3LearnMove,
-  moveAccuracy,
-  moveDamageClass,
-  moveName,
-  movePower,
-  movePP,
-  movePriority,
-  moveType)
+  const applyColorToCards = () => {
+    const pokemonCardContainers = document.querySelectorAll(".container_MSG");
+    pokemonCardContainers.forEach((container_MSG, index) => {
+      const canPokeLearnMove = {
+        1: canPoke1LearnMove,
+        2: canPoke2LearnMove,
+        3: canPoke3LearnMove,
+      }[index + 1];
+      container_MSG.classList.add(canPokeLearnMove ? "green-mark" : "red-mark");
+    });
+  };
+
+  const resetGame = () => {
+    setRoundDone((prev) => !prev);
+    setIsClickable(true);
+    setIsMarked1(false);
+    setIsMarked2(false);
+    setIsMarked3(false);
+    const pokemonCardContainers = document.querySelectorAll(".container_MSG");
+    pokemonCardContainers.forEach((container_MSG) => {
+      container_MSG.classList.remove("green-mark", "red-mark");
+    });
+  };
+
+  const handleCorrectAnswer = () => {
+    setScore((prev) => prev + 1);
+    setTimeout(resetGame, 2000);
+  };
+
+  const handleIncorrectAnswer = () => {
+    setScore(0);
+    setTimeout(resetGame, 2000);
+  };
+
+  const clickHandlerReadResults = () => {
+    if (!checkClickEligibility()) return;
+
+    applyColorToCards();
+
+    if (
+      (canPoke1LearnMove && !isMarked1) ||
+      (canPoke2LearnMove && !isMarked2) ||
+      (canPoke3LearnMove && !isMarked3)
+    ) {
+      handleIncorrectAnswer();
+      return;
+    }
+
+    if (
+      (!canPoke1LearnMove && isMarked1) ||
+      (!canPoke2LearnMove && isMarked2) ||
+      (!canPoke3LearnMove && isMarked3)
+    ) {
+      handleIncorrectAnswer();
+      return;
+    }
+
+    handleCorrectAnswer();
+  };
+
+  console.log(
+    canPoke1LearnMove,
+    canPoke2LearnMove,
+    canPoke3LearnMove,
+    moveAccuracy,
+    moveDamageClass,
+    moveName,
+    movePower,
+    movePP,
+    movePriority,
+    moveType
+  );
+
   return (
-    <>
-      <div className="top-container">
-        <Score score={score} />
-        <SideMenu />
+    <div className="page_MSG">
+      <div className="side-navigationpage_MSG">
+        <Sidenavigation className="side-navigationpage_MSG" />
       </div>
-      <div className="mid-container">
-      <div className={`container ${isMarked1 ? 'marked' : ''}`}>
-          <PokemonCard
-              pokemon={pokemons[0]}
-              id="1"
-              onClick={() => {
-                setIsMarked1(!isMarked1);
-              }}
-            />
+      <div className="right-container_HL">
+        <div className="top-container_MSG">
+          <div className="score">
+            <Score score={score} />
           </div>
-          <div className={`container ${isMarked2 ? 'marked' : ''}`}>
-          <PokemonCard
-              pokemon={pokemons[1]}
-              id="2"
-              onClick={() => {
-                setIsMarked2(!isMarked2);
-              }}
-            />
-          </div>
-          <div className={`container ${isMarked3 ? 'marked' : ''}`}>
-          <PokemonCard
-              pokemon={pokemons[2]}
-              id="3"
-              onClick={() => {
-                setIsMarked3(!isMarked3);
-              }}
-            />
-          </div>
-      </div>
+        </div>
 
-      <div className="bottom-Container">
-      <div className="answerContainer" onClick={() => clickHandlerReadResults(document.querySelectorAll('.container'))} draggable={false} isClickable={isClickable ? "true" : "false"} >
-        <MoveCard
-          moveName={moveName}
-          moveType={moveType}
-          moveAccuracy={moveAccuracy}
-          moveDamageClass={moveDamageClass}
-          movePower={movePower}
-          movePP={movePP}
-          movePriority={movePriority}
-        ></MoveCard>
+        <div className="mid-container_MSG">
+          {pokemons.length > 0 && (
+            <Fade in={true} timeout={2000} key={pokemons[0].name}>
+              <div className={`container_MSG ${isMarked1 ? "marked" : ""}`}>
+                <PokemonCard
+                  pokemon={pokemons[0]}
+                  id="1"
+                  onClick={() => {
+                    setIsMarked1(!isMarked1);
+                  }}
+                />
+              </div>
+            </Fade>
+          )}
+          {pokemons.length > 1 && (
+            <Fade in={true} timeout={2000} key={pokemons[1].name}>
+              <div className={`container_MSG ${isMarked2 ? "marked" : ""}`}>
+                <PokemonCard
+                  pokemon={pokemons[1]}
+                  id="2"
+                  onClick={() => {
+                    setIsMarked2(!isMarked2);
+                  }}
+                />
+              </div>
+            </Fade>
+          )}
+          {pokemons.length > 2 && (
+            <Fade in={true} timeout={2000} key={pokemons[2].name}>
+              <div className={`container_MSG ${isMarked3 ? "marked" : ""}`}>
+                <PokemonCard
+                  pokemon={pokemons[2]}
+                  id="3"
+                  onClick={() => {
+                    setIsMarked3(!isMarked3);
+                  }}
+                />
+              </div>
+            </Fade>
+          )}
         </div>
-        <div>
-          <img className="sniper" src={Sniper}/>
+        <div className="bottom-Container_MSG">
+          <Fade in={true} timeout={2000} key={moveName}>
+            <div
+              className="answerContainer_MSG"
+              onClick={() =>
+                clickHandlerReadResults(document.querySelectorAll(".container"))
+              }
+              draggable={false}
+              isClickable={isClickable ? "true" : "false"}
+            >
+              <MoveCard
+                moveName={moveName}
+                moveType={moveType}
+                moveAccuracy={moveAccuracy}
+                moveDamageClass={moveDamageClass}
+                movePower={movePower}
+                movePP={movePP}
+                movePriority={movePriority}
+              ></MoveCard>
+            </div>
+          </Fade>
         </div>
-        </div>
-    </>
+      </div>
+    </div>
   );
 };
 export default MoveSetGamePage;

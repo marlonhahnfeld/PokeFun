@@ -14,15 +14,6 @@ body {
   padding: 0;
 }
 
-body {
-  font-family: var(--font-roboto);
-  background: linear-gradient(
-    112.1deg,
-    rgb(32, 38, 57) 11.4%,
-    rgb(63, 76, 119) 70.2%
-  );
-}
-
 h3 {
   width: fit-content;
   display: flex;
@@ -30,38 +21,45 @@ h3 {
   font-size: 4rem;
   color: #9e5959; /* Helle Hautfarbe */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  display: inline-block; /* Textschatten für zusätzliche Tiefe */
+  display: inline-block; /* Textschatten f체r zus채tzliche Tiefe */
 }
 
-.page {
+.page_HL {
+  background: linear-gradient(
+    112.1deg,
+    rgb(32, 38, 57) 11.4%,
+    rgb(63, 76, 119) 70.2%
+  );
   display: flex;
   height: 100vh;
+  width: 100vw;
+  font-family: var(--font-roboto);
 }
 
-.side-navigation {
+.side-navigation_hl {
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 5%;
+  width: 10%;
 }
-.right-container {
+.right-container_HL {
   display: flex;
   flex-direction: column;
   width: 95vw;
 }
 
-.top-container {
+.top-container_HL {
   width: 100%;
   height: 10%;
   display: flex;
   justify-content: center;
 }
 
-.top-container h2 {
+.top-container_HL h2 {
   padding-top: 2rem;
 }
 
-.mid-container {
+.mid-container_HL {
   /* padding: 4rem;*/
   display: flex;
   justify-content: space-around;
@@ -71,13 +69,13 @@ h3 {
   width: 100%;
 }
 
-.mid-container h2 {
+.mid-container_HL h2 {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.card {
+.card_HL {
   display: flex;
   flex-direction: column;
   justify-content: space-around; /* Distributes space between items */
@@ -91,28 +89,25 @@ h3 {
   user-select: none;
 }
 
-.card:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Schattenänderung bei Hover */
+.card_HL:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Schatten채nderung bei Hover */
 }
 
-.card:active {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Schattenänderung bei Klick */
+.card_HL:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Schatten채nderung bei Klick */
 }
 
-.card h2,
-.card img {
+.card_HL h2,
+.card_HL img {
   width: 100%;
 }
 
-.bottom-container {
+.bottom-container_HL {
   width: 100%;
   height: 10%;
 }
 
-.higherlowertitle {
-}
-
-.top-container h2 {
+.top-container_HL h2 {
   font-family: var(--font-honk);
 }
 

@@ -50,21 +50,21 @@ const HigherLowerGamePage = () => {
 
   return (
     <>
-      <div className="page">
-        <div className="side-navigation">
-          <Sidenavigation className="side-navigation" />
+      <div className="page_HL">
+        <div className="side-navigation_hl">
+          <Sidenavigation className="side-navigation_hl" />
         </div>
-        <div className="right-container">
-          <div className="top-container">
+        <div className="right-container_HL">
+          <div className="top-container_HL">
             <Grow in={true} timeout={1000} className="higherlowertitle">
               <Typography variant="h2" title="">
                 Higher or Lower
               </Typography>
             </Grow>
           </div>
-          <div className="mid-container">
+          <div className="mid-container_HL">
             <div
-              className="card"
+              className="card_HL"
               onClick={() => {
                 handleClickCard(1);
               }}
@@ -74,15 +74,10 @@ const HigherLowerGamePage = () => {
             </div>
             <div className="score">
               <Score score={score} />
-              <HLHistory
-                history={[
-                  pokemons[0],
-                  pokemons[1]
-                ]}
-              />
+              <HLHistory history={[pokemons[0], pokemons[1]]} />
             </div>
             <div
-              className="card"
+              className="card_HL"
               onClick={() => {
                 handleClickCard(2);
               }}
@@ -92,7 +87,7 @@ const HigherLowerGamePage = () => {
             </div>
           </div>
 
-          <div className="bottom-container"></div>
+          <div className="bottom-container_HL"></div>
         </div>
       </div>
     </>
