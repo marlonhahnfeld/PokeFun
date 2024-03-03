@@ -5,7 +5,7 @@ import { Score } from "../components/Score";
 import PokemonCard from "../components/PokemonCard";
 import "../styles/MoveSetGamePage.css";
 import MoveCard from "../components/MoveCard";
-import Sidenavigation from "../components/Sidenavigation";
+import Sidenavigation from "../components/Sidenavigation"; // eslint-disable-next-line
 import Grow from "@mui/material/Grow";
 import Fade from "@mui/material/Fade";
 
