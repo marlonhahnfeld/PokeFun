@@ -17,22 +17,18 @@ const LandingPage = () => {
           <LPCard
             title="Higher Lower"
             description="2 Pokemons are shown, guess which one has higher total stats!"
-            image="../resources/logo1.jpg"
+            image="https://unsplash.it/250/400
+            "
           />
           <LPCard
             title="Moveset Game"
             description="Guess which of 3 Pokemons is using a specific move! Maybe even all 3 know it."
-            image="../resources/logo2.jpg"
+            image="https://unsplash.it/300/400"
           />
           <LPCard
             title="Guess the Pokemon"
             description="Guess the Pokemon and find similarities! The fewer guesses, the better."
-            image="../resources/logo3.jpg"
-          />
-          <LPCard
-            title="Placeholder"
-            description="Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder!"
-            image="../resources/logo4.jpg"
+            image="https://unsplash.it/400/400"
           />
         </div>
         <div className="bottom-container_lp">
