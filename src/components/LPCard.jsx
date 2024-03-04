@@ -41,6 +41,7 @@ const LPCard = ({ title, description, image }) => {
 
   return (
     <motion.div
+      className="lpcardcontainer"
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -59,7 +60,7 @@ const LPCard = ({ title, description, image }) => {
             component="img"
             height="200"
             image={image}
-            alt="game mode card"
+            alt="gamemode card"
           />
           <CardContent className="lpcardcontent">
             <Typography gutterBottom variant="h5" component="div">
@@ -67,7 +68,7 @@ const LPCard = ({ title, description, image }) => {
             </Typography>
             <Typography
               variant="body2"
-              color="text.secondary"
+              color="white"
               className="lpcarddescription"
             >
               {description}
@@ -76,7 +77,7 @@ const LPCard = ({ title, description, image }) => {
         </CardActionArea>
         <CardActions className="lpcardbottom">
           <Button size="small" color="primary">
-            Placeholder
+            Play
           </Button>
         </CardActions>
       </Card>

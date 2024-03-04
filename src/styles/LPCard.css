@@ -1,11 +1,18 @@
+.lpcardcontainer {
+  border: 4px solidrgb(2 6 23);
+  border-radius: 2%;
+}
+
 .lpcardcontent {
-  background-color: slateblue;
+  color: white;
+
+  background-color: rgb(15 23 42);
 }
 
 .lpcarddescription {
-  background-color: slateblue;
+  background-color: rgb(15 23 42);
 }
-
 .lpcardbottom {
-  background-color: slateblue;
+  background-color: rgb(15 23 42);
+  height: 2.75rem;
 }
