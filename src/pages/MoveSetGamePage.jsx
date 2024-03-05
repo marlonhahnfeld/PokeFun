@@ -6,7 +6,6 @@ import PokemonCard from "../components/PokemonCard";
 import "../styles/MoveSetGamePage.css";
 import MoveCard from "../components/MoveCard";
 import Sidenavigation from "../components/Sidenavigation";
-import Grow from "@mui/material/Grow";
 import Fade from "@mui/material/Fade";
 
 const MoveSetGamePage = () => {
