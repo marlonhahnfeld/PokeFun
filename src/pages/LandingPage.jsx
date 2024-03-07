@@ -45,7 +45,7 @@ const LandingPage = () => {
           </Link>
         </div>
         <div className="bottom-container_lp">
-          <p>Placeholder</p>
+          <p> &copy; Pokefun 2024 </p>
         </div>
       </div>
     </div>
