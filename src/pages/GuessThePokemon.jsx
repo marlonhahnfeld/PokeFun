@@ -1,12 +1,21 @@
 import "../styles/GuessThePokemon.css";
 import React from "react";
+import usePokemonFetchWithMoves from "../hooks/usePokemonFetchWithMoveset";
 import { useState } from "react";
 import { Score } from "../components/Score";
 import ShapeIcon from "../resources/ShapeIcon.png";
 import ArtworkIcon from "../resources/ArtworkIcon.png";
+import GuessThePokemon_BoxesCard from "../components/GuessThePokemon_BoxesCard";
 
 const GuessThePokemon = () => {
   const [score, setScore] = useState(0); // eslint-disable-next-line
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const { pokemons, fetchPokemon } = usePokemonFetchWithMoves(false, 1);
+
+  const handleSubmit = () => {
+    // Your submit logic here
+    setIsSubmitted(true);
+  };
   console.log("hi");
 
   return (
@@ -37,48 +46,19 @@ const GuessThePokemon = () => {
         </div>
         <div className="answerContainer_GTP">
           <input type="text" placeholder="Type Pokemon name..." />
-          <button type="submit">Go</button>
+          <button type="submit" onClick={handleSubmit}>
+            Go
+          </button>
         </div>
         <div className="score">
           <Score score={score} />
         </div>
       </div>
-      <div className="bottom-Container_GTP">
-        <div className="boxes_GTP">
-          <div className="box_GTP">
-            <h4 className="topText"> Pokemon </h4>
-            <p className="bottomText"> pokemon.sprite </p>
-          </div>
-          <div className="box_GTP">
-            <h4 className="topText"> Typ </h4>
-            <p className="bottomText"> typ.sprite </p>
-          </div>
-          <div className="box_GTP">
-            <h4 className="topText"> Height </h4>
-            <p className="bottomText"> pokemon.height,hl_sprite </p>
-          </div>
-          <div className="box_GTP">
-            <h4 className="topText"> weight </h4>
-            <p className="bottomText"> pokemon.weight,hl_sprite </p>
-          </div>
-          <div className="box_GTP">
-            <h4 className="topText"> Total Stats </h4>
-            <p className="bottomText"> pokemon.totalstats,hl_sprite </p>
-          </div>
-          <div className="box_GTP">
-            <h4 className="topText"> Lebensraum </h4>
-            <p className="bottomText"> pokemon.habitat </p>
-          </div>
-          <div className="box_GTP">
-            <h4 className="topText"> Growth_Rate </h4>
-            <p className="bottomText"> pokemon.growth_rate,hl_sprite </p>
-          </div>
-          <div className="box_GTP">
-            <h4 className="topText"> Capture_rate </h4>
-            <p className="bottomText"> pokemon.capture_rate,hl_sprite </p>
-          </div>{" "}
+      {isSubmitted && (
+        <div className="bottom-Container_GTP">
+          <GuessThePokemon_BoxesCard solutionPokemon={pokemons[0]} />
         </div>
-      </div>
+      )}
     </div>
   );
 };

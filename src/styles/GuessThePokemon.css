@@ -29,7 +29,7 @@ body {
 }
 
 .mid-container_GTP {
-  height: 60%;
+  height: 40%;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -103,32 +103,41 @@ body {
 
 .bottom-Container_GTP {
   width: 100%;
-  height: 30%;
+  height: 50%;
+  flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   flex-direction: row;
+  margin-top: 2%;
 }
 
 .boxes_GTP {
   display: flex;
   flex-direction: row;
+  padding: 10px;
+  justify-content: space-between;
 }
 
 .box_GTP {
-  width: 10vw;
-  height: 16vh;
+  width: 8vw;
+  height: 12vh;
   position: relative;
   padding: 0 10px 0px 10px;
   box-sizing: border-box;
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   word-wrap: break-word;
+  margin: 3px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .box_GTP .topText {
   position: absolute;
-  top: -80px;
+  top: -60px;
+  font-size: large;
 }
 
 .box_GTP .bottomText {
