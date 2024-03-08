@@ -14,22 +14,21 @@ const GuessThePokemon = () => {
   const { pokemons, fetchPokemon } = usePokemonFetchWithMoves(false, 1);
 
   const datenbank_all = async () => {
-    for (let i = 0; i < 1302; i++) {
+    for (let i = 1; i < 1303; i++) {
       const url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
-
-      try {
-        const data = await fetch(url).then((response) => response.json());
-
-        datenbank_add(data.sprites.front_default, data.name);
-      } catch (error) {
-        console.error("Error fetching Pokemon:", error);
-      }
+      const response = await fetch(url);
+      const pokemonobj = await response.json();
+      datenbank_add(
+        pokemonobj["sprites"]["other"]["official-artwork"]["front_default"],
+        pokemonobj.name
+      );
     }
   };
 
   const handleSubmit = () => {
     // Your submit logic here
     setIsSubmitted(true);
+    datenbank_all();
   };
   console.log("hi");
 

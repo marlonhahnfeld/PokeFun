@@ -24,7 +24,7 @@ const GuessThePokemon_BoxesCard = ({ pokemon, solutionPokemon }) => {
       });
   }, [solutionPokemon]);
 
-  console.log(solutionPokemon);
+  //console.log(solutionPokemon);
 
   return (
     <div className="boxes_GTP">
