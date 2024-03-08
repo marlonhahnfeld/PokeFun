@@ -2,6 +2,10 @@ from flask import Flask, jsonify, request
 from pymongo import MongoClient
 from flask_cors import CORS
 
+#pip install flask
+#pip install pymongo
+#pip install flask_cors
+
 app = Flask(__name__)
 CORS(app)  # This will enable CORS for all routes
 
