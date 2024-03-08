@@ -3,6 +3,7 @@ import HigherLowerGamePage from "./pages/HigherLowerGamePage";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MovesetGamePage from "../src/pages/MoveSetGamePage";
+import LandingPage from "./pages/LandingPage";
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
   {
     path: "/movesetgame",
     element: <MovesetGamePage />,
+  },
+  {
+    path: "/",
+    element: <LandingPage />,
   },
 ]);
 
