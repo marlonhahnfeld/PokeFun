@@ -6,11 +6,26 @@ import { Score } from "../components/Score";
 import ShapeIcon from "../resources/ShapeIcon.png";
 import ArtworkIcon from "../resources/ArtworkIcon.png";
 import GuessThePokemon_BoxesCard from "../components/GuessThePokemon_BoxesCard";
+import { datenbank_add } from "../server/utils";
 
 const GuessThePokemon = () => {
   const [score, setScore] = useState(0); // eslint-disable-next-line
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { pokemons, fetchPokemon } = usePokemonFetchWithMoves(false, 1);
+
+  const datenbank_all = async () => {
+    for (let i = 0; i < 1302; i++) {
+      const url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
+
+      try {
+        const data = await fetch(url).then((response) => response.json());
+
+        datenbank_add(data.sprites.front_default, data.name);
+      } catch (error) {
+        console.error("Error fetching Pokemon:", error);
+      }
+    }
+  };
 
   const handleSubmit = () => {
     // Your submit logic here

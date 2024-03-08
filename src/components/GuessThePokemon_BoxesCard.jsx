@@ -7,7 +7,7 @@ import { capitalizeFirstLetter } from "../utils/HigherLowerUtil";
 // TODO implement logic to display correct arrowIcon by comparing pokemon characteristics
 // TODO Datenbank aufsetzen mit allen Pokemon dann von submitButton pokemon haben
 // TODO eventuell Gen-locken
-// TODO Hyper Visualisierung im BIOS aktivieren
+// // TODO Hyper Visualisierung im BIOS aktivieren
 
 const GuessThePokemon_BoxesCard = ({ pokemon, solutionPokemon }) => {
   const [solutionPokemonGrowthRate, setSolutionPokemonGrowthRate] =
