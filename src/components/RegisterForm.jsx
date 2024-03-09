@@ -4,7 +4,7 @@ import { registerUserAndPasswordToMongo } from "../server/dbutils";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import "../styles/RegisterForm.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const RegisterForm = () => {
   const {
@@ -27,7 +27,6 @@ const RegisterForm = () => {
         data.username,
         data.password
       );
-      console.log(response);
       if (response.result === "success") {
         console.log("Registered successfully");
         navigate("/");
@@ -109,6 +108,7 @@ const RegisterForm = () => {
         {errors.password && <div>{errors.password.message}</div>}
         {errors.confirmPassword && <div>{errors.confirmPassword.message}</div>}
       </div>
+      <Link to="/login">Already an account? Click here</Link>
     </div>
   );
 };
