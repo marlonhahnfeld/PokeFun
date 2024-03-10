@@ -29,6 +29,8 @@ const RegisterForm = () => {
       );
       if (response.result === "success") {
         console.log("Registered successfully");
+        // Store the JWT token in local storage
+        localStorage.setItem("token", response.token);
         navigate("/");
       }
 

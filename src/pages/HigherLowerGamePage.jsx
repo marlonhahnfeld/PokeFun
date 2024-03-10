@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import Grow from "@mui/material/Grow";
 import Sidenavigation from "../components/Sidenavigation";
 import HLHistory from "../components/HigherLowerHistory";
+import { saveScoreHigherLower } from "../server/dbutils";
 
 const HigherLowerGamePage = () => {
   const [score, setScore] = useState(0);
@@ -39,6 +40,7 @@ const HigherLowerGamePage = () => {
     if (isHigherCardClicked(pokemons[0], pokemons[1], cardNumber)) {
       setScore((prev) => prev + 1);
     } else {
+      saveScoreHigherLower(score);
       setScore(0);
     }
 
