@@ -6,17 +6,95 @@ import { Score } from "../components/Score";
 import ShapeIcon from "../resources/ShapeIcon.png";
 import ArtworkIcon from "../resources/ArtworkIcon.png";
 import GuessThePokemon_BoxesCard from "../components/GuessThePokemon_BoxesCard";
+import { datenbank_add } from "../server/utils";
+import { fetchPokemonStartingWithInput_FromMongo } from "../utils/GuessThePokemonUtil";
+import PokemonList from "../components/ui/PokemonList";
 
 const GuessThePokemon = () => {
   const [score, setScore] = useState(0); // eslint-disable-next-line
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const { pokemons, fetchPokemon } = usePokemonFetchWithMoves(false, 1);
+  const [roundDone, setRoundDone] = useState(false);
+  // da war nach pokemons noch ein , fetchPokemon welches ich in 63 ersetzt habe um richtig fetchen zu können
+  // pokemons == soltuionPokemonArray
+  const { pokemons } = usePokemonFetchWithMoves(roundDone, 1);
+  const [suggestions, setSuggestions] = useState();
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const [selectedPokemons, setSelectedPokemons] = useState([]);
 
-  const handleSubmit = () => {
-    // Your submit logic here
-    setIsSubmitted(true);
+  const fetchNewSolutionPokemon = () => {
+    setRoundDone(true);
   };
-  console.log("hi");
+
+  const resetSelectedPokemons = () => {
+    // Reset the selectedPokemons here
+    // This will depend on how you're handling the selectedPokemons
+    // But it could be as simple as setting the state back to an empty array:
+    setSelectedPokemons([]);
+  };
+  // const datenbank_all = async () => {
+  //   for (let i = 1; i < 1303; i++) {
+  //     const url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
+  //     const response = await fetch(url);
+  //     const pokemonobj = await response.json();
+  //     datenbank_add(
+  //       pokemonobj["sprites"]["other"]["official-artwork"]["front_default"],
+  //       pokemonobj.name
+  //     );
+  //   }
+  // };
+  // // TODO 1. CSS fixen box knockt topcontainer weg + answerContainer_GTP überlappt nun damit
+  // // TODO 2. Css von PokemonList anpassen
+  // // TODO 3. PokemonList onClick Logik einbauen
+  // // TODO 3. Pokemon von PokemonList in SubmitBox einfügen, dann anhand dem Namen das richtige Objekt
+  // // TODO 3. aus der API zocken und das dann bei GuessThePokemon_BoxesCard neben solutionPokemon als Pokemon übergeben
+  //  // TODO 4. PokemonList capitalizeFirstLetter & sortieren nach Alphabet
+  // // TODO 5. SelectedPokemon mit SolutionPokemon vergleichen und dann die richtigen Icons anzeigen sowie CSS anpassen
+  // ? TODO 6. Bereits versuchtes Pokemon aus PokemonListe entfernen für den Run
+  // // TODO 7. Score implementieren
+  // // TODO 8. HandleCorrectAnswer implementieren
+  // // TODO 9. Neu fetchen von Pokemon wenn richtig geraten sowie das entfernen alter selectedPokemons
+  // TODO 8. Css anpassen für Hintergrundfarbe der Boxen harmloseres Orange mit Glaseffekt oder anderes
+
+  React.useEffect(() => {
+    if (selectedPokemon) {
+      setInputValue(selectedPokemon.name);
+    }
+  }, [selectedPokemon]);
+
+  const resetSelectedPokemon = () => {
+    setSelectedPokemon(null);
+  };
+
+  const handleInputChange = async (event) => {
+    setInputValue(event.target.value);
+    if (event.target.value.length > 0) {
+      const fetchedPokemon = await fetchPokemonStartingWithInput_FromMongo(
+        event.target.value
+      );
+      setSuggestions(fetchedPokemon);
+      setShowSuggestions(true);
+    } else {
+      setShowSuggestions(false);
+    }
+  };
+
+  const fetchPokemon = async (pokemonName) => {
+    const response = await fetch(
+      `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
+    );
+    const pokemonData = await response.json();
+    return pokemonData;
+  };
+
+  const handleSubmit = async () => {
+    if (selectedPokemon) {
+      const pokemonData = await fetchPokemon(selectedPokemon.name);
+      setSelectedPokemons([...selectedPokemons, pokemonData]);
+      setSelectedPokemon(null);
+      setInputValue("");
+    }
+  };
 
   return (
     <div className="page_GTP">
@@ -45,20 +123,43 @@ const GuessThePokemon = () => {
           </div>
         </div>
         <div className="answerContainer_GTP">
-          <input type="text" placeholder="Type Pokemon name..." />
+          <input
+            type="text"
+            placeholder="Type Pokemon name..."
+            value={inputValue}
+            onChange={handleInputChange}
+          />
           <button type="submit" onClick={handleSubmit}>
             Go
           </button>
         </div>
+        {showSuggestions && suggestions && (
+          <PokemonList
+            suggestions={suggestions}
+            onPokemonSelected={(pokemon) => {
+              setSelectedPokemon(pokemon);
+              setInputValue(pokemon.name);
+              setShowSuggestions(false);
+            }}
+          />
+        )}
         <div className="score">
           <Score score={score} />
         </div>
       </div>
-      {isSubmitted && (
-        <div className="bottom-Container_GTP">
-          <GuessThePokemon_BoxesCard solutionPokemon={pokemons[0]} />
+      {selectedPokemons.map((pokemon, index) => (
+        <div className="bottom-Container_GTP" key={index}>
+          <GuessThePokemon_BoxesCard
+            selectedPokemon={pokemon}
+            solutionPokemon={pokemons[0]}
+            increaseScore={() => setScore(score + 1)}
+            resetSelectedPokemon={resetSelectedPokemon}
+            score={score}
+            fetchNewSolutionPokemon={fetchNewSolutionPokemon}
+            resetSelectedPokemons={resetSelectedPokemons}
+          />
         </div>
-      )}
+      ))}
     </div>
   );
 };
