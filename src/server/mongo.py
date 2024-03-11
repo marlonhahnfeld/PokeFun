@@ -29,17 +29,12 @@ def generate_jwt(username):
     )
 
 def extract_username(token):
-    print('Token:', token)
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
-        print('Payload:', payload)
-        print(SECRET_KEY)
         return payload['sub']
     except jwt.ExpiredSignatureError:
-        print('Token is expired')
         return 'Signature expired. Please log in again.'
     except jwt.InvalidTokenError:
-        print('Token is invalid')
         return 'Invalid token. Please log in again.'
 
 
@@ -118,18 +113,36 @@ def saveHigherLowerHighscoreToMongo():
         # Create a filter to find the user
         user_filter = {'username': username}
 
-        # Create the update operation
-        new_values = {"$set": {'score': score}}
+        # Fetch the user document
+        user_doc = collectionUsers.find_one(user_filter)
 
-        # Update the user document
-        result = collectionUsers.update_one(user_filter, new_values)
+        # If the user document doesn't exist, return an error
+        if user_doc is None:
+            return jsonify({'result': 'error', 'details': 'User does not exist'})
 
-        return jsonify({'result': 'success', 'score': score})
+        # If 'gamedata' doesn't exist, initialize it as an empty array
+        if 'gamedata' not in user_doc:
+            collectionUsers.update_one(user_filter, {"$set": {'gamedata': [{'game': 'higherLower', 'score': score}]}})
+            return jsonify({'result': 'success', 'score': score})
 
-    except:
-        return jsonify({'result': 'error', 'details': 'Error saving highscore'})
+        # Find the index of the 'higherLower' game data
+        game_index = next((index for index, game in enumerate(user_doc['gamedata']) if game['game'] == 'higherLower'), None)
 
+        # If the 'higherLower' game data doesn't exist, add it
+        if game_index is None:
+            collectionUsers.update_one(user_filter, {"$push": {'gamedata': {'game': 'higherLower', 'score': score}}})
+            return jsonify({'result': 'success', 'score': score})
 
+        # If the new score is higher, update the score
+        if user_doc['gamedata'][game_index]['score'] < score:
+            collectionUsers.update_one(user_filter, {"$set": {f'gamedata.{game_index}.score': score}})
+            return jsonify({'result': 'success', 'score': score})
+
+        else:
+            return jsonify({'result': 'success', 'details': 'Score is not higher than the current highscore'})
+
+    except Exception as e:
+        return jsonify({'result': 'error', 'details': 'Error saving highscore', 'error' : str(e)})
 
 
 if __name__ == '__main__':
