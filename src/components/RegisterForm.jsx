@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { registerUserAndPasswordToMongo } from "../server/dbutils";
+import { registerUser } from "../server/authutil";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import "../styles/RegisterForm.css";
@@ -23,14 +23,9 @@ const RegisterForm = () => {
   const onSubmit = async (data) => {
     console.log(data);
     try {
-      const response = await registerUserAndPasswordToMongo(
-        data.username,
-        data.password
-      );
+      const response = await registerUser(data.username, data.password);
       if (response.result === "success") {
         console.log("Registered successfully");
-        // Store the JWT token in local storage
-        localStorage.setItem("token", response.token);
         navigate("/");
       }
 
@@ -41,7 +36,7 @@ const RegisterForm = () => {
         });
       }
     } catch (e) {
-      console.error(e.message, " x");
+      console.error(e.message);
       setError("username", {
         type: "manual",
         message: "An error occurred while registering.",

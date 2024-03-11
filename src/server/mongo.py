@@ -65,7 +65,7 @@ def register_user():
         token = generate_jwt(username)
 
         # Create a response
-        response = make_response(jsonify({'result': 'success', 'details': str(result.inserted_id)}))
+        response = make_response(jsonify({'result': 'success', 'details': 'User registered'}))
 
         # Set the JWT token as an HttpOnly cookie
         response.set_cookie('token', token, httponly=True)
