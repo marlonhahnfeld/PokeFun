@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/HigherLowerPageCSS.css";
 import { useState } from "react";
 import usePokemonFetchWithTotalStats from "../hooks/usePokemonFetchWithTotalStats";
@@ -12,6 +12,8 @@ import Grow from "@mui/material/Grow";
 import Sidenavigation from "../components/Sidenavigation";
 import HLHistory from "../components/HigherLowerHistory";
 import { saveScoreHigherLower } from "../server/dbutils";
+import HLHighscore from "../components/HLHighscore";
+import { getHighscoreForHigherLower } from "../server/dbutils";
 
 const HigherLowerGamePage = () => {
   const [score, setScore] = useState(0);
@@ -22,6 +24,19 @@ const HigherLowerGamePage = () => {
     roundDone,
     2
   );
+  const [highscore, setHighscore] = useState(null);
+  const [scoreSaved, setScoreSaved] = useState(false);
+
+  useEffect(() => {
+    getHighscoreForHigherLower()
+      .then((highscore) => {
+        setHighscore(highscore);
+        setScoreSaved(false); // Set scoreSaved to false after the highscore is fetched
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, [scoreSaved]); // Add scoreSaved as a dependency
 
   const handleClickCard = (cardNumber) => {
     const currentTime = new Date().getTime();
@@ -41,6 +56,7 @@ const HigherLowerGamePage = () => {
       setScore((prev) => prev + 1);
     } else {
       saveScoreHigherLower(score);
+      setScoreSaved(true); // Set scoreSaved to true after the score is saved
       setScore(0);
     }
 
@@ -74,7 +90,9 @@ const HigherLowerGamePage = () => {
               <PokemonCard pokemon={pokemons[0]} id="1" />
               <TotalStats totalStats={totalStats[0]} />
             </div>
+
             <div className="score">
+              <HLHighscore highscore={highscore} />
               <Score score={score} />
               <HLHistory history={[pokemons[0], pokemons[1]]} />
             </div>
