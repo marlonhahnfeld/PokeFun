@@ -75,6 +75,35 @@ def register_user():
         # Handle errors gracefully
         return jsonify({'result': 'error', 'details': str(e)})
     
+@app.route('/loginUser', methods=['POST'])
+def login_user():
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
+
+    if not username or not password:
+        return jsonify({'result': 'error', 'details': 'Username or password not provided'})
+
+    existing_user = collectionUsers.find_one({'username': username, 'password': password})
+
+    if existing_user is None:
+        return jsonify({'result': 'error', 'details': 'Invalid username or password'})
+
+    try:
+        # Generate a JWT token for the user
+        token = generate_jwt(username)
+
+        # Create a response
+        response = make_response(jsonify({'result': 'success', 'details': 'Logged in'}))
+
+        # Set the JWT token as an HttpOnly cookie
+        response.set_cookie('token', token, httponly=True)
+
+        return response
+    except Exception as e:
+        # Handle errors gracefully
+        return jsonify({'result': 'error', 'details': str(e)})
+    
 
 @app.route('/saveHighscoreForHigherLower', methods=['POST'])
 def saveHigherLowerHighscoreToMongo():
