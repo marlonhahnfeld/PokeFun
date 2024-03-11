@@ -54,3 +54,26 @@ export const saveScoreHigherLower = async (score) => {
       throw error; // re-throw the error so it can be caught by the function that calls registerUserAndPasswordToMongo
     });
 };
+
+export const getHighscoreForHigherLower = async () => {
+  return fetch("http://localhost:5000/getHighscoreForHigherLower", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include", // Include the cookies
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      return data.highscore; // Access the highscore from the data object
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      throw error;
+    });
+};

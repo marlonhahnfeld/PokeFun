@@ -1,0 +1,13 @@
+:root {
+  --font-roboto: "Roboto Slab", serif;
+  --font-raleway: "Raleway", sans-serif;
+  --font-honk: "Honk", sans-serif;
+}
+
+.highscore-component h2 {
+  font-family: var(--font-honk);
+}
+
+h2 {
+  font-family: var(--font-honk);
+}

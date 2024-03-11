@@ -143,6 +143,39 @@ def saveHigherLowerHighscoreToMongo():
 
     except Exception as e:
         return jsonify({'result': 'error', 'details': 'Error saving highscore', 'error' : str(e)})
+    
+
+@app.route('/getHighscoreForHigherLower', methods=['GET'])
+def getHighscoreForHigherLower():
+    token = request.cookies.get('token')  # Get the token from the cookies
+    username = extract_username(token)
+
+    if username is None:
+        return jsonify({'result': 'error', 'details': 'No user logged in'})
+
+    try:
+        # Create a filter to find the user
+        user_filter = {'username': username}
+
+        # Fetch the user document
+        user_doc = collectionUsers.find_one(user_filter)
+
+        # If the user document doesn't exist, return an error
+        if user_doc is None:
+            return jsonify({'result': 'error', 'details': 'User does not exist'})
+
+        # Find the 'higherLower' game data
+        higher_lower_game_data = next((game for game in user_doc['gamedata'] if game['game'] == 'higherLower'), None)
+
+        # If the 'higherLower' game data doesn't exist, return an error
+        if higher_lower_game_data is None:
+            return jsonify({'result': 'error', 'details': 'No higherLower game data'})
+
+        # Return the highscore
+        return jsonify({'result': 'success', 'highscore': higher_lower_game_data['score']})
+
+    except Exception as e:
+        return jsonify({'result': 'error', 'details': 'Error fetching highscore', 'error' : str(e)})
 
 
 if __name__ == '__main__':
