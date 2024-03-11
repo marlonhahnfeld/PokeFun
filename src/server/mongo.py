@@ -13,7 +13,6 @@ db = client['Pokemon']
 collectionPokemon = db['Pokemon']
 collectionUsers = db['Users']
 
-    # token = request.headers.get('Authorization') //! This is how you get the jwt from the request
 
 
 SECRET_KEY = "oU7ufaHTqk7lE0OM7as5Kl1AY43G7UfO"

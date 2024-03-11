@@ -4,6 +4,9 @@ import { loginUser } from "../server/authutil";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useNavigate, Link } from "react-router-dom";
+import "../styles/LoginForm.css";
+import Typography from "@mui/material/Typography";
+import Grow from "@mui/material/Grow";
 
 const LoginForm = () => {
   const {
@@ -42,6 +45,11 @@ const LoginForm = () => {
 
   return (
     <div className="loginform-container">
+      <Grow in={true} timeout={1000} className="login-title">
+        <Typography variant="h2" title="">
+          Login
+        </Typography>
+      </Grow>
       <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
         <TextField
           {...register("username", { required: "Username is required" })}

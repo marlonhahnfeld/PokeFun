@@ -5,6 +5,8 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import "../styles/RegisterForm.css";
 import { useNavigate, Link } from "react-router-dom";
+import Typography from "@mui/material/Typography";
+import Grow from "@mui/material/Grow";
 
 const RegisterForm = () => {
   const {
@@ -50,6 +52,11 @@ const RegisterForm = () => {
 
   return (
     <div className="registerform-container">
+      <Grow in={true} timeout={1000} className="login-title">
+        <Typography variant="h2" title="">
+          Register
+        </Typography>
+      </Grow>
       <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
         <TextField
           {...register("username", {

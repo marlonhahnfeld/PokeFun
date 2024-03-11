@@ -4,7 +4,7 @@
   --font-honk: "Honk", sans-serif;
 }
 
-.registerform-container {
+.loginform-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,11 +13,11 @@
   width: 50%;
 }
 
-.registerform-container h2 {
+.loginform-container h2 {
   font-family: var(--font-honk);
 }
 
-.register-form {
+.login-form {
   display: flex;
   flex-direction: column;
 }
