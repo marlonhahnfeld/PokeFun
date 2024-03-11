@@ -40,8 +40,8 @@ export default function PokemonList({ suggestions, onPokemonSelected }) {
     <Box
       sx={{
         position: "absolute",
-        top: "464px", // Höhe der Suchleiste
-        left: "740px", // Position der Suchleiste
+        marginTop: "37px",
+        marginRight: "60px",
         width: "100%",
         height: "100%",
         maxWidth: 340,

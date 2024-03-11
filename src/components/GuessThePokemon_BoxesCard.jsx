@@ -40,7 +40,7 @@ const GuessThePokemon_BoxesCard = ({
         resetSelectedPokemon();
         resetSelectedPokemons();
         fetchNewSolutionPokemon();
-      }, 5000);
+      }, 3000);
     }
   }, [selectedPokemon, solutionPokemon]);
 

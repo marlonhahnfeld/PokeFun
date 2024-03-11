@@ -21,7 +21,7 @@ const GuessThePokemon = () => {
   const [inputValue, setInputValue] = useState("");
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [selectedPokemons, setSelectedPokemons] = useState([]);
-
+  const lastSelectedPokemonRef = React.useRef();
   const fetchNewSolutionPokemon = () => {
     setRoundDone(true);
   };
@@ -55,6 +55,13 @@ const GuessThePokemon = () => {
   // // TODO 8. HandleCorrectAnswer implementieren
   // // TODO 9. Neu fetchen von Pokemon wenn richtig geraten sowie das entfernen alter selectedPokemons
   // TODO 8. Css anpassen für Hintergrundfarbe der Boxen harmloseres Orange mit Glaseffekt oder anderes
+
+  // auto-scroll zum letzten hinzugefügten Pokemon
+  React.useEffect(() => {
+    if (lastSelectedPokemonRef.current) {
+      lastSelectedPokemonRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [selectedPokemons]);
 
   React.useEffect(() => {
     if (selectedPokemon) {
@@ -104,7 +111,7 @@ const GuessThePokemon = () => {
         </div>
       </div>
       <div className="mid-container_GTP">
-        <div className="hintBox_GTP">
+        {/* <div className="hintBox_GTP">
           {" "}
           <h4> Guess The Pokemon! </h4>
           <div className="hintBoxIcons_GTP">
@@ -121,7 +128,7 @@ const GuessThePokemon = () => {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="answerContainer_GTP">
           <input
             type="text"
@@ -146,20 +153,30 @@ const GuessThePokemon = () => {
         <div className="score">
           <Score score={score} />
         </div>
-      </div>
-      {selectedPokemons.map((pokemon, index) => (
-        <div className="bottom-Container_GTP" key={index}>
-          <GuessThePokemon_BoxesCard
-            selectedPokemon={pokemon}
-            solutionPokemon={pokemons[0]}
-            increaseScore={() => setScore(score + 1)}
-            resetSelectedPokemon={resetSelectedPokemon}
-            score={score}
-            fetchNewSolutionPokemon={fetchNewSolutionPokemon}
-            resetSelectedPokemons={resetSelectedPokemons}
-          />
+        <div className="pokemon-container">
+          {selectedPokemons.map((pokemon, index) => (
+            <div
+              ref={
+                index === selectedPokemons.length - 1
+                  ? lastSelectedPokemonRef
+                  : null
+              }
+              className="bottom-Container_GTP"
+              key={index}
+            >
+              <GuessThePokemon_BoxesCard
+                selectedPokemon={pokemon}
+                solutionPokemon={pokemons[0]}
+                increaseScore={() => setScore(score + 1)}
+                resetSelectedPokemon={resetSelectedPokemon}
+                score={score}
+                fetchNewSolutionPokemon={fetchNewSolutionPokemon}
+                resetSelectedPokemons={resetSelectedPokemons}
+              />
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   );
 };
