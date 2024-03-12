@@ -89,7 +89,9 @@ const MoveSetGamePage = () => {
 
   const handleIncorrectAnswer = () => {
     saveScoreMovesetGame(score);
+    setScoreSaved(true); // Set scoreSaved to true after the score is saved
     setScore(0);
+
     setTimeout(resetGame, 2000);
   };
 

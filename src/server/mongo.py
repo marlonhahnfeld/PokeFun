@@ -3,8 +3,8 @@ from pymongo import MongoClient
 from flask_cors import CORS
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-import jwt
 from datetime import datetime, timedelta
+import jwt
 
 app = Flask(__name__)
 uri = "mongodb+srv://pokefun:rliiTFpEjM0zeTIf@pokefun.hglcxgo.mongodb.net/?retryWrites=true&w=majority&appName=PokeFun"
