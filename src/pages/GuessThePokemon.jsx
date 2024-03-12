@@ -54,7 +54,8 @@ const GuessThePokemon = () => {
   // // TODO 7. Score implementieren
   // // TODO 8. HandleCorrectAnswer implementieren
   // // TODO 9. Neu fetchen von Pokemon wenn richtig geraten sowie das entfernen alter selectedPokemons
-  // TODO 8. Css anpassen für Hintergrundfarbe der Boxen harmloseres Orange mit Glaseffekt oder anderes
+  // ? TODO 8. Css anpassen für Hintergrundfarbe der Boxen harmloseres Orange mit Glaseffekt oder anderes
+  // ? TODO 9. CSS anpassen für eingesetzte Pokemon innerhalb Suchleiste statt Text noch kleines Image daneben maybe
 
   // auto-scroll zum letzten hinzugefügten Pokemon
   React.useEffect(() => {
