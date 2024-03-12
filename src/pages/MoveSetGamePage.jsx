@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import usePokemonFetchWithMoveset from "../hooks/usePokemonFetchWithMoveset";
-import { useState } from "react";
 import { Score } from "../components/Score";
 import PokemonCard from "../components/PokemonCard";
 import "../styles/MoveSetGamePage.css";
@@ -8,6 +7,9 @@ import MoveCard from "../components/MoveCard";
 import Sidenavigation from "../components/Sidenavigation"; // eslint-disable-next-line
 import Grow from "@mui/material/Grow";
 import Fade from "@mui/material/Fade";
+import { saveScoreMovesetGame } from "../server/dbutils";
+import Highscore from "../components/Highscore";
+import { getHighscoreForMovesetGame } from "../server/dbutils";
 
 const MoveSetGamePage = () => {
   // eslint-disable-next-line
@@ -31,6 +33,20 @@ const MoveSetGamePage = () => {
   const [isMarked1, setIsMarked1] = useState(false);
   const [isMarked2, setIsMarked2] = useState(false);
   const [isMarked3, setIsMarked3] = useState(false);
+
+  const [highscore, setHighscore] = useState(null);
+  const [scoreSaved, setScoreSaved] = useState(false);
+
+  useEffect(() => {
+    getHighscoreForMovesetGame()
+      .then((highscore) => {
+        setHighscore(highscore);
+        setScoreSaved(false); // Set scoreSaved to false after the highscore is fetched
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, [scoreSaved]); // Add scoreSaved as a dependency
 
   const checkClickEligibility = () => {
     const currentTime = new Date().getTime();
@@ -72,6 +88,7 @@ const MoveSetGamePage = () => {
   };
 
   const handleIncorrectAnswer = () => {
+    saveScoreMovesetGame(score);
     setScore(0);
     setTimeout(resetGame, 2000);
   };
@@ -124,6 +141,7 @@ const MoveSetGamePage = () => {
         <div className="top-container_MSG">
           <div className="score">
             <Score score={score} />
+            <Highscore highscore={highscore} />
           </div>
         </div>
 

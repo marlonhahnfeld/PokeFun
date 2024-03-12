@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import Grow from "@mui/material/Grow";
 import "../styles/HLHighscore.css";
 
-const HLHighscore = ({ highscore }) => {
+const Highscore = ({ highscore }) => {
   return (
     <>
       <div className="highscore-component">
@@ -17,4 +17,4 @@ const HLHighscore = ({ highscore }) => {
   );
 };
 
-export default HLHighscore;
+export default Highscore;

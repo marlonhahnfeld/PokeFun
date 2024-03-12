@@ -77,3 +77,57 @@ export const getHighscoreForHigherLower = async () => {
       throw error;
     });
 };
+
+export const saveScoreMovesetGame = async (score) => {
+  // const token = localStorage.getItem("token");
+
+  return fetch("http://localhost:5000/saveHighscoreForMovesetGame", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      // Authorization: token,
+    },
+    credentials: "include", // Include the cookies
+
+    body: JSON.stringify({
+      score: score,
+    }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      return data; // return the data so it can be used by the function that calls registerUserAndPasswordToMongo
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      throw error; // re-throw the error so it can be caught by the function that calls registerUserAndPasswordToMongo
+    });
+};
+
+export const getHighscoreForMovesetGame = async () => {
+  return fetch("http://localhost:5000/getHighscoreForMovesetGame", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include", // Include the cookies
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      return data.highscore; // Access the highscore from the data object
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      throw error;
+    });
+};
