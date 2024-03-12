@@ -10,7 +10,7 @@ import TotalStats from "../components/TotalStats";
 import Typography from "@mui/material/Typography";
 import Grow from "@mui/material/Grow";
 import Sidenavigation from "../components/Sidenavigation";
-import HLHistory from "../components/HigherLowerHistory";
+// import HLHistory from "../components/HigherLowerHistory";
 import { saveScoreHigherLower } from "../server/dbutils";
 import HLHighscore from "../components/HLHighscore";
 import { getHighscoreForHigherLower } from "../server/dbutils";
@@ -94,7 +94,7 @@ const HigherLowerGamePage = () => {
             <div className="score">
               <HLHighscore highscore={highscore} />
               <Score score={score} />
-              <HLHistory history={[pokemons[0], pokemons[1]]} />
+              {/* <HLHistory history={[pokemons[0], pokemons[1]]} /> */}
             </div>
             <div
               className="card_HL"
