@@ -1,4 +1,0 @@
-Hier kommen alle externen Quellen rein.
-
-Bsp. API
-Hier kommt alles bezüglich Umgang und Verarbeitung von API rein.

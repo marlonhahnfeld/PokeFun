@@ -3,6 +3,12 @@ from pymongo import MongoClient
 from flask_cors import CORS
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
+
+#pip install flask
+#pip install pymongo
+#pip install flask_cors
+
+
 import jwt
 from datetime import datetime, timedelta
 
@@ -12,7 +18,6 @@ client = MongoClient(uri,server_api=ServerApi('1')) # Connect to the MongoDB clu
 db = client['Pokemon']
 collectionPokemon = db['Pokemon']
 collectionUsers = db['Users']
-
 
 
 SECRET_KEY = "oU7ufaHTqk7lE0OM7as5Kl1AY43G7UfO"
@@ -176,6 +181,39 @@ def getHighscoreForHigherLower():
 
     except Exception as e:
         return jsonify({'result': 'error', 'details': 'Error fetching highscore', 'error' : str(e)})
+
+@app.route('/insert_one', methods=['POST'])
+def insert_one():
+    data = request.get_json()
+    name = data.get('name')
+    spriteurl = data.get('spriteurl')
+    try:
+        # Insert the document into the collection
+        result = collectionPokemon.insert_one({'name': name, 'spriteurl': spriteurl})
+
+        # Return the result
+        return jsonify({'result': 'success', 'details': str(result.inserted_id)})
+
+    except Exception as e:
+        # Handle errors gracefully
+        return jsonify({'result': 'error', 'details': str(e)})
+
+@app.route('/get_pokemon_starting_with/<input>', methods=['GET'])
+def get_pokemon_starting_with(input):
+    try:
+        # Query the collection for Pokemon starting with the given input
+        # Exclude the _id field
+        results = collectionPokemon.find({'name': {'$regex': f'^{input}', '$options': 'i'}}, {'_id': 0})
+
+        # Convert the results to a list of dictionaries
+        pokemon_list = [pokemon for pokemon in results]
+
+        # Return the results
+        return jsonify(pokemon_list)
+
+    except Exception as e:
+        # Handle errors gracefully
+        return jsonify({'result': 'error', 'details': str(e)})
 
 
 if __name__ == '__main__':
