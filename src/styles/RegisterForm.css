@@ -1,0 +1,30 @@
+:root {
+  --font-roboto: "Roboto Slab", serif;
+  --font-raleway: "Raleway", sans-serif;
+  --font-honk: "Honk", sans-serif;
+}
+
+.registerform-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 75%;
+  width: 50%;
+}
+
+.registerform-container h2 {
+  font-family: var(--font-honk);
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.errors {
+  color: red;
+  font-size: 1rem;
+  margin-top: 10px;
+  font-weight: bold;
+}

@@ -1,0 +1,51 @@
+/* Header.css */
+
+.header_tn {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  margin: 1rem;
+  color: white;
+  padding: 1rem;
+}
+
+/* LPHeader.css */
+
+.title_lp {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.title_lp h4 {
+  margin-top: 0;
+}
+.header-link {
+  margin-right: 1rem;
+  color: white;
+  text-decoration: none;
+}
+
+.header-title {
+  text-align: center;
+}
+
+.header-button {
+  background: none;
+  border: 2px solid white;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.header-button:hover {
+  background: white;
+  color: black;
+}
