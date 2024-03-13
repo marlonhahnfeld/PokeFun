@@ -3,10 +3,7 @@ import React from "react";
 import usePokemonFetchWithMoves from "../hooks/usePokemonFetchWithMoveset";
 import { useState } from "react";
 import { Score } from "../components/Score";
-import ShapeIcon from "../resources/ShapeIcon.png";
-import ArtworkIcon from "../resources/ArtworkIcon.png";
-import GuessThePokemon_BoxesCard from "../components/GuessThePokemon_BoxesCard";
-import { datenbank_add } from "../server/utils";
+import GuessThePokemonBoxesCard from "../components/GuessThePokemonBoxesCard";
 import { fetchPokemonStartingWithInput_FromMongo } from "../utils/GuessThePokemonUtil";
 import PokemonList from "../components/ui/PokemonList";
 
@@ -32,17 +29,6 @@ const GuessThePokemon = () => {
     // But it could be as simple as setting the state back to an empty array:
     setSelectedPokemons([]);
   };
-  // const datenbank_all = async () => {
-  //   for (let i = 1; i < 1303; i++) {
-  //     const url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
-  //     const response = await fetch(url);
-  //     const pokemonobj = await response.json();
-  //     datenbank_add(
-  //       pokemonobj["sprites"]["other"]["official-artwork"]["front_default"],
-  //       pokemonobj.name
-  //     );
-  //   }
-  // };
   // // TODO 1. CSS fixen box knockt topcontainer weg + answerContainer_GTP überlappt nun damit
   // // TODO 2. Css von PokemonList anpassen
   // // TODO 3. PokemonList onClick Logik einbauen
@@ -154,7 +140,7 @@ const GuessThePokemon = () => {
         <div className="score">
           <Score score={score} />
         </div>
-        <div className="pokemon-container">
+        <div className="pokemon-container_GTP">
           {selectedPokemons.map((pokemon, index) => (
             <div
               ref={
@@ -165,7 +151,7 @@ const GuessThePokemon = () => {
               className="bottom-Container_GTP"
               key={index}
             >
-              <GuessThePokemon_BoxesCard
+              <GuessThePokemonBoxesCard
                 selectedPokemon={pokemon}
                 solutionPokemon={pokemons[0]}
                 increaseScore={() => setScore(score + 1)}

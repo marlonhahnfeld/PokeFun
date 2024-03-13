@@ -19,9 +19,6 @@ const MoveCard = ({
       moveDamageClass === "physical" ? physical_move : special_move;
   }
 
-  // TODO Extrahiere Typ-Icons(JSX & CSS) in eine neue typeCard, da das auch für pokemonCard,
-  // TODO als auch moveCard nützlich ist.
-
   return (
     <div className="moveCard-container">
       <div className="moveCard">

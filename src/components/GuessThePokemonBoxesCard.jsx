@@ -5,12 +5,7 @@ import arrowDownIcon from "../resources/arrowDown.png";
 import { capitalizeFirstLetter } from "../utils/HigherLowerUtil";
 import { sumBaseStats } from "../utils/HigherLowerUtil";
 
-// TODO implement logic to display correct arrowIcon by comparing pokemon characteristics
-// TODO Datenbank aufsetzen mit allen Pokemon dann von submitButton pokemon haben
-// TODO eventuell Gen-locken
-// // TODO Hyper Visualisierung im BIOS aktivieren
-
-const GuessThePokemon_BoxesCard = ({
+const GuessThePokemonBoxesCard = ({
   selectedPokemon,
   solutionPokemon,
   increaseScore,
@@ -36,7 +31,6 @@ const GuessThePokemon_BoxesCard = ({
       selectedPokemon.name === solutionPokemon.name
     ) {
       increaseScore();
-      alert("You won! The score is now " + (score + 1));
       setTimeout(() => {
         resetSelectedPokemon();
         resetSelectedPokemons();
@@ -204,4 +198,4 @@ const GuessThePokemon_BoxesCard = ({
   );
 };
 
-export default GuessThePokemon_BoxesCard;
+export default GuessThePokemonBoxesCard;

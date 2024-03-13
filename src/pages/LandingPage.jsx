@@ -29,9 +29,9 @@ const LandingPage = () => {
               image="https://unsplash.it/300/400"
             />
           </Link>
-          <Link to="/">
+          <Link to="/GuessThePokemon">
             <LPCard
-              title="Guess the Pokemon (soon)"
+              title="Guess the Pokemon"
               description="Guess the Pokemon and find similarities! The fewer guesses, the better."
               image="https://unsplash.it/400/400"
             />

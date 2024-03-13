@@ -103,8 +103,7 @@ body {
 
 .bottom-Container_GTP {
   width: 100%;
-  height: 50%;
-  flex: 1;
+  height: fit-content;
   display: flex;
   justify-content: center;
   align-items: start;
@@ -143,7 +142,7 @@ body {
 .box_GTP .bottomText {
 }
 
-.pokemon-container {
+.pokemon-container_GTP {
   height: 700px;
   width: 70%;
   display: flex;
