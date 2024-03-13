@@ -1,184 +1,85 @@
 .answerContainer_MSG {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    display: flex;
-    height: 70%;
-    width: 66%;
-    overflow: hidden;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 1rem;
-    user-select: none;
-    background-color: #212426;
-    color: #f9d3b4;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    margin-top: 2rem;
-  }
-  
-  .answerContainer_MSG:hover {
-    box-shadow: 0 8px 16px #9e5959;
-  }
-
-  .answerContainer_MSG:active {
-    box-shadow: 0 2px 4px #9e5959;
-  }
-
-  .moveCard{
-    height: 15vh;
-  }
- 
- .moveName {
-    font-size: 2rem;
-    position: relative;
-    bottom: 2.5rem;
-  }
- 
-  .moveType {
-    position: relative;
-    right: 18rem;
-    bottom: 5.5rem;
-    scale: 100%;
-  }
-  
-  .movePP {
-    position: relative;
-    bottom: 7.4rem;
-    right: 2rem;
-    font-size: 1.2rem;
-  }
-  
-  .movePriority {
-    position: relative;
-    bottom: 11rem;
-    left: 9rem;
-    font-size: 1.2rem;
-  }
-  
-  .moveAccuracy {
-    position: relative;
-    bottom: 27.5rem;
-    right: 14rem;
-    font-size: 1.4rem;
-  }
-  
-  .movePower {
-    position: relative;
-    bottom: 6.5rem;
-    right: 13rem;
-    font-size: 1.4rem;
-  }
-  
-  .moveDamageClass {
-    position: relative;
-    bottom: 22.5rem;
-    left: 16rem;
-    font-size: 1rem;
-    width: 150px; /* Or any other size */
-    height: auto;
-  }
-
-  .icon {
-    border-radius: 100%;
-    height: 100px;
-    width: 100px;
-    margin:auto;
-    transition: 200ms all;
-    filter: saturate(200%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  height: 70%;
+  width: 66%;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem;
+  user-select: none;
+  background-color: #212426;
+  color: #f9d3b4;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  margin-top: 2rem;
 }
 
-.icon img {
-    height: 60%;
-    width: 60%;
-    margin: 20%;
+.answerContainer_MSG:hover {
+  box-shadow: 0 8px 16px #9e5959;
 }
 
-.bug {
-    background: #92BC2C;
-    box-shadow: 0 0 20px #92BC2C;
+.answerContainer_MSG:active {
+  box-shadow: 0 2px 4px #9e5959;
 }
 
-.dark {
-    background: #595761;
-    box-shadow: 0 0 20px #595761;
+.moveCard {
+  height: 15vh;
 }
 
-.dragon {
-    background: #0C69C8;
-    box-shadow: 0 0 20px #0C69C8;
+.typeComponent {
+  right: 200px;
+  bottom: 80px;
+  position: relative;
 }
 
-.electric {
-    background: #F2D94E;
-    box-shadow: 0 0 20px #F2D94E;
+.moveName {
+  font-size: 2rem;
+  position: relative;
+  bottom: 2.5rem;
 }
 
-.fire {
-    background: #FBA54C;
-    box-shadow: 0 0 20px #FBA54C;
+.moveType {
+  position: relative;
+  right: 18rem;
+  bottom: 5.5rem;
+  scale: 100%;
 }
 
-.fairy {
-    background: #EE90E6;
-    box-shadow: 0 0 20px #EE90E6;
+.movePP {
+  position: relative;
+  bottom: 7.4rem;
+  right: 2rem;
+  font-size: 1.2rem;
 }
 
-.fighting {
-    background: #D3425F;
-    box-shadow: 0 0 20px #D3425F;
+.movePriority {
+  position: relative;
+  bottom: 11rem;
+  left: 9rem;
+  font-size: 1.2rem;
 }
 
-.flying {
-    background: #A1BBEC;
-    box-shadow: 0 0 20px #A1BBEC;
+.moveAccuracy {
+  position: relative;
+  bottom: 27.5rem;
+  right: 14rem;
+  font-size: 1.4rem;
 }
 
-.ghost {
-    background: #5F6DBC;
-    box-shadow: 0 0 20px #5F6DBC;
+.movePower {
+  position: relative;
+  bottom: 6.5rem;
+  right: 13rem;
+  font-size: 1.4rem;
 }
 
-.grass {
-    background: #5FBD58;
-    box-shadow: 0 0 20px #5FBD58;
-}
-
-.ground {
-    background: #DA7C4D;
-    box-shadow: 0 0 20px #DA7C4D;
-}
-
-.ice {
-    background: #75D0C1;
-    box-shadow: 0 0 20px #75D0C1;
-}
-
-.normal {
-    background: #A0A29F;
-    box-shadow: 0 0 20px #A0A29F;
-}
-
-.poison {
-    background: #B763CF;
-    box-shadow: 0 0 20px #B763CF;
-}
-
-.psychic {
-    background: #FA8581;
-    box-shadow: 0 0 20px #FA8581;
-}
-
-.rock {
-    background: #C9BB8A;
-    box-shadow: 0 0 20px #C9BB8A;
-}
-
-.steel {
-    background: #5695A3;
-    box-shadow: 0 0 20px #5695A3;
-}
-
-.water {
-    background: #539DDF;
-    box-shadow: 0 0 20px #539DDF;
+.moveDamageClass {
+  position: relative;
+  bottom: 22.5rem;
+  left: 16rem;
+  font-size: 1rem;
+  width: 150px; /* Or any other size */
+  height: auto;
 }
