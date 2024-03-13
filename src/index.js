@@ -3,14 +3,14 @@ import HigherLowerGamePage from "./pages/HigherLowerGamePage";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MovesetGamePage from "../src/pages/MoveSetGamePage";
-import GuessThePokemon from "../src/pages/GuessThePokemon";
+import GuessThePokemonPage from "../src/pages/GuessThePokemonPage";
 import LandingPage from "./pages/LandingPage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 
 const router = createBrowserRouter([
   {
-    path: "/HigherOrLower",
+    path: "/higherorlower",
     element: <HigherLowerGamePage />,
   },
   {
@@ -18,8 +18,8 @@ const router = createBrowserRouter([
     element: <MovesetGamePage />,
   },
   {
-    path: "/GuessThePokemon",
-    element: <GuessThePokemon />,
+    path: "/guessthepokemon",
+    element: <GuessThePokemonPage />,
   },
   {
     path: "/",

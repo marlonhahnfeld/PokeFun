@@ -34,11 +34,14 @@ const Sidenavigation = () => {
           </Link>
         </div>
         <ul className="games">
-          <NavigationItem to="/HigherOrLower" Icon={SwapVertIcon}>
+          <NavigationItem to="/higherorlower" Icon={SwapVertIcon}>
             Higher or Lower
           </NavigationItem>
           <NavigationItem to="/movesetgame" Icon={GamepadIcon}>
             Moveset Game
+          </NavigationItem>
+          <NavigationItem to="/guessthepokemon" Icon={GamepadIcon}>
+            Guess the Pokemon
           </NavigationItem>
         </ul>
         <ul className="other">

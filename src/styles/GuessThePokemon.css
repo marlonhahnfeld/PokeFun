@@ -16,10 +16,18 @@ body {
     rgb(63, 76, 119) 70.2%
   );
 }
+
+.side-navigation_GTP {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 5%;
+}
+
 .right-container_GTP {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 95vw;
 }
 
 .top-container_GTP {
