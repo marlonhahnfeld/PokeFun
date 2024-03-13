@@ -18,6 +18,7 @@ const GuessThePokemon_BoxesCard = ({
   score,
   resetSelectedPokemons,
   fetchNewSolutionPokemon,
+  setRoundDone,
 }) => {
   const [selectedPokemonGrowthRate, setSelectedPokemonGrowthRate] =
     React.useState(null);
@@ -42,6 +43,7 @@ const GuessThePokemon_BoxesCard = ({
         fetchNewSolutionPokemon();
       }, 3000);
     }
+    setRoundDone(false);
   }, [selectedPokemon, solutionPokemon]);
 
   React.useEffect(() => {

@@ -173,6 +173,7 @@ const GuessThePokemon = () => {
                 score={score}
                 fetchNewSolutionPokemon={fetchNewSolutionPokemon}
                 resetSelectedPokemons={resetSelectedPokemons}
+                setRoundDone={setRoundDone}
               />
             </div>
           ))}
