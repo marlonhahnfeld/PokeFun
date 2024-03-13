@@ -3,14 +3,11 @@ from pymongo import MongoClient
 from flask_cors import CORS
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-
+import jwt
+from datetime import datetime, timedelta
 #pip install flask
 #pip install pymongo
 #pip install flask_cors
-
-
-import jwt
-from datetime import datetime, timedelta
 
 app = Flask(__name__)
 uri = "mongodb+srv://pokefun:rliiTFpEjM0zeTIf@pokefun.hglcxgo.mongodb.net/?retryWrites=true&w=majority&appName=PokeFun"
@@ -216,6 +213,85 @@ def get_pokemon_starting_with(input):
         return jsonify({'result': 'error', 'details': str(e)})
 
 
+@app.route('/saveHighscoreForMovesetGame', methods=['POST'])
+def saveMovesetGameHighscoreToMongo():
+    data = request.get_json()
+    token = request.cookies.get('token')  # Get the token from the cookies
+    username = extract_username(token)
+    score = data.get('score')
+
+    if username is None:
+        return jsonify({'result': 'error', 'details': 'No user logged in'})
+
+    try:
+        # Create a filter to find the user
+        user_filter = {'username': username}
+
+        # Fetch the user document
+        user_doc = collectionUsers.find_one(user_filter)
+
+        # If the user document doesn't exist, return an error
+        if user_doc is None:
+            return jsonify({'result': 'error', 'details': 'User does not exist'})
+
+        # If 'gamedata' doesn't exist, initialize it as an empty array
+        if 'gamedata' not in user_doc:
+            collectionUsers.update_one(user_filter, {"$set": {'gamedata': [{'game': 'movesetGame', 'score': score}]}})
+            return jsonify({'result': 'success', 'score': score})
+
+        # Find the index of the 'movesetGame' game data
+        game_index = next((index for index, game in enumerate(user_doc['gamedata']) if game['game'] == 'movesetGame'), None)
+
+        # If the 'movesetGame' game data doesn't exist, add it
+        if game_index is None:
+            collectionUsers.update_one(user_filter, {"$push": {'gamedata': {'game': 'movesetGame', 'score': score}}})
+            return jsonify({'result': 'success', 'score': score})
+
+        # If the new score is higher, update the score
+        if user_doc['gamedata'][game_index]['score'] < score:
+            collectionUsers.update_one(user_filter, {"$set": {f'gamedata.{game_index}.score': score}})
+            return jsonify({'result': 'success', 'score': score})
+
+        else:
+            return jsonify({'result': 'success', 'details': 'Score is not higher than the current highscore'})
+
+    except Exception as e:
+        return jsonify({'result': 'error', 'details': 'Error saving highscore', 'error' : str(e)})
+    
+
+@app.route('/getHighscoreForMovesetGame', methods=['GET'])
+def getHighscoreForMovesetGame():
+    token = request.cookies.get('token')  # Get the token from the cookies
+    username = extract_username(token)
+
+    if username is None:
+        return jsonify({'result': 'error', 'details': 'No user logged in'})
+
+    try:
+        # Create a filter to find the user
+        user_filter = {'username': username}
+
+        # Fetch the user document
+        user_doc = collectionUsers.find_one(user_filter)
+
+        # If the user document doesn't exist, return an error
+        if user_doc is None:
+            return jsonify({'result': 'error', 'details': 'User does not exist'})
+
+        # Find the 'movesetGame' game data
+        movesetGame_game_data = next((game for game in user_doc['gamedata'] if game['game'] == 'movesetGame'), None)
+
+        # If the 'movesetGame' game data doesn't exist, return an error
+        if movesetGame_game_data  is None:
+            return jsonify({'result': 'error', 'details': 'No movesetGame game data'})
+
+        # Return the highscore
+        return jsonify({'result': 'success', 'highscore': movesetGame_game_data ['score']})
+
+    except Exception as e:
+        return jsonify({'result': 'error', 'details': 'Error fetching highscore', 'error' : str(e)})
+
+    
 if __name__ == '__main__':
     CORS(app, supports_credentials=True)  
     app.run(debug=True)
