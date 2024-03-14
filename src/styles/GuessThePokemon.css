@@ -9,7 +9,6 @@ body {
   display: flex;
   height: 100vh;
   width: 100vw;
-  flex-direction: column;
   background: linear-gradient(
     112.1deg,
     rgb(32, 38, 57) 11.4%,
@@ -27,7 +26,7 @@ body {
 .right-container_GTP {
   display: flex;
   flex-direction: column;
-  width: 95vw;
+  width: 95%;
 }
 
 .top-container_GTP {
