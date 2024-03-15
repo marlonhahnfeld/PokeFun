@@ -4,13 +4,13 @@ import arrowUpIcon from "../resources/arrowUp.png";
 import arrowDownIcon from "../resources/arrowDown.png";
 import { capitalizeFirstLetter } from "../utils/HigherLowerUtil";
 import { sumBaseStats } from "../utils/HigherLowerUtil";
+import { saveScoreGuessThePokemon } from "../server/dbutils";
 
 const GuessThePokemonBoxesCard = ({
   selectedPokemon,
   solutionPokemon,
-  increaseScore,
   resetSelectedPokemon,
-  score,
+  scoreSaved,
   resetSelectedPokemons,
   fetchNewSolutionPokemon,
   setRoundDone,
@@ -30,7 +30,8 @@ const GuessThePokemonBoxesCard = ({
       solutionPokemon &&
       selectedPokemon.name === solutionPokemon.name
     ) {
-      increaseScore();
+      saveScoreGuessThePokemon();
+      scoreSaved();
       setTimeout(() => {
         resetSelectedPokemon();
         resetSelectedPokemons();

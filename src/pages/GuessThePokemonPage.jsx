@@ -7,9 +7,11 @@ import GuessThePokemonBoxesCard from "../components/GuessThePokemonBoxesCard";
 import { fetchPokemonStartingWithInput_FromMongo } from "../utils/GuessThePokemonUtil";
 import PokemonList from "../components/ui/PokemonList";
 import Sidenavigation from "../components/Sidenavigation";
+import { getScoreGuessThePokemon } from "../server/dbutils";
 
 const GuessThePokemon = () => {
   const [score, setScore] = useState(0); // eslint-disable-next-line
+  const [scoreSaved, setScoreSaved] = useState(true);
   const [roundDone, setRoundDone] = useState(false);
   // da war nach pokemons noch ein , fetchPokemon welches ich in 63 ersetzt habe um richtig fetchen zu können
   // pokemons == soltuionPokemonArray
@@ -50,6 +52,17 @@ const GuessThePokemon = () => {
       lastSelectedPokemonRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [selectedPokemons]);
+
+  React.useEffect(() => {
+    getScoreGuessThePokemon()
+      .then((score) => {
+        setScore(score);
+        setScoreSaved(false);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, [scoreSaved]);
 
   React.useEffect(() => {
     if (selectedPokemon) {
@@ -157,9 +170,8 @@ const GuessThePokemon = () => {
                 <GuessThePokemonBoxesCard
                   selectedPokemon={pokemon}
                   solutionPokemon={pokemons[0]}
-                  increaseScore={() => setScore(score + 1)}
                   resetSelectedPokemon={resetSelectedPokemon}
-                  score={score}
+                  scoreSaved={() => setScoreSaved(true)}
                   fetchNewSolutionPokemon={fetchNewSolutionPokemon}
                   resetSelectedPokemons={resetSelectedPokemons}
                   setRoundDone={setRoundDone}

@@ -26,7 +26,7 @@ export const addPokemonNameAndSpriteToMongo = async (sprite, name) => {
 
 export const saveScoreHigherLower = async (score) => {
   // const token = localStorage.getItem("token");
-
+  // findet route in mongo.py @app.route('/saveHighscoreForMovesetGame', methods=['POST'])
   return fetch("http://localhost:5000/saveHighscoreForHigherLower", {
     method: "POST",
     headers: {
@@ -52,6 +52,56 @@ export const saveScoreHigherLower = async (score) => {
     .catch((error) => {
       console.error("Error:", error);
       throw error; // re-throw the error so it can be caught by the function that calls registerUserAndPasswordToMongo
+    });
+};
+
+export const saveScoreGuessThePokemon = async () => {
+  // const token = localStorage.getItem("token");
+  // findet route in mongo.py @app.route('/saveHighscoreForMovesetGame', methods=['POST'])
+  return fetch("http://localhost:5000/saveScoreGuessThePokemon", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      // Authorization: token,
+    },
+    credentials: "include", // Include the cookies
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      return data; // return the data so it can be used by the function that calls registerUserAndPasswordToMongo
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      throw error; // re-throw the error so it can be caught by the function that calls registerUserAndPasswordToMongo
+    });
+};
+
+export const getScoreGuessThePokemon = async () => {
+  return fetch("http://localhost:5000/getScoreGuessThePokemon", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include", // Include the cookies
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      return data.score; // Access the highscore from the data object
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      throw error;
     });
 };
 
