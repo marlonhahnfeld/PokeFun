@@ -6,9 +6,12 @@ import { Score } from "../components/Score";
 import GuessThePokemonBoxesCard from "../components/GuessThePokemonBoxesCard";
 import { fetchPokemonStartingWithInput_FromMongo } from "../utils/GuessThePokemonUtil";
 import PokemonList from "../components/ui/PokemonList";
+import Sidenavigation from "../components/Sidenavigation";
+import { getScoreGuessThePokemon } from "../server/dbutils";
 
 const GuessThePokemon = () => {
   const [score, setScore] = useState(0); // eslint-disable-next-line
+  const [scoreSaved, setScoreSaved] = useState(true);
   const [roundDone, setRoundDone] = useState(false);
   // da war nach pokemons noch ein , fetchPokemon welches ich in 63 ersetzt habe um richtig fetchen zu können
   // pokemons == soltuionPokemonArray
@@ -49,6 +52,17 @@ const GuessThePokemon = () => {
       lastSelectedPokemonRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [selectedPokemons]);
+
+  React.useEffect(() => {
+    getScoreGuessThePokemon()
+      .then((score) => {
+        setScore(score);
+        setScoreSaved(false);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, [scoreSaved]);
 
   React.useEffect(() => {
     if (selectedPokemon) {
@@ -92,13 +106,15 @@ const GuessThePokemon = () => {
 
   return (
     <div className="page_GTP">
+      <div className="side-navigation_GTP">
+        <Sidenavigation className="side-navigation_GTP" />
+      </div>
       <div className="right-container_GTP">
         <div className="top-container_GTP">
           <h4>PokeFun</h4>
         </div>
-      </div>
-      <div className="mid-container_GTP">
-        {/* <div className="hintBox_GTP">
+        <div className="mid-container_GTP">
+          {/* <div className="hintBox_GTP">
           {" "}
           <h4> Guess The Pokemon! </h4>
           <div className="hintBoxIcons_GTP">
@@ -116,53 +132,53 @@ const GuessThePokemon = () => {
             </div>
           </div>
         </div> */}
-        <div className="answerContainer_GTP">
-          <input
-            type="text"
-            placeholder="Type Pokemon name..."
-            value={inputValue}
-            onChange={handleInputChange}
-          />
-          <button type="submit" onClick={handleSubmit}>
-            Go
-          </button>
-        </div>
-        {showSuggestions && suggestions && (
-          <PokemonList
-            suggestions={suggestions}
-            onPokemonSelected={(pokemon) => {
-              setSelectedPokemon(pokemon);
-              setInputValue(pokemon.name);
-              setShowSuggestions(false);
-            }}
-          />
-        )}
-        <div className="score">
-          <Score score={score} />
-        </div>
-        <div className="pokemon-container_GTP">
-          {selectedPokemons.map((pokemon, index) => (
-            <div
-              ref={
-                index === selectedPokemons.length - 1
-                  ? lastSelectedPokemonRef
-                  : null
-              }
-              className="bottom-Container_GTP"
-              key={index}
-            >
-              <GuessThePokemonBoxesCard
-                selectedPokemon={pokemon}
-                solutionPokemon={pokemons[0]}
-                increaseScore={() => setScore(score + 1)}
-                resetSelectedPokemon={resetSelectedPokemon}
-                score={score}
-                fetchNewSolutionPokemon={fetchNewSolutionPokemon}
-                resetSelectedPokemons={resetSelectedPokemons}
-                setRoundDone={setRoundDone}
-              />
-            </div>
-          ))}
+          <div className="answerContainer_GTP">
+            <input
+              type="text"
+              placeholder="Type Pokemon name..."
+              value={inputValue}
+              onChange={handleInputChange}
+            />
+            <button type="submit" onClick={handleSubmit}>
+              Go
+            </button>
+          </div>
+          {showSuggestions && suggestions && (
+            <PokemonList
+              suggestions={suggestions}
+              onPokemonSelected={(pokemon) => {
+                setSelectedPokemon(pokemon);
+                setInputValue(pokemon.name);
+                setShowSuggestions(false);
+              }}
+            />
+          )}
+          <div className="score">
+            <Score score={score} />
+          </div>
+          <div className="pokemon-container_GTP">
+            {selectedPokemons.map((pokemon, index) => (
+              <div
+                ref={
+                  index === selectedPokemons.length - 1
+                    ? lastSelectedPokemonRef
+                    : null
+                }
+                className="bottom-Container_GTP"
+                key={index}
+              >
+                <GuessThePokemonBoxesCard
+                  selectedPokemon={pokemon}
+                  solutionPokemon={pokemons[0]}
+                  resetSelectedPokemon={resetSelectedPokemon}
+                  scoreSaved={() => setScoreSaved(true)}
+                  fetchNewSolutionPokemon={fetchNewSolutionPokemon}
+                  resetSelectedPokemons={resetSelectedPokemons}
+                  setRoundDone={setRoundDone}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

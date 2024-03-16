@@ -14,7 +14,7 @@ const LandingPage = () => {
           <TopNav></TopNav>{" "}
         </div>
         <div className="mid-container_lp">
-          <Link to="/HigherOrLower">
+          <Link to="/higherorlower">
             <LPCard
               title="Higher Lower"
               description="2 Pokemons are shown, guess which one has higher total stats!"
@@ -29,7 +29,7 @@ const LandingPage = () => {
               image="https://unsplash.it/300/400"
             />
           </Link>
-          <Link to="/GuessThePokemon">
+          <Link to="/guessthepokemon">
             <LPCard
               title="Guess the Pokemon"
               description="Guess the Pokemon and find similarities! The fewer guesses, the better."

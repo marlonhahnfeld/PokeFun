@@ -9,17 +9,24 @@ body {
   display: flex;
   height: 100vh;
   width: 100vw;
-  flex-direction: column;
   background: linear-gradient(
     112.1deg,
     rgb(32, 38, 57) 11.4%,
     rgb(63, 76, 119) 70.2%
   );
 }
+
+.side-navigation_GTP {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 5%;
+}
+
 .right-container_GTP {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 95%;
 }
 
 .top-container_GTP {
@@ -106,7 +113,7 @@ body {
   height: fit-content;
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   flex-direction: row;
   margin-top: 2%;
 }
@@ -137,9 +144,6 @@ body {
   position: absolute;
   top: -60px;
   font-size: large;
-}
-
-.box_GTP .bottomText {
 }
 
 .pokemon-container_GTP {
