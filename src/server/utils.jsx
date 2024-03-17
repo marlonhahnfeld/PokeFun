@@ -1,6 +1,6 @@
 export const datenbank_add = async (sprite, name) => {
   console.log("test x");
-  fetch("http://localhost:5000/insert_one", {
+  fetch("https://poke-fun-backend.vercel.app/insert_one", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

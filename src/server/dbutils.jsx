@@ -1,6 +1,6 @@
 export const addPokemonNameAndSpriteToMongo = async (sprite, name) => {
   console.log("test x");
-  fetch("http://localhost:5000/insert_one", {
+  fetch("https://poke-fun-backend.vercel.app/insert_one", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -27,18 +27,21 @@ export const addPokemonNameAndSpriteToMongo = async (sprite, name) => {
 export const saveScoreHigherLower = async (score) => {
   // const token = localStorage.getItem("token");
   // findet route in mongo.py @app.route('/saveHighscoreForMovesetGame', methods=['POST'])
-  return fetch("http://localhost:5000/saveHighscoreForHigherLower", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      // Authorization: token,
-    },
-    credentials: "include", // Include the cookies
+  return fetch(
+    "https://poke-fun-backend.vercel.app/saveHighscoreForHigherLower",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // Authorization: token,
+      },
+      credentials: "include", // Include the cookies
 
-    body: JSON.stringify({
-      score: score,
-    }),
-  })
+      body: JSON.stringify({
+        score: score,
+      }),
+    }
+  )
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -58,7 +61,7 @@ export const saveScoreHigherLower = async (score) => {
 export const saveScoreGuessThePokemon = async () => {
   // const token = localStorage.getItem("token");
   // findet route in mongo.py @app.route('/saveHighscoreForMovesetGame', methods=['POST'])
-  return fetch("http://localhost:5000/saveScoreGuessThePokemon", {
+  return fetch("https://poke-fun-backend.vercel.app/saveScoreGuessThePokemon", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -83,7 +86,7 @@ export const saveScoreGuessThePokemon = async () => {
 };
 
 export const getScoreGuessThePokemon = async () => {
-  return fetch("http://localhost:5000/getScoreGuessThePokemon", {
+  return fetch("https://poke-fun-backend.vercel.app/getScoreGuessThePokemon", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -106,13 +109,16 @@ export const getScoreGuessThePokemon = async () => {
 };
 
 export const getHighscoreForHigherLower = async () => {
-  return fetch("http://localhost:5000/getHighscoreForHigherLower", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    credentials: "include", // Include the cookies
-  })
+  return fetch(
+    "https://poke-fun-backend.vercel.app/getHighscoreForHigherLower",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include", // Include the cookies
+    }
+  )
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -131,18 +137,21 @@ export const getHighscoreForHigherLower = async () => {
 export const saveScoreMovesetGame = async (score) => {
   // const token = localStorage.getItem("token");
 
-  return fetch("http://localhost:5000/saveHighscoreForMovesetGame", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      // Authorization: token,
-    },
-    credentials: "include", // Include the cookies
+  return fetch(
+    "https://poke-fun-backend.vercel.app/saveHighscoreForMovesetGame",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // Authorization: token,
+      },
+      credentials: "include", // Include the cookies
 
-    body: JSON.stringify({
-      score: score,
-    }),
-  })
+      body: JSON.stringify({
+        score: score,
+      }),
+    }
+  )
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -160,13 +169,16 @@ export const saveScoreMovesetGame = async (score) => {
 };
 
 export const getHighscoreForMovesetGame = async () => {
-  return fetch("http://localhost:5000/getHighscoreForMovesetGame", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    credentials: "include", // Include the cookies
-  })
+  return fetch(
+    "https://poke-fun-backend.vercel.app/getHighscoreForMovesetGame",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include", // Include the cookies
+    }
+  )
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
