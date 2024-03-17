@@ -1,5 +1,5 @@
 export const registerUser = async (username, password) => {
-  const url = "https://poke-fun-blush.vercel.app/registerUser";
+  const url = "https://poke-fun-backend-blush.vercel.app/registerUser";
   try {
     const response = await fetch(url, {
       method: "POST",
@@ -27,7 +27,7 @@ export const registerUser = async (username, password) => {
 };
 
 export const loginUser = async (username, password) => {
-  return fetch("https://poke-fun-blush.vercel.app/loginUser", {
+  return fetch("https://poke-fun-backend-blush.vercel.app/loginUser", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
