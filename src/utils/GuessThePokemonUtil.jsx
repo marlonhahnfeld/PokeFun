@@ -1,7 +1,7 @@
 export const fetchPokemonStartingWithInput_FromMongo = async (input) => {
   try {
     const response = await fetch(
-      `http://localhost:5000/get_pokemon_starting_with/${input}`
+      `https://poke-fun-backend.vercel.app/get_pokemon_starting_with/${input}`
     );
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
