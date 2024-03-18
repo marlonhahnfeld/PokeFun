@@ -5,7 +5,9 @@ import "../styles/LoginPage.css";
 const LoginPage = () => {
   return (
     <div className="login-page">
-      <LoginForm />
+      <div className="login-form-border">
+        <LoginForm />
+      </div>
     </div>
   );
 };

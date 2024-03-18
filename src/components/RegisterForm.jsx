@@ -57,6 +57,7 @@ const RegisterForm = () => {
           Register
         </Typography>
       </Grow>
+
       <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
         <TextField
           {...register("username", {
@@ -71,6 +72,7 @@ const RegisterForm = () => {
           variant="outlined"
           size="medium"
           margin="normal"
+          InputLabelProps={{ style: { color: "white" } }}
         />
         <TextField
           {...register("password", {
@@ -85,6 +87,7 @@ const RegisterForm = () => {
           variant="outlined"
           size="medium"
           margin="normal"
+          InputLabelProps={{ style: { color: "white" } }}
         />
         <TextField
           {...register("confirmPassword", {
@@ -97,6 +100,7 @@ const RegisterForm = () => {
           variant="outlined"
           size="medium"
           margin="normal"
+          InputLabelProps={{ style: { color: "white" } }}
         />
         <Button
           disabled={isSubmitting}
