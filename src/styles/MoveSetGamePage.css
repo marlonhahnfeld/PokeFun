@@ -18,11 +18,7 @@ body {
   font-family: var(--font-roboto);
   display: flex;
   height: 100vh;
-  background: linear-gradient(
-    112.1deg,
-    rgb(32, 38, 57) 11.4%,
-    rgb(63, 76, 119) 70.2%
-  );
+  background-image: url("../resources/backgroundLP.svg");
 }
 
 .side-navigation_MSG {
@@ -125,6 +121,12 @@ h4 {
   height: fit-content;
   width: fit-content;
   transform: scale(0.6);
+}
+
+.score {
+  display: flex;
+  flex-direction: row;
+  padding: 0 60px 0 0;
 }
 
 .score h4 {
