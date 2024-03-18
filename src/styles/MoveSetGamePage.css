@@ -123,14 +123,11 @@ h4 {
   transform: scale(0.6);
 }
 
-.score {
+.score_MSG {
   display: flex;
   flex-direction: row;
-  padding: 0 60px 0 0;
-}
-
-.score h4 {
-  color: white;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 .sprite {

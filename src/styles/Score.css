@@ -4,9 +4,14 @@
   --font-honk: "Honk", sans-serif;
 }
 
-.score {
+.score_MSG h2 {
+  font-family: var(--font-honk);
 }
 
-.score h2 {
+.score_HL h2 {
+  font-family: var(--font-honk);
+}
+
+.score_GTP h2 {
   font-family: var(--font-honk);
 }

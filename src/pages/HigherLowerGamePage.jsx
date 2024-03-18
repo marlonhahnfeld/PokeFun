@@ -91,7 +91,7 @@ const HigherLowerGamePage = () => {
               <TotalStats totalStats={totalStats[0]} />
             </div>
 
-            <div className="score">
+            <div className="score_HL">
               <Highscore highscore={highscore} />
               <Score score={score} />
               {/* <HLHistory history={[pokemons[0], pokemons[1]]} /> */}
