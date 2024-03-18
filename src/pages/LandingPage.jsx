@@ -5,6 +5,7 @@ import LPCard from "../components/LPCard";
 //import Grow from "@mui/material/Grow";
 import { Link } from "react-router-dom";
 import TopNav from "../components/LPHeader";
+import landingPage_GTP from "../resources/landingPage_GTP.jpg";
 
 const LandingPage = () => {
   return (
@@ -33,7 +34,7 @@ const LandingPage = () => {
             <LPCard
               title="Guess the Pokemon"
               description="Guess the Pokemon and find similarities! The fewer guesses, the better."
-              image="https://unsplash.it/400/400"
+              image={landingPage_GTP}
             />
           </Link>
           <Link to="/">
