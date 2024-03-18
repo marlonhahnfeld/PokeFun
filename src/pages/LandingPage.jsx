@@ -24,18 +24,19 @@ const LandingPage = () => {
               image={logo1}
             />
           </Link>
-          <Link to="/movesetgame">
-            <LPCard
-              title="Moveset Game"
-              description="Guess which of 3 Pokemons is using a specific move! Maybe even all 3 know it."
-              image={logo2}
-            />
-          </Link>
+
           <Link to="/guessthepokemon">
             <LPCard
               title="Guess the Pokemon"
               description="Guess the Pokemon and find similarities! The fewer guesses, the better."
               image={landingPage_GTP}
+            />
+          </Link>
+          <Link to="/movesetgame">
+            <LPCard
+              title="Moveset Game"
+              description="Guess which of 3 Pokemons is using a specific move! Maybe even all 3 know it."
+              image={logo2}
             />
           </Link>
           {/* <Link to="/">
