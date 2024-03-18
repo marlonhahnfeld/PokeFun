@@ -1,4 +1,5 @@
 .pokemon-container {
+  backdrop-filter: blur(5px);
 }
 
 .pokemon-name {
