@@ -3,8 +3,8 @@
 .header_tn {
   width: 50%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 1rem;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
@@ -14,7 +14,15 @@
   padding: 1rem;
 }
 
-/* LPHeader.css */
+.header-left {
+  flex: 1;
+}
+
+.header-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
 
 .title_lp {
   position: absolute;
