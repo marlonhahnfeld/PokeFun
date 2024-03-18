@@ -6,6 +6,8 @@ import LPCard from "../components/LPCard";
 import { Link } from "react-router-dom";
 import TopNav from "../components/LPHeader";
 import landingPage_GTP from "../resources/landingPage_GTP.jpg";
+import logo1 from "../resources/landingPage_HL.jpg";
+import logo2 from "../resources/landingPage_MSG.jpg";
 
 const LandingPage = () => {
   return (
@@ -19,15 +21,14 @@ const LandingPage = () => {
             <LPCard
               title="Higher Lower"
               description="2 Pokemons are shown, guess which one has higher total stats!"
-              image="https://unsplash.it/250/400
-            "
+              image={logo1}
             />
           </Link>
           <Link to="/movesetgame">
             <LPCard
               title="Moveset Game"
               description="Guess which of 3 Pokemons is using a specific move! Maybe even all 3 know it."
-              image="https://unsplash.it/300/400"
+              image={logo2}
             />
           </Link>
           <Link to="/guessthepokemon">
