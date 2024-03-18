@@ -60,6 +60,7 @@ const LoginForm = () => {
           margin="normal"
           color="primary"
           InputLabelProps={{ style: { color: "white" } }}
+          InputProps={{ style: { color: "white" } }}
         />
         <TextField
           {...register("password", { required: "Password is required" })}
@@ -69,6 +70,7 @@ const LoginForm = () => {
           size="medium"
           margin="normal"
           InputLabelProps={{ style: { color: "white" } }}
+          InputProps={{ style: { color: "white" } }}
         />
         <Button
           disabled={isSubmitting}

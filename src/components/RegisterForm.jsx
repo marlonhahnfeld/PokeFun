@@ -73,6 +73,7 @@ const RegisterForm = () => {
           size="medium"
           margin="normal"
           InputLabelProps={{ style: { color: "white" } }}
+          InputProps={{ style: { color: "white" } }}
         />
         <TextField
           {...register("password", {
@@ -88,6 +89,7 @@ const RegisterForm = () => {
           size="medium"
           margin="normal"
           InputLabelProps={{ style: { color: "white" } }}
+          InputProps={{ style: { color: "white" } }}
         />
         <TextField
           {...register("confirmPassword", {
@@ -101,6 +103,7 @@ const RegisterForm = () => {
           size="medium"
           margin="normal"
           InputLabelProps={{ style: { color: "white" } }}
+          InputProps={{ style: { color: "white" } }}
         />
         <Button
           disabled={isSubmitting}
