@@ -38,13 +38,13 @@ const LandingPage = () => {
               image={landingPage_GTP}
             />
           </Link>
-          <Link to="/">
+          {/* <Link to="/">
             <LPCard
               title="Pokemon Lookup (soon)"
               description="Lookup any Pokemon and find out stuff you never knew."
               image="https://unsplash.it/450/400"
             />
-          </Link>
+          </Link> */}
         </div>
         <div className="bottom-container_lp">
           <p> &copy; Pokefun 2024 </p>
