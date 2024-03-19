@@ -3,6 +3,10 @@
   border-radius: 2%;
 }
 
+.lpcardmedia {
+  background-color: rgb(15 23 42);
+}
+
 .lpcardcontent {
   color: white;
 

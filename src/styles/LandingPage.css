@@ -1,9 +1,5 @@
 .page_lp {
-  background: linear-gradient(
-    112.1deg,
-    rgb(32, 38, 57) 11.4%,
-    rgb(63, 76, 119) 70.2%
-  );
+  background-image: url("../resources/backgroundLP.svg");
   display: flex;
   height: 100vh;
   width: 100vw;
@@ -69,5 +65,5 @@
   display: flex; /* Added this line */
   flex-direction: row; /* Added this line */
   justify-content: center;
-  color: white;
+  color: rgb(252 165 165);
 }

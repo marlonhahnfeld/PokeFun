@@ -153,7 +153,7 @@ const GuessThePokemon = () => {
               }}
             />
           )}
-          <div className="score">
+          <div className="score_GTP">
             <Score score={score} />
           </div>
           <div className="pokemon-container_GTP">

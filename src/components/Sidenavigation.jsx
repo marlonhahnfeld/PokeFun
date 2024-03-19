@@ -9,11 +9,11 @@ import InfoIcon from "@mui/icons-material/Info";
 import Typography from "@mui/material/Typography";
 import Grow from "@mui/material/Grow";
 
-const NavigationItem = ({ to, children, Icon }) => (
+const NavigationItem = ({ to, children }) => (
   <li className="navigation">
     <Link to={to}>
       <Button className="navigation-button">
-        <Icon className="navigation-icon" />
+        {/* <Icon className="navigation-icon" /> */}
         <h5>{children}</h5>
       </Button>
     </Link>
@@ -34,23 +34,15 @@ const Sidenavigation = () => {
           </Link>
         </div>
         <ul className="games">
-          <NavigationItem to="/higherorlower" Icon={SwapVertIcon}>
-            Higher or Lower
-          </NavigationItem>
-          <NavigationItem to="/movesetgame" Icon={GamepadIcon}>
-            Moveset Game
-          </NavigationItem>
-          <NavigationItem to="/guessthepokemon" Icon={GamepadIcon}>
+          <NavigationItem to="/higherorlower">Higher or Lower</NavigationItem>
+          <NavigationItem to="/movesetgame">Moveset Game</NavigationItem>
+          <NavigationItem to="/guessthepokemon">
             Guess the Pokemon
           </NavigationItem>
         </ul>
         <ul className="other">
-          <NavigationItem to="/about" Icon={InfoIcon}>
-            About
-          </NavigationItem>
-          <NavigationItem to="/settings" Icon={SettingsIcon}>
-            Settings
-          </NavigationItem>
+          <NavigationItem to="/about">About</NavigationItem>
+          <NavigationItem to="/settings">Settings</NavigationItem>
         </ul>
       </div>
     </>

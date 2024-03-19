@@ -41,28 +41,30 @@ const LPCard = ({ title, description, image }) => {
 
   return (
     <motion.div
-      className="lpcardcontainer"
-      ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      whileHover={{ scale: 1.25 }}
-      style={{
-        maxWidth: 345,
-      }}
-      animate={{
-        rotateX,
-        rotateY,
-      }}
+      whileHover={{ scale: 1.05 }}
+      style={{ maxWidth: 345 }}
+      animate={{ rotateX, rotateY }}
     >
-      <Card sx={{ maxWidth: 345 }} className="lpcard">
+      <Card sx={{ maxWidth: 300, transform: "scale(0.95)" }} className="lpcard">
         <CardActionArea className="lpcardactionarea">
           <CardMedia
             component="img"
-            height="200"
             image={image}
             alt="gamemode card"
+            className="lpcardmedia"
+            style={{
+              width: "100%",
+
+              objectFit: "scale-down",
+              objectPosition: "center",
+            }}
           />
-          <CardContent className="lpcardcontent">
+          <CardContent
+            className="lpcardcontent"
+            style={{ transform: "scale(1)" }}
+          >
             <Typography gutterBottom variant="h5" component="div">
               {title}
             </Typography>

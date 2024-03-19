@@ -141,7 +141,7 @@ const MoveSetGamePage = () => {
       </div>
       <div className="right-container_HL">
         <div className="top-container_MSG">
-          <div className="score">
+          <div className="score_MSG">
             <Score score={score} />
             <Highscore highscore={highscore} />
           </div>
