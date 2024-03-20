@@ -60,11 +60,13 @@ const Leaderboards = () => {
             <div key={game}>
               <h3>{game}</h3>
               <ol>
-                {highScores[game].top_users.map((user, index) => (
-                  <li key={index}>
-                    {user.username}: {user.score}
-                  </li>
-                ))}
+                {highScores[game] &&
+                  highScores[game].top_users &&
+                  highScores[game].top_users.map((user, index) => (
+                    <li key={index}>
+                      {user.username}: {user.score}
+                    </li>
+                  ))}
               </ol>
             </div>
           ))}
