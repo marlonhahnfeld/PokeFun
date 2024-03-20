@@ -6,22 +6,22 @@ const Leaderboards = () => {
 
   useEffect(() => {
     // Fetch high scores for each game
-    fetchHighScore4Game("guessThePokemon").then((data) => {
-      setHighScores({ GTP: data });
+    fetchHighScoreForGame("guessThePokemon").then((data) => {
+      setHighScores((prevState) => ({ ...prevState, GTP: data }));
     });
 
-    fetchHighScore4Game("mySecondGame").then((data) => {
-      setHighScores({ MSG: data });
+    fetchHighScoreForGame("movesetGame").then((data) => {
+      setHighScores((prevState) => ({ ...prevState, MSG: data }));
     });
 
-    fetchHighScore4Game("myThirdGame").then((data) => {
-      setHighScores({ HL: data });
+    fetchHighScoreForGame("higherLower").then((data) => {
+      setHighScores((prevState) => ({ ...prevState, HL: data }));
     });
-  });
+  }, []);
 
-  const fetchHighScore4Game = async (game) => {
-    return fetch("https://poke-fun-backend.vercel.app/fetchHighScore4Game", {
-      method: "GET",
+  const fetchHighScoreForGame = async (game) => {
+    return fetch("http://localhost:5000/fetchHighScoreForGame", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
@@ -44,6 +44,8 @@ const Leaderboards = () => {
       });
   };
 
+  console.log(highScores);
+
   return (
     <div className="page_leaderboards">
       <div className="side-navigation_leaderboards">
@@ -58,8 +60,10 @@ const Leaderboards = () => {
             <div key={game}>
               <h3>{game}</h3>
               <ol>
-                {highScores[game].map((score, index) => (
-                  <li key={index}>{score}</li>
+                {highScores[game].top_users.map((user, index) => (
+                  <li key={index}>
+                    {user.username}: {user.score}
+                  </li>
                 ))}
               </ol>
             </div>
