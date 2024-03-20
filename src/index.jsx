@@ -7,6 +7,7 @@ import GuessThePokemonPage from "./pages/GuessThePokemonPage";
 import LandingPage from "./pages/LandingPage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
+import Leaderboards from "./pages/Leaderboards";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <LoginPage />,
+  },
+  {
+    path: "/leaderboards",
+    element: <Leaderboards />,
   },
 ]);
 
