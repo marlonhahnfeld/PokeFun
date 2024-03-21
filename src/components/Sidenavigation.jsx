@@ -41,6 +41,7 @@ const Sidenavigation = () => {
           </NavigationItem>
         </ul>
         <ul className="other">
+          <NavigationItem to="/leaderboards">Leaderboards</NavigationItem>
           <NavigationItem to="/about">About</NavigationItem>
           <NavigationItem to="/settings">Settings</NavigationItem>
         </ul>

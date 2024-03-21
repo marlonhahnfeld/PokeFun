@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Leaderboards.css";
 import Sidenavigation from "../components/Sidenavigation";
+import { fetchHighScoreForGame } from "../server/dbutils";
 const Leaderboards = () => {
   const [highScores, setHighScores] = useState({ GTP: [], MSG: [], HL: [] });
 
@@ -19,32 +20,11 @@ const Leaderboards = () => {
     });
   }, []);
 
-  const fetchHighScoreForGame = async (game) => {
-    return fetch("http://localhost:5000/fetchHighScoreForGame", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        game: game,
-      }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        return data; // Access the highscore from the data object
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        throw error;
-      });
+  const gameNames = {
+    GTP: "GuessThePokemon",
+    MSG: "Moveset Game",
+    HL: "Higher or Lower",
   };
-
-  console.log(highScores);
 
   return (
     <div className="page_leaderboards">
@@ -57,14 +37,15 @@ const Leaderboards = () => {
         </div>
         <div className="mid-container_leaderboards">
           {["GTP", "MSG", "HL"].map((game) => (
-            <div key={game}>
-              <h3>{game}</h3>
+            <div key={game} className="TopUsers">
+              <h2 className="gameTitle">{gameNames[game]}</h2>
               <ol>
                 {highScores[game] &&
                   highScores[game].top_users &&
                   highScores[game].top_users.map((user, index) => (
-                    <li key={index}>
-                      {user.username}: {user.score}
+                    <li key={index} className="TopUser">
+                      <span className="rank">{index + 1 + "."}</span>{" "}
+                      {user.username}: {user.score} {/* Added index + 1 */}
                     </li>
                   ))}
               </ol>

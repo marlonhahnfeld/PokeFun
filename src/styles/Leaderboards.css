@@ -1,11 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700");
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Honk&family=Jacquarda+Bastarda+9&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Faustina&family=Orbitron:wght@400..900&display=swap");
 
 :root {
   --font-roboto: "Roboto Slab", serif;
   --font-raleway: "Raleway", sans-serif;
   --font-honk: "Honk", sans-serif;
+  --font-orbitron: "Orbitron", sans-serif;
 }
 
 html,
@@ -46,9 +48,9 @@ body {
   height: 90%;
   width: 100%;
   display: flex;
-  align-items: center;
   flex-direction: row;
-  justify-content: center;
+  justify-content: center; /* Changed from center to flex-start */
+  align-items: flex-start; /* New */
   justify-content: space-evenly;
 }
 
@@ -58,6 +60,40 @@ body {
   font-size: xx-large;
   color: #f9d3b4;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.mid-container_leaderboards ol {
+  padding: 0px; /* Add space around text */
+  margin: 0px;
+}
+
+.gameTitle {
+  font-size: 45px;
+  border-bottom: 1px solid var(--white-color);
+  margin: 5px;
+}
+
+.TopUsers {
+  display: flex;
+  flex-direction: column;
+}
+
+.rank {
+  font-family: var(--font-honk);
+  font-size: 25px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.TopUser {
+  color: #ffffff; /* Khaki color, stands out on dark background */
+  font-size: 20px; /* Increase font size */
+  font-weight: 700;
+  padding: 15px;
+  margin: 10px 0; /* Add vertical space between list items */
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  border-radius: 4px; /* Rounded corners */
+  font-family: var(--font-orbitron);
 }
 
 .bottom-Container_leaderboards {
