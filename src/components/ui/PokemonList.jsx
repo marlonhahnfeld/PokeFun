@@ -40,18 +40,19 @@ export default function PokemonList({ suggestions, onPokemonSelected }) {
     <Box
       sx={{
         position: "absolute",
-        marginTop: "37px",
+        marginTop: "58px",
         marginRight: "60px",
         width: "100%",
         height: "100%",
         maxWidth: 340,
-        maxHeight: 340,
-        bgcolor: "hsl(27, 61%, 69%)",
+        maxHeight: 180,
+        bgcolor: "#747272",
+        color: "white", // Set the background color to off white
         zIndex: 1,
       }}
     >
       <FixedSizeList
-        height={340}
+        height={180}
         width={340}
         itemSize={46}
         itemCount={sortedSuggestions.length}

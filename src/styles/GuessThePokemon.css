@@ -19,7 +19,7 @@ body {
   display: flex;
   height: 100vh;
   width: 100vw;
-  background-image: url("../resources/backgroundLP.svg");
+  background-image: url("../resources/BG_DarkBlack.svg");
 }
 
 .side-navigation_GTP {
@@ -39,7 +39,9 @@ body {
   width: 100%;
   height: 10%;
   display: flex;
+
   justify-content: center;
+  align-items: center;
 }
 
 .mid-container_GTP {
@@ -88,24 +90,29 @@ body {
   width: 400px;
   display: flex;
 }
-
 .answerContainer_GTP input {
   width: 85%;
   padding: 10px;
   box-sizing: border-box;
-  border: 1px solid #000000;
+  border: 1px solid #ffffff;
   border-radius: 4px 0 0 4px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   background-color: transparent;
+  color: white;
+  height: 40px; /* Fügen Sie diese Zeile hinzu */
+  margin-top: 5%;
 }
 
 .answerContainer_GTP button {
-  width: 15%;
-  border: 1px solid #000000;
-  border-radius: 0 4px 4px 0;
-  background-color: #000000;
-  color: #ffffff;
+  font-weight: bold;
+  width: 12%;
+  background-color: white;
+  border: 1px solid #000000; /* Ändern Sie diese Zeile */
+  border-radius: 10%;
+  color: black;
   cursor: pointer;
+  height: 40px; /* Fügen Sie diese Zeile hinzu */
+  margin-top: 5%;
 }
 
 .answerContainer_GTP input::placeholder {
@@ -153,15 +160,16 @@ body {
 }
 
 .pokemon-container_GTP {
-  height: 700px;
+  height: 70%;
   width: 70%;
   display: flex;
   justify-content: flex-start; /* Align content to the top */
-  box-sizing: border-box;
-  border: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   overflow-y: auto;
   flex-direction: column;
-  border: wheat solid 2px;
-  backdrop-filter: blur(5px);
+}
+
+/* enternt scrollbar*/
+::-webkit-scrollbar {
+  scrollbar-width: none;
+  display: none;
 }
