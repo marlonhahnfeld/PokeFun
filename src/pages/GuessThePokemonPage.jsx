@@ -112,7 +112,7 @@ const GuessThePokemon = () => {
       </div>
       <div className="right-container_GTP">
         <div className="top-container_GTP">
-          <Logo text={"PokeFun"} />
+          <Logo text={"Guess the Pokemon"} />
         </div>
         <div className="mid-container_GTP">
           {/* <div className="hintBox_GTP">
