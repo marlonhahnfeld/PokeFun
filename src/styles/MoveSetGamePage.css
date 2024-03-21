@@ -18,7 +18,7 @@ body {
   font-family: var(--font-roboto);
   display: flex;
   height: 100vh;
-  background-image: url("../resources/backgroundLP.svg");
+  background-image: url("../resources/BG_GreenDark.svg");
 }
 
 .side-navigation_MSG {
