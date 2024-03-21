@@ -8,6 +8,7 @@ import { fetchPokemonStartingWithInput_FromMongo } from "../utils/GuessThePokemo
 import PokemonList from "../components/ui/PokemonList";
 import Sidenavigation from "../components/Sidenavigation";
 import { getScoreGuessThePokemon } from "../server/dbutils";
+import Logo from "../components/Logo";
 
 const GuessThePokemon = () => {
   const [score, setScore] = useState(0); // eslint-disable-next-line
@@ -111,7 +112,7 @@ const GuessThePokemon = () => {
       </div>
       <div className="right-container_GTP">
         <div className="top-container_GTP">
-          <h4>PokeFun</h4>
+          <Logo text={"Guess the Pokemon"} />
         </div>
         <div className="mid-container_GTP">
           {/* <div className="hintBox_GTP">
@@ -138,8 +139,9 @@ const GuessThePokemon = () => {
               placeholder="Type Pokemon name..."
               value={inputValue}
               onChange={handleInputChange}
+              className="input_GTP"
             />
-            <button type="submit" onClick={handleSubmit}>
+            <button type="submit" onClick={handleSubmit} className="submit_GTP">
               Go
             </button>
           </div>
