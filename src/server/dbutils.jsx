@@ -193,3 +193,28 @@ export const getHighscoreForMovesetGame = async () => {
       throw error;
     });
 };
+
+export const fetchHighScoreForGame = async (game) => {
+  return fetch("https://poke-fun-backend.vercel.app/fetchHighScoreForGame", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      game: game,
+    }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      return data; // Access the highscore from the data object
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      throw error;
+    });
+};
